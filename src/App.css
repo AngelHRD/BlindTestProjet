@@ -1,1 +1,66 @@
 @import "tailwindcss";
+
+/*Couleurs ------------------------------*/
+    :root {
+        --chartreuse: #7FF000;
+        --jaune : #ADB005;
+        --noir : #141313;
+    }
+  
+
+ /*Typographies ------------------------------*/
+    
+    /*Titres*/
+
+    .t-owners {
+        font-family: "owners", sans-serif;
+        font-weight: 700;
+        color: white;
+        font-size: 58px;
+        text-transform: uppercase;
+    }
+
+    .t-briller {
+        font-family: "briller", sans-serif;
+        font-weight: 700;
+        color: white;
+        font-size: 58px;
+        text-transform: uppercase;
+    }
+
+    .t-owners-vide {
+        font-family: "owners", sans-serif;
+        font-weight: 700;
+        font-size: 58px;
+        text-transform: uppercase;
+        color: transparent; 
+        -webkit-text-stroke: 0.5px #7FF000; 
+    }
+    
+    .t-briller-vide {
+        font-family: "briller", sans-serif;
+        font-weight: 700;
+        font-size: 58px;
+        text-transform: uppercase;
+        color: transparent; 
+        -webkit-text-stroke: 0.5px #7FF000; 
+    }
+
+    /*Paragraphes*/
+    .para {
+        font-family: "futura-pt", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        color: white;
+        font-size: 20px;
+    }
+
+/*div blur*/
+    .bg-blur {
+        background: linear-gradient(to bottom, white, black);
+        opacity: 0.1;
+        border-radius: 35pt;
+        backdrop-filter: blur(10px); /* Flou du fond */
+        border: 0.5px solid white;
+    }
+  

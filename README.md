@@ -35,3 +35,11 @@ textes :
         font-family: "futura-pt", sans-serif;
         font-weight: 300;
         font-style: normal;
+
+
+
+Exemples de titre (superposition des 2 typos)=
+<div className="relative">
+      <div className="relative z-10 t-owners">fraferfev</div>
+      <div className="absolute top-1 left-1 z-0 t-owners-vide">fraferfev</div>
+</div>
