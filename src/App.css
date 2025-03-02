@@ -91,7 +91,7 @@ body {
     font-weight: 300;
     font-style: normal;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 /*div blur*/
@@ -117,4 +117,13 @@ body {
     font-weight: 700;
     color: white;
     text-transform: uppercase;
+}
+
+/* test */
+
+.test {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
+    border: 1px solid #ffffff1a;
+    backdrop-filter: blur(40px);
+    box-shadow: -7px 7px 15px 0px #00000026;
 }
