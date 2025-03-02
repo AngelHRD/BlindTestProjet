@@ -5,6 +5,7 @@ import ApiRequest from '../services/api';
 
 function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);
+    const [search, setSearch] = useState('');
 
     const fetchGenres = async () => {
         try {
@@ -18,6 +19,10 @@ function ChoiceGenrePage() {
     useEffect(() => {
         fetchGenres();
     }, []);
+
+    const filteredGenres = genres.filter((genre) => {
+        return genre.title.toLowerCase().includes(search.toLowerCase());
+    });
 
     return (
         <>
@@ -61,14 +66,24 @@ function ChoiceGenrePage() {
                             type='text'
                             placeholder='Rechercher un genre'
                             className='w-full h-12 rounded-lg px-5 search text-center'
+                            onChange={(e) => setSearch(e.target.value)}
+                            value={search}
                         />
                     </div>
 
                     {/* Cards */}
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5'>
-                        {genres.map((genre) => {
-                            return <CardGenre key={genre._id} data={genre} />;
-                        })}
+                    <div
+                        className={`${
+                            filteredGenres.length > 0
+                                ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5'
+                                : 'flex justify-center items-center py-10'
+                        }`}
+                    >
+                        {filteredGenres.length > 0 ? (
+                            filteredGenres.map((genre) => <CardGenre key={genre._id} data={genre} />)
+                        ) : (
+                            <p className='text-center t-owners'>Aucun genre trouvé.</p>
+                        )}
                     </div>
                 </div>
             </main>
