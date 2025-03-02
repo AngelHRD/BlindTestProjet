@@ -1,0 +1,64 @@
+[
+    {
+        "id": 1,
+        "genre": "rock",
+        "img": "./assets/img/genres/rock.jpg",
+        "description": "Guitar"
+    },
+    {
+        "id": 2,
+        "genre": "jazz",
+        "img": "./assets/img/genres/Jazz.jpg"
+    },
+    {
+        "id": 3,
+        "genre": "classical",
+        "img": "./assets/img/genre/classique.jpg"
+    },
+    {
+        "id": 4,
+        "genre": "pop",
+        "img": "./assets/img/genres/pop.jpg"
+    },
+    {
+        "id": 5,
+        "genre": "rap",
+        "img": "./assets/img/genres/rap.jpg",
+        "description": "Rap"
+    },
+    {
+        "id": 5,
+        "genre": "80'S",
+        "img": "./assets/img/genres/80s.jpg"
+    },
+    {
+        "id": 6,
+        "genre": "metal",
+        "img": "./assets/img/genres/metal.jpg"
+    },
+    {
+        "id": 7,
+        "genre": "country",
+        "img": "./assets/img/genres/country.jpg"
+    },
+    {
+        "id": 8,
+        "genre": "disney",
+        "img": "./assets/img/genres/disney.jpg"
+    },
+    {
+        "id": 9,
+        "genre": "années 2000",
+        "img": "./assets/img/genres/années-2000.jpg"
+    },
+    {
+        "id": 10,
+        "genre": "toutes générations",
+        "img": "./assets/img/genres/toutes-générations.jpg"
+    },
+    {
+        "id": 11,
+        "genre": "variété française",
+        "img": "./assets/img/genres/variété-francaise.jpg"
+    }
+]
