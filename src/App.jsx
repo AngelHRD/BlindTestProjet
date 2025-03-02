@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Component from './components/Component';
+import Homepage from './pages/Homepage';
+import ChoiceGenre from './pages/ChoiceGenre';
 
 function App() {
     return (
         <>
             <Router>
                 <Routes>
-                    <Route path='/' element={<Component />} />
+                    <Route path='/' element={<Homepage />} />
+                    <Route path='/genre' eleement={<ChoiceGenre />} />
                 </Routes>
             </Router>
         </>
