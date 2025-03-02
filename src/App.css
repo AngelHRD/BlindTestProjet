@@ -45,6 +45,23 @@
     -webkit-text-stroke: 0.5px #7ff000;
 }
 
+/* Card genre */
+.t-owners-card {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
+.t-briller-card {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 35px;
+    text-transform: uppercase;
+}
+
 /*Paragraphes*/
 .para {
     font-family: 'futura-pt', sans-serif;
@@ -63,65 +80,25 @@
     border: 0.5px solid white;
 }
 
-/*Couleurs ------------------------------*/
-:root {
-    --chartreuse: #7ff000;
-    --jaune: #adb005;
-    --noir: #141313;
+/* background */
+
+.bg {
+    background: rgba(20, 19, 19, 1);
 }
 
-/*Typographies ------------------------------*/
+/* Search Bar */
 
-/*Titres*/
-
-.t-owners {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    color: white;
-    font-size: 58px;
-    text-transform: uppercase;
+.bg-search {
+    background: linear-gradient(190.6deg, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
+    backdrop-filter: blur(16.882352828979492px);
+    border: 0.42px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -2.95px 2.95px 6.33px 0px rgba(0, 0, 0, 0.15);
 }
 
-.t-briller {
+.search {
     font-family: 'briller', sans-serif;
-    font-weight: 700;
-    color: white;
-    font-size: 58px;
-    text-transform: uppercase;
-}
-
-.t-owners-vide {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    font-size: 58px;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-}
-
-.t-briller-vide {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    font-size: 58px;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-}
-
-/*Paragraphes*/
-.para {
-    font-family: 'futura-pt', sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    color: white;
     font-size: 20px;
-}
-
-/*div blur*/
-.bg-blur {
-    background: linear-gradient(to bottom, white, black);
-    opacity: 0.1;
-    border-radius: 35pt;
-    backdrop-filter: blur(10px); /* Flou du fond */
-    border: 0.5px solid white;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
 }
