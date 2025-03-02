@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 function CardGenre({ data }) {
     // eslint-disable-next-line react/prop-types
     const { title, img, description } = data;
-    console.log('genre', data);
 
     return (
         <div className='relative w-90 h-90 rounded-2xl cursor-pointer overflow-hidden group bg-black z-10'>
-            <Link to='' className='w-full h-full'>
+            <Link to={`/genres/${title.toLowerCase()}`} className='w-full h-full'>
                 <div className='flex justify-end'>
                     <h3 className='absolute top-0 right-0 text-right t-owners-card break-words z-20 pt-4 pr-4  max-w-[258px]'>
                         {title}

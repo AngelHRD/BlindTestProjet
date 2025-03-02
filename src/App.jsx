@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import ChoiceGenrePage from './pages/ChoiceGenrePage';
-import ExplorePage from './pages/ExplorePage';
+import GenrePage from './pages/GenrePage';
 
 function App() {
     return (
@@ -9,8 +9,8 @@ function App() {
             <Router>
                 <Routes>
                     <Route path='/' element={<Homepage />} />
-                    <Route path='/genre' element={<ChoiceGenrePage />} />
-                    <Route path='/genre/:genre' element={<ExplorePage />} />
+                    <Route path='/genres' element={<ChoiceGenrePage />} />
+                    <Route path='/genres/:name' element={<GenrePage />} />
                 </Routes>
             </Router>
         </>
