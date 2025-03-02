@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-// https://technociteprojetblindtest.ew.r.appspot.com/
 const ApiRequest = axios.create({
-    baseURL: './../../db.json',
+    baseURL: 'https://technociteprojetblindtest.ew.r.appspot.com/',
 });
 
 export default ApiRequest;

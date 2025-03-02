@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
 
-function ChoiceGenre() {
+function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);
 
     const fetchGenres = async () => {
         try {
-            const response = await ApiRequest.get('./../../db.json');
+            const response = await ApiRequest.get(`/cards`);
             setGenres(response.data);
-            console.log(response.data);
         } catch (error) {
             console.error(error);
         }
@@ -68,7 +67,7 @@ function ChoiceGenre() {
                     {/* Cards */}
                     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5'>
                         {genres.map((genre) => {
-                            return <CardGenre key={genre.id} genre={genre.genre} img={genre.img} />;
+                            return <CardGenre key={genre._id} data={genre} />;
                         })}
                     </div>
                 </div>
@@ -77,4 +76,4 @@ function ChoiceGenre() {
     );
 }
 
-export default ChoiceGenre;
+export default ChoiceGenrePage;
