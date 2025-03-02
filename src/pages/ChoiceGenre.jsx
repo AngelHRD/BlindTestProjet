@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
 
@@ -23,7 +24,7 @@ function ChoiceGenre() {
         <>
             <main className='h-fit bg'>
                 <div className='container mx-auto px-4'>
-                    <a href='#' className='flex items-center py-5 cursor-pointer'>
+                    <Link to='/' className='flex items-center py-5 cursor-pointer'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             fill='none'
@@ -36,17 +37,17 @@ function ChoiceGenre() {
                         </svg>
 
                         <p className='para'>Retour</p>
-                    </a>
+                    </Link>
 
                     {/* Title */}
                     <div className='relative'>
-                        <h1 className='t-owners'>
+                        <h1 className='t-owners z-10 relative'>
                             C&apos;EST QUOI T<span className='t-briller'>O</span>N GENR
                             <span className='t-briller'>E</span> ?
                         </h1>
-                        <h1 className='t-owners-outline absolute top-0 left-0'>
-                            C&apos;EST QUOI T<span className='t-briller-outline'>O</span>N GENR
-                            <span className='t-briller-outline'>E</span> ?
+                        <h1 className='t-owners-vide absolute top-2 left-1 z-0'>
+                            C&apos;EST QUOI T<span className='t-briller-vide'>O</span>N GENR
+                            <span className='t-briller-vide'>E</span> ?
                         </h1>
                     </div>
 
@@ -56,16 +57,16 @@ function ChoiceGenre() {
                     </p>
 
                     {/* Search bar */}
-                    <div className='max-w-2xl mx-auto my-10 bg-amber-400 rounded-xl bg-search '>
+                    <div className='max-w-2xl mx-auto my-10 rounded-xl bg-search '>
                         <input
                             type='text'
                             placeholder='Rechercher un genre'
-                            className='w-full h-10 rounded-lg px-5 search text-center'
+                            className='w-full h-12 rounded-lg px-5 search text-center'
                         />
                     </div>
 
                     {/* Cards */}
-                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-5'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-5'>
                         {genres.map((genre) => {
                             return <CardGenre key={genre.id} genre={genre.genre} img={genre.img} />;
                         })}
