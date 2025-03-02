@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
 
 function GenrePage() {
-    const { name } = useParams(); // Récupérer le nom du genre depuis l'URL
+    const { name } = useParams(); // Récupére le nom du genre depuis l'URL
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true); // Nouvel état pour le chargement
+    const [loading, setLoading] = useState(true); // Obliger sinon on a une erreur car l'objet data est null
 
     useEffect(() => {
         const fetchGenre = async () => {
@@ -37,27 +38,14 @@ function GenrePage() {
     }
 
     return (
-        <div className='relative min-h-screen'>
-            <img src={data.img_v2} alt={data.title} className='absolute inset-0 h-full w-full object-cover -z-10' />
+        <div className='relative min-h-screen '>
+            {/* <img src={data.img_v3} alt={data.title} className='absolute w-[1920px] h-[1080px] -z-10' /> */}
 
-            <div>
-                <Link to='/genres' className='flex items-center py-5 cursor-pointer'>
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth={1.5}
-                        stroke='currentColor'
-                        className='size-8 text-white'
-                    >
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
-                    </svg>
-
-                    <p className='para'>Retour</p>
-                </Link>
+            <div className='relative  z-0'>
+                <LinkBack to='/genres' />
             </div>
 
-            <div className='border border-white w-xl h-96'></div>
+            <div className='relative flex justify-center border border-white w-xl h-96'></div>
         </div>
     );
 }

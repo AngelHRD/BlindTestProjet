@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
+import LinkBack from '../components/LinkBack';
 
 function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);
@@ -26,21 +27,8 @@ function ChoiceGenrePage() {
 
     return (
         <>
-            <div className='container mx-auto px-4 min-h-screen'>
-                <Link to='/' className='flex items-center my-5 cursor-pointer w-fit'>
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        fill='none'
-                        viewBox='0 0 24 24'
-                        strokeWidth={1.5}
-                        stroke='currentColor'
-                        className='size-8 text-white'
-                    >
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
-                    </svg>
-
-                    <p className='para'>Retour</p>
-                </Link>
+            <div className='container mx-auto px-4 min-h-screen[calc(100vh-6rem)]'>
+                <LinkBack to='/' text='Retour' />
 
                 {/* Title */}
                 <div className='relative'>
@@ -48,10 +36,10 @@ function ChoiceGenrePage() {
                         C&apos;EST QUOI T<span className='t-briller'>O</span>N GENR
                         <span className='t-briller'>E</span> ?
                     </h1>
-                    <h1 className='t-owners-vide absolute top-2 left-1 z-0'>
+                    <p className='t-owners-vide absolute top-2 left-1 z-0'>
                         C&apos;EST QUOI T<span className='t-briller-vide'>O</span>N GENR
                         <span className='t-briller-vide'>E</span> ?
-                    </h1>
+                    </p>
                 </div>
 
                 <p className='para'>
