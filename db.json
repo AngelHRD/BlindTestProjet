@@ -2,63 +2,63 @@
     {
         "id": 1,
         "genre": "rock",
-        "img": "./assets/img/genres/rock.jpg",
+        "img": "./assets/img/rock.webp ",
         "description": "Guitar"
     },
     {
         "id": 2,
         "genre": "jazz",
-        "img": "./assets/img/genres/Jazz.jpg"
+        "img": "./assets/img/Jazz.webp"
     },
     {
         "id": 3,
         "genre": "classical",
-        "img": "./assets/img/genre/classique.jpg"
+        "img": "./assets/img/classique.webp"
     },
     {
         "id": 4,
         "genre": "pop",
-        "img": "./assets/img/genres/pop.jpg"
+        "img": "./assets/img/pop.webp"
     },
     {
         "id": 5,
         "genre": "rap",
-        "img": "./assets/img/genres/rap.jpg",
+        "img": "./assets/img/rap.webp",
         "description": "Rap"
     },
     {
         "id": 5,
         "genre": "80'S",
-        "img": "./assets/img/genres/80s.jpg"
+        "img": "./assets/img/80s.webp"
     },
     {
         "id": 6,
         "genre": "metal",
-        "img": "./assets/img/genres/metal.jpg"
+        "img": "./assets/img/metal.webp"
     },
     {
         "id": 7,
         "genre": "country",
-        "img": "./assets/img/genres/country.jpg"
+        "img": "./assets/img/country.webp"
     },
     {
         "id": 8,
         "genre": "disney",
-        "img": "./assets/img/genres/disney.jpg"
+        "img": "./assets/img/genres/disney.webp"
     },
     {
         "id": 9,
         "genre": "années 2000",
-        "img": "./assets/img/genres/années-2000.jpg"
+        "img": "./assets/img/années-2000.webp"
     },
     {
         "id": 10,
         "genre": "toutes générations",
-        "img": "./assets/img/genres/toutes-générations.jpg"
+        "img": "./assets/img/toutes-générations.webp"
     },
     {
         "id": 11,
         "genre": "variété française",
-        "img": "./assets/img/genres/variété-francaise.jpg"
+        "img": "./assets/img/variété-francaise.webp"
     }
 ]
