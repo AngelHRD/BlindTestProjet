@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
 
@@ -33,25 +33,26 @@ function GenrePage() {
         fetchGenre();
     }, [name]);
 
-    if (loading) {
-        return <div>Chargement...</div>;
+    if (!data) {
+        return <div className='text-center mt-10'>Données non disponible</div>;
     }
 
     return (
         <div className='relative min-h-screen '>
-            <img src={data.img_v3} alt={data.title} className='absolute w-[1920px] h-[1080px] -z-10' />
+            <img src={data.img_v3} alt={data.title} className='absolute top-[-7rem] w-[1920px] h-[1050px] -z-10' />
 
-            <div className='relative  z-0'>
+            <div className='relative'>
                 <LinkBack to='/genres' />
             </div>
 
-            <div className='relative w-[687px] h-[764px] rounded-4xl test'>
+            <div className='relative rounded-4xl left-1/2 shadow-box  '>
                 <div className='mx-auto max-w-[450px] '>
-                    <h1 className='t-owners'>
-                        blin<span className='t-briller'>d</span> test
+                    {/* title */}
+                    <h1 className='t-owners leading-none'>
+                        blin<span className='t-briller'>d </span> test
                     </h1>
 
-                    <h2 className='t-briller-vide flex justify-end '>{data.title}</h2>
+                    <h2 className='t-briller-vide flex justify-end leading-none '>{data.title}</h2>
 
                     <p className='para'>
                         Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
