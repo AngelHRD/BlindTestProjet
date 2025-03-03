@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
 import LinkBack from '../components/LinkBack';
@@ -27,7 +26,7 @@ function ChoiceGenrePage() {
 
     return (
         <>
-            <div className='container mx-auto px-4 min-h-screen[calc(100vh-6rem)]'>
+            <div className='container mx-auto px-4 min-h-[calc(100vh-6rem)]'>
                 <LinkBack to='/' text='Retour' />
 
                 {/* Title */}
