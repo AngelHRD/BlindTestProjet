@@ -36,6 +36,8 @@ function PlayGamePage() {
             <div className='rounded-lg flex items-center justify-center'>
                 <ChoiceButton />
             </div>
+
+            <div></div>
         </div>
     );
 }
