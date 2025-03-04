@@ -9,11 +9,6 @@ function Header() {
                         <h1 className='t-briller-logo relative z-10'>blindify</h1>
                         <span className='t-briller-logo-vide absolute top-1 left-1 z-0'>blindify</span>
                     </Link>
-
-                    {/* TEMPORAIRE JUSTE POUR VOYAGER VERS GENRE A DISCUTER SI ON MET UN LINK */}
-                    <Link to='/genres'>
-                        <p className='t-briller-logo'>Genre</p>
-                    </Link>
                 </nav>
             </header>
         </>
