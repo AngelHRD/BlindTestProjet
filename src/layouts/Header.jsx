@@ -7,7 +7,7 @@ function Header() {
                 <nav className='h-24 flex items-center justify-between mx-35 '>
                     <Link className='relative w-fit ' to='/'>
                         <h1 className='t-briller-logo relative z-10'>blindify</h1>
-                        <span className='t-briller-logo-vide absolute top-1 left-1 z-0'>blindify</span>
+                        <span className='t-briller-logo-vide absolute top-1 left-1'>blindify</span>
                     </Link>
                 </nav>
             </header>

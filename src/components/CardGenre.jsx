@@ -9,7 +9,7 @@ function CardGenre({ data }) {
         <div className='relative w-full aspect-square rounded-2xl cursor-pointer overflow-hidden group bg-black z-10'>
             <Link to={`/genres/${title.toLowerCase()}`} className='w-full h-full block'>
                 <div className='flex justify-end'>
-                    <h3 className='absolute top-0 right-0 text-right t-owners-card break-words z-20 pt-4 pr-4 max-w-[80%]'>
+                    <h3 className='absolute top-0 right-0 text-right t-owners-card break-words z-20 pt-4 pr-4 '>
                         {title}
                     </h3>
                 </div>

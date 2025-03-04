@@ -38,34 +38,17 @@ function GenrePage() {
     }
 
     return (
-        <div className='relative min-h-screen '>
-            <img src={data.img_v3} alt={data.title} className='absolute top-[-7rem] w-[1920px] h-[1050px] -z-10' />
-
-            <div className='relative'>
-                <LinkBack to='/genres' />
+        <div className='absolute top-0 left-0 w-screen min-h-screen overflow-hidden'>
+            <div className='absolute inset-0 -z-10 bg-black'>
+                <img
+                    src={data.img_v3}
+                    alt={data.title}
+                    className='h-full object-center select-none pointer-events-none'
+                />
             </div>
 
-            <div className='relative rounded-4xl left-1/2 shadow-box  '>
-                <div className='mx-auto max-w-[450px] '>
-                    {/* title */}
-                    <h1 className='t-owners leading-none'>
-                        blin<span className='t-briller'>d </span> test
-                    </h1>
-
-                    <h2 className='t-briller-vide flex justify-end leading-none '>{data.title}</h2>
-
-                    <p className='para'>
-                        Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
-                        <br />
-                        <br />
-                        Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la
-                        différence.
-                        <br />
-                        <br />
-                        Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
-                        trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
-                    </p>
-                </div>
+            <div className='relative container mx-auto px-4 mt-30'>
+                <LinkBack to='/genres' />
             </div>
         </div>
     );
