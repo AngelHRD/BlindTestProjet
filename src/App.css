@@ -129,3 +129,21 @@ body {
     width: 687px;
     height: 764px;
 }
+
+.thumb-custom::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: #7ff000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.thumb-custom::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background-color: #7ff000;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
