@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function ChoiceButton() {
+function SliderMp3() {
     const [isPlaying, setIsPlaying] = useState(false);
 
     return (
@@ -34,8 +34,13 @@ function ChoiceButton() {
                 className='w-1/3 appearance-none h-1 bg-[#7FF000] rounded-full mx-2 thumb-custom'
                 aria-label='Choisir la durée de la musique'
             />
+
+            {/* met le en dessous */}
+            <div className='block '>
+                <p className='text-white '>Titre de la musique</p>
+            </div>
         </>
     );
 }
 
-export default ChoiceButton;
+export default SliderMp3;

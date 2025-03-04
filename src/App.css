@@ -94,15 +94,6 @@ body {
     font-size: 25px;
 }
 
-/*div blur*/
-.bg-blur {
-    background: linear-gradient(to bottom, white, black);
-    opacity: 0.1;
-    border-radius: 35pt;
-    backdrop-filter: blur(10px); /* Flou du fond */
-    border: 0.5px solid white;
-}
-
 /* search bar */
 
 .bg-search {

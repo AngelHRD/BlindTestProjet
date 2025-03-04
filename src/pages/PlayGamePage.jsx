@@ -1,14 +1,14 @@
 import LinkBack from '../components/LinkBack';
 import { useEffect, useState } from 'react';
 import ApiRequest from '../services/api';
-import ChoiceButton from '../components/ChoiceButton';
+import SliderMp3 from '../components/SliderMp3';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
 
     const fetchGame = async () => {
         try {
-            const response = await ApiRequest.get('/songs/:genre');
+            const response = await ApiRequest.get(`/songs/${genre}`);
             setSongs(response.data);
             console.log(response.data);
         } catch (error) {
@@ -31,10 +31,8 @@ function PlayGamePage() {
                 <h2 className='t-owners-vide'> rock </h2>
             </div>
 
-            <div></div>
-
             <div className='rounded-lg flex items-center justify-center'>
-                <ChoiceButton />
+                <SliderMp3 />
             </div>
 
             <div></div>
