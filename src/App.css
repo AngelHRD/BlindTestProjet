@@ -1,1 +1,89 @@
 @import "tailwindcss";
+
+html {
+    font-size: 16px; /* 1rem sera égal à 16px */
+}
+
+
+h2{
+    line-height: 0.7;
+}
+
+/*Couleurs ------------------------------*/
+:root {
+    --chartreuse: #7FF000;
+    --jaune : #ADB005;
+    --noir : #141313;
+}
+
+
+/*Typographies ------------------------------*/
+
+/*Titres*/
+
+.t-owners {
+    font-family: "owners", sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 3.7rem;
+    text-transform: uppercase;
+}
+
+.t-briller {
+    font-family: "briller", sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 3.7rem;
+    text-transform: uppercase;
+}
+
+.t-owners-vide {
+    font-family: "owners", sans-serif;
+    font-weight: 700;
+    font-size: 3.7rem;
+    text-transform: uppercase;
+    color: transparent; 
+    -webkit-text-stroke: 0.5px #7FF000; 
+}
+
+.t-briller-vide {
+    font-family: "briller", sans-serif;
+    font-weight: 700;
+    font-size: 3.7rem;
+    text-transform: uppercase;
+    color: transparent; 
+    -webkit-text-stroke: 0.5px #7FF000; 
+}
+
+/*Paragraphes*/
+.para {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+    "wdth" 100;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.btn-text{
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #141313;
+    font-size: 1.1rem;
+}
+
+/*div blur*/
+.bg-blur {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(8px); /* Flou du fond */
+    border-radius: 35pt;
+    border: 0.1px solid #262424;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+
