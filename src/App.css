@@ -121,20 +121,17 @@ body {
     height: 764px;
 }
 
+/* Slider MP3 */
 .thumb-custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
-    background-color: #7ff000;
+    width: 12px;
+    height: 12px;
+    background-color: #ff0000;
     border-radius: 50%;
     cursor: pointer;
 }
 
-.thumb-custom::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background-color: #7ff000;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+.thumb-custom::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #7ff000 var(--progress, 0%), #ffffff var(--progress, 0%));
 }

@@ -2,6 +2,14 @@ import { useState } from 'react';
 
 function SliderMp3() {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+
+    const handleProgress = (e) => {
+        const value = e.target.value;
+        setProgress(value);
+
+        e.target.style.setProperty('--progress', `${value}%`);
+    };
 
     return (
         <>
@@ -31,14 +39,11 @@ function SliderMp3() {
                 type='range'
                 min='0'
                 max='100'
-                className='w-1/3 appearance-none h-1 bg-[#7FF000] rounded-full mx-2 thumb-custom'
+                value={progress}
+                onChange={handleProgress}
+                className='w-7/12 appearance-none h-1 bg-[#7FF000] rounded-full mx-2 thumb-custom'
                 aria-label='Choisir la durée de la musique'
             />
-
-            {/* met le en dessous */}
-            <div className='block '>
-                <p className='text-white '>Titre de la musique</p>
-            </div>
         </>
     );
 }
