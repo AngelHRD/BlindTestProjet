@@ -2,52 +2,52 @@ import LinkBack from '../components/LinkBack';
 import { useEffect, useState } from 'react';
 import ApiRequest from '../services/api';
 import SliderMp3 from '../components/SliderMp3';
+import ButtonPlayGame from '../components/ButtonPlayGame';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
-
-    const fetchGame = async () => {
-        try {
-            const response = await ApiRequest.get(`/songs/${genre}`);
-            setSongs(response.data);
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    const [selectedSong, setSelectedSong] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchGame();
+        const fetchMusic = async () => {
+            try {
+                const response = await ApiRequest.get(`/songs/rock`);
+                const randomizeSongs = [...new Set(response.data)].sort(() => Math.random() - 0.5).slice(0, 4);
+
+                setSongs(randomizeSongs);
+                console.log('Randomize songs:', randomizeSongs);
+
+                const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
+                setSelectedSong(song);
+            } catch (error) {
+                console.error('Erreur lors du chargement:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchMusic();
     }, []);
 
+    if (loading) {
+        return <p className='text-white text-center'>Chargement...</p>;
+    }
+
     return (
-        <div className='container mx-auto px-4 min-h-fit'>
+        <div className='container mx-auto px-4 min-h-fit pt-10'>
             <LinkBack to='/genres' text='Quitter' />
             <div className='text-center'>
                 <h1 className='t-owners'>
                     blin<span className='t-briller '>d </span> test
                 </h1>
-                <h2 className='t-owners-vide'> rock </h2>
+                <h2 className='t-owners-vide mb-10'> rock </h2>
             </div>
             <div className='rounded-lg flex items-center justify-center'>
-                <SliderMp3 />
+                <SliderMp3 selectedSong={selectedSong} />
             </div>
             {/* <p className='text-white text-center'>Rock</p> */}
-
-            <div className='grid grid-cols-2 grid-rows-2 gap-3 container mx-auto place-items-center w-fit mt-14'>
-                <div className='w-fit'>
-                    <button className='py-3 px-6 bg-[#7ff000] rounded-xl cursor-pointer '>CHAUSSURE</button>
-                </div>
-                <div className='w-fit'>
-                    <button className='py-3 px-6 bg-[#7ff000] rounded-xl cursor-pointer '>CHAUSSURE</button>
-                </div>
-                <div className='w-fit'>
-                    <button className='py-3 px-6 bg-[#7ff000] rounded-xl cursor-pointer '>CHAUSSURE</button>
-                </div>
-                <div className='w-fit'>
-                    <button className='py-3 px-6 bg-[#7ff000] rounded-xl cursor-pointer '>CHAUSSURE</button>
-                </div>
-            </div>
+            <ButtonPlayGame songs={songs} />
         </div>
     );
 }
