@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import ApiRequest from '../services/api';
 import SliderMp3 from '../components/SliderMp3';
 import ButtonPlayGame from '../components/ButtonPlayGame';
+import Loader from '../components/Loader';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
@@ -31,7 +32,11 @@ function PlayGamePage() {
     }, []);
 
     if (loading) {
-        return <p className='text-white text-center'>Chargement...</p>;
+        return (
+            <div className='flex items-center justify-center min-h-screen'>
+                <Loader />;
+            </div>
+        );
     }
 
     return (
