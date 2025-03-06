@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 
 function MainLayout() {
+    const location = useLocation();
+
     return (
         <>
             <Header />
-            <main>
+            <main className={location.pathname === '/' ? '' : 'mt-18'}>
                 <Outlet />
-                {/* C'est ou les routes enfant seront render */}
+                {/* C'est où les routes enfant seront rendues */}
             </main>
         </>
     );

@@ -4,7 +4,6 @@ import ChoiceGenrePage from './pages/ChoiceGenrePage';
 import GenrePage from './pages/GenrePage';
 import MainLayout from './layouts/MainLayout';
 
-
 function App() {
     return (
         <>

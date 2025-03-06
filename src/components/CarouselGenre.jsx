@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-import ApiRequest from '../services/api';
 import CardGenre from './CardGenre';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,22 +5,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 
-function CarouselGenre() {
-    const [genres, setGenres] = useState([]);
-
-    const fetchGenres = async () => {
-        try {
-            const response = await ApiRequest.get(`/cards`);
-            setGenres(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    useEffect(() => {
-        fetchGenres();
-    }, []);
-
+function CarouselGenre({ genres }) {
     return (
         <div className='bg-blur h-auto w-full p-12 mt-10 flex flex-col py-5 gap-5'>
             {/* Cards */}

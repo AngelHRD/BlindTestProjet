@@ -58,6 +58,17 @@ body {
     -webkit-text-stroke: 0.5px #7ff000;
 }
 
+/*titres blind test genre*/
+.text-fluid {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
 /* Logo */
 
 .t-briller-logo {
@@ -224,4 +235,27 @@ body {
     100% {
         transform: translateX(0%);
     }
+}
+
+.container {
+    width: 200px;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text-box {
+    display: inline-block;
+    white-space: nowrap;
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+    font-size: 2.5rem;
+    line-height: 3rem;
 }

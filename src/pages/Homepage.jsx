@@ -2,10 +2,27 @@ import BoxShadow from '../components/BoxShadow';
 import CarouselGenre from '../components/CarouselGenre';
 import Footer from '../components/Footer';
 import MarqueeText from '../components/MarqueeText';
+import { useState, useEffect } from 'react';
+import ApiRequest from '../services/api';
 
 function Homepage() {
+    const [genres, setGenres] = useState([]);
+
+    const fetchGenres = async () => {
+        try {
+            const response = await ApiRequest.get(`/cards`);
+            setGenres(response.data);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchGenres();
+    }, []);
     return (
-        <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen '>
+        <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen'>
             {/* Image de fond accueil */}
             <img className='absolute z-0' src='/public/assets/img/accueil/fond-accueil-1.webp'></img>
 
@@ -16,7 +33,7 @@ function Homepage() {
             <div className='px-48 w-full'>
                 {/* Premiere section*/}
                 <div className='h-screen flex flex-col items-end justify-center '>
-                    <BoxShadow></BoxShadow>
+                    <BoxShadow genres={genres}></BoxShadow>
                 </div>
 
                 {/* Deuxieme section*/}
@@ -69,7 +86,7 @@ function Homepage() {
                             <span className='t-briller-vide'>e</span>?
                         </div>
                     </div>
-                    <CarouselGenre></CarouselGenre>
+                    <CarouselGenre genres={genres}></CarouselGenre>
                 </div>
             </div>
             {/* Footer */}
