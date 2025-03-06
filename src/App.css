@@ -1,41 +1,39 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
-
-h2{
+h2 {
     line-height: 0.7;
 }
 
 /*Couleurs ------------------------------*/
 :root {
-    --chartreuse: #7FF000;
-    --jaune : #ADB005;
-    --noir : #141313;
+    --chartreuse: #7ff000;
+    --jaune: #adb005;
+    --noir: #141313;
 }
-
 
 body {
     background: rgba(20, 19, 19, 1);
 }
-
 
 /*Typographies ------------------------------*/
 
 /*Titres*/
 
 .t-owners {
-    font-family: "owners", sans-serif;
+    font-family: 'owners', sans-serif;
     font-weight: 700;
-    color: white;
     font-size: 3.7rem;
     text-transform: uppercase;
+    color: white;
+    position: relative;
 }
 
 .t-briller {
-    font-family: "briller", sans-serif;
+    font-family: 'briller', sans-serif;
     font-weight: 700;
     color: white;
     font-size: 3.7rem;
@@ -43,23 +41,22 @@ body {
 }
 
 .t-owners-vide {
-    font-family: "owners", sans-serif;
+    font-family: 'owners', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
-    color: transparent; 
-    -webkit-text-stroke: 0.5px #7FF000; 
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
 }
 
 .t-briller-vide {
-    font-family: "briller", sans-serif;
+    font-family: 'briller', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
-    color: transparent; 
-    -webkit-text-stroke: 0.5px #7FF000; 
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
 }
-
 
 /* Logo */
 
@@ -78,6 +75,33 @@ body {
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.3px white;
+}
+
+/*footer typo*/
+.titre-footer-owners {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #7ff000;
+}
+
+.titre-footer-briller {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    color: #7ff000;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.para-footer {
+    font-family: 'Roboto', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: 'wdth' 100;
+    color: white;
+    font-size: 0.9rem;
 }
 
 /* Card genre */
@@ -99,18 +123,17 @@ body {
 
 /*Paragraphes*/
 .para {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-variation-settings:
-    "wdth" 100;
+    font-variation-settings: 'wdth' 100;
     color: white;
     font-size: 1.1rem;
 }
 
-.btn-text{
-    font-family: "Roboto", sans-serif;
+.btn-text {
+    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -158,4 +181,47 @@ body {
     box-shadow: -7px 7px 15px 0px #00000026;
     width: 687px;
     height: 764px;
+}
+
+/*animation*/
+/* Container for the scrolling text */
+.scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* The actual scrolling text */
+.marquee1 {
+    display: inline-block;
+    animation: scrollText1 20s linear infinite;
+    font-size: 24px; /* Ajuste la taille selon tes préférences */
+    white-space: nowrap;
+}
+
+/* Keyframes pour un défilement continu */
+@keyframes scrollText1 {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee2 {
+    display: inline-block;
+    animation: scrollText2 20s linear infinite;
+    font-size: 24px; /* Ajuste la taille selon tes préférences */
+    white-space: nowrap;
+}
+
+/* Keyframes pour un défilement continu */
+@keyframes scrollText2 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
 }
