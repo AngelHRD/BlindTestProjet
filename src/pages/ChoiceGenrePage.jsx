@@ -38,7 +38,7 @@ function ChoiceGenrePage() {
 
     return (
         <>
-            <div className='container mx-auto px-4 min-h-fit pt-10'>
+            <div className='container mx-auto px-4 min-h-fit pt-5'>
                 <LinkBack to='/' text='Retour' />
 
                 {/* Title */}

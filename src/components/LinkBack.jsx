@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function LinkBack({ to, text = 'Retour' }) {
     return (
-        <Link to={to} className='flex items-center gap-1  my-5 cursor-pointer w-fit hover:opacity-80' aria-label={text}>
+        <Link to={to} className='flex items-center gap-1 cursor-pointer w-fit hover:opacity-80' aria-label={text}>
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
