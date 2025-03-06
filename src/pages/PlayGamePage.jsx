@@ -21,6 +21,7 @@ function PlayGamePage() {
 
                 const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
                 setSelectedSong(song);
+                console.log('Selected song:', song);
             } catch (error) {
                 console.error('Erreur lors du chargement:', error);
             } finally {
@@ -40,18 +41,22 @@ function PlayGamePage() {
     }
 
     return (
-        <div className='container mx-auto px-4 min-h-fit pt-10'>
+        <div className='container mx-auto px-4 min-h-fit pt-5'>
             <LinkBack to='/genres' text='Quitter' />
             <div className='text-center'>
-                <h1 className='t-owners'>
-                    blin<span className='t-briller '>d </span> test
-                </h1>
-                <h2 className='t-owners-vide mb-10'> rock </h2>
+                {/* Title */}
+                <div className='w-full my-3 flex flex-col'>
+                    <h2 className='t-owners'>
+                        Blin<span className='t-briller'>d</span> test
+                    </h2>
+                    <h2 className='pl-4 t-briller-vide'>{selectedSong.genre}</h2>
+                </div>
             </div>
-            <div className='rounded-lg flex items-center justify-center'>
+
+            <div className='rounded-lg flex items-center justify-center py-10'>
                 <SliderMp3 selectedSong={selectedSong} />
             </div>
-            {/* <p className='text-white text-center'>Rock</p> */}
+
             <ButtonPlayGame songs={songs} />
         </div>
     );
