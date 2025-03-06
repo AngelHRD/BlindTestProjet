@@ -3,6 +3,7 @@ import Homepage from './pages/Homepage';
 import ChoiceGenrePage from './pages/ChoiceGenrePage';
 import GenrePage from './pages/GenrePage';
 import MainLayout from './layouts/MainLayout';
+import PlayGamePage from './pages/PlayGamePage';
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                         <Route path='/' element={<Homepage />} />
                         <Route path='/genres' element={<ChoiceGenrePage />} />
                         <Route path='/genres/:name' element={<GenrePage />} />
+                        <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                     </Route>
                 </Routes>
             </Router>

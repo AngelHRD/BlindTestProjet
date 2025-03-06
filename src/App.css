@@ -1,15 +1,20 @@
 @import 'tailwindcss';
+@import 'tailwindcss';
 
 html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
 h2 {
+h2 {
     line-height: 0.7;
 }
 
 /*Couleurs ------------------------------*/
 :root {
+    --chartreuse: #7ff000;
+    --jaune: #adb005;
+    --noir: #141313;
     --chartreuse: #7ff000;
     --jaune: #adb005;
     --noir: #141313;
@@ -25,6 +30,7 @@ body {
 
 .t-owners {
     font-family: 'owners', sans-serif;
+    font-family: 'owners', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
@@ -34,6 +40,7 @@ body {
 
 .t-briller {
     font-family: 'briller', sans-serif;
+    font-family: 'briller', sans-serif;
     font-weight: 700;
     color: white;
     font-size: 3.7rem;
@@ -42,14 +49,18 @@ body {
 
 .t-owners-vide {
     font-family: 'owners', sans-serif;
+    font-family: 'owners', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
 }
 
 .t-briller-vide {
+    font-family: 'briller', sans-serif;
     font-family: 'briller', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
@@ -135,9 +146,11 @@ body {
 /*Paragraphes*/
 .para {
     font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    font-variation-settings: 'wdth' 100;
     font-variation-settings: 'wdth' 100;
     color: white;
     font-size: 1.1rem;
@@ -145,11 +158,37 @@ body {
 
 .btn-text {
     font-family: 'Roboto', sans-serif;
+.btn-text {
+    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     color: #141313;
     font-size: 1.1rem;
+}
+
+.btn-text-game {
+    font-family: 'owners', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #141313;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    transform: translateY(0);
+    background: chartreuse;
+    background: linear-gradient(to bottom, #579d07, #19c207, #7ff000);
+}
+
+.btn-text-game:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 8px 0 0 #6dc000, 0 15px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-text-game:active {
+    transform: translateY(0.125rem);
+    box-shadow: 0 4px 0 0 #6dc000, 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
 /*div blur*/

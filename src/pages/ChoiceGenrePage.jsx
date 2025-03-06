@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
 import LinkBack from '../components/LinkBack';
+import Loader from '../components/Loader';
 
 function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);
     const [search, setSearch] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const fetchGenres = async () => {
         try {
@@ -13,6 +15,8 @@ function ChoiceGenrePage() {
             setGenres(response.data);
         } catch (error) {
             console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -24,9 +28,17 @@ function ChoiceGenrePage() {
         return genre.title.toLowerCase().includes(search.toLowerCase());
     });
 
+    if (loading) {
+        return (
+            <div className='flex items-center justify-center min-h-screen'>
+                <Loader />
+            </div>
+        );
+    }
+
     return (
         <>
-            <div className='container mx-auto px-4 min-h-[calc(100vh-6rem)]'>
+            <div className='container mx-auto px-4 min-h-fit pt-5'>
                 <LinkBack to='/' text='Retour' />
 
                 {/* Title */}

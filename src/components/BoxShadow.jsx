@@ -25,6 +25,17 @@ function BoxShadow() {
                     Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
                     trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
                 </p>
+                {/* paragraphes*/}
+                <p className='para'>
+                    Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
+                </p>
+                <p className='para'>
+                    Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la différence.
+                </p>
+                <p className='para'>
+                    Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
+                    trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
+                </p>
 
                 {/* bouton*/}
                 <Link
@@ -37,5 +48,7 @@ function BoxShadow() {
         </>
     );
 }
+
+export default BoxShadow;
 
 export default BoxShadow;
