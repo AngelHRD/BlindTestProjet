@@ -5,7 +5,7 @@ function MainLayout() {
     return (
         <>
             <Header />
-            <main>
+            <main className='mt-18'>
                 <Outlet />
                 {/* C'est ou les routes enfant seront render */}
             </main>
