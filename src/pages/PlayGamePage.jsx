@@ -1,5 +1,6 @@
 import LinkBack from '../components/LinkBack';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import ApiRequest from '../services/api';
 import SliderMp3 from '../components/SliderMp3';
 import ButtonPlayGame from '../components/ButtonPlayGame';
@@ -9,17 +10,20 @@ function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [loading, setLoading] = useState(true);
+    const { name: genre } = useParams();
 
     useEffect(() => {
         const fetchMusic = async () => {
             try {
-                const response = await ApiRequest.get(`/songs/rock`);
+                const response = await ApiRequest.get(`/songs/${genre}`);
                 const randomizeSongs = [...new Set(response.data)].sort(() => Math.random() - 0.5).slice(0, 4);
 
                 setSongs(randomizeSongs);
+                console.log('songs:', randomizeSongs);
 
                 const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
                 setSelectedSong(song);
+                console.log('selectedSong:', song);
             } catch (error) {
                 console.error('Erreur lors du chargement:', error);
             } finally {
@@ -28,7 +32,7 @@ function PlayGamePage() {
         };
 
         fetchMusic();
-    }, []);
+    }, [genre]);
 
     if (loading) {
         return (

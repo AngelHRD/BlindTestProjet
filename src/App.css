@@ -188,7 +188,8 @@ body {
     border-radius: 50%;
     cursor: pointer;
 }
-
 .thumb-custom::-webkit-slider-runnable-track {
-    background: linear-gradient(to right, #7ff000 var(--progress, 0%), #ffffff var(--progress, 0%));
+    height: 1px;
+    border-radius: 5px;
+    cursor: pointer;
 }

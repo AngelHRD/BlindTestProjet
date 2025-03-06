@@ -14,8 +14,7 @@ function App() {
                         <Route path='/' element={<Homepage />} />
                         <Route path='/genres' element={<ChoiceGenrePage />} />
                         <Route path='/genres/:name' element={<GenrePage />} />
-
-                        <Route path='/test' element={<PlayGamePage />} />
+                        <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                     </Route>
                 </Routes>
             </Router>
