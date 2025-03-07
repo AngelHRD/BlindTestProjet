@@ -18,7 +18,7 @@ function GenrePage() {
                 const allGenres = response.data; // Récupère toutes les données des genres à partir de la réponse de l'API.
 
                 // Cherche dans les genres récupérés celui qui correspond au nom du genre passé dans l'URL.
-                const genre = allGenres.find((g) => g.title.toLowerCase() === name.toLowerCase());
+                const genre = allGenres.find((g) => g.slug.toLowerCase() === name.toLowerCase());
 
                 // Si un genre correspondant est trouvé dans la réponse de l'API :
                 if (genre) {
