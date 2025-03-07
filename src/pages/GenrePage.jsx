@@ -54,7 +54,7 @@ function GenrePage() {
         <div className='relative max-h-screen'>
             {/* fond  */}
             <div className='absolute -top-18 bg-[#000002] w-full'>
-                <img src={data.img_v3} alt={data.title} className='h-[100vh]' />
+                <img src={data.img_desktop} alt={data.title} className='h-[100vh]' />
             </div>
 
             <div className='relative px-48 w-full z-10'>
