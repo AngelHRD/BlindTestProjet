@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ButtonPlayGame({ songs, selectedSong }) {
+function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
     const [clickedId, setClickedId] = useState(null);
     const [isCorrect, setIsCorrect] = useState(false);
 
@@ -11,9 +11,18 @@ function ButtonPlayGame({ songs, selectedSong }) {
         setIsCorrect(correct);
 
         if (correct) {
-            console.log('Bravo, vous avez trouvé la bonne musique !');
+            console.log('Bravo !');
+            setTimeout(() => {
+                onGoodAnswer();
+                setClickedId(null);
+                setIsCorrect(false);
+            }, 1500);
         } else {
-            console.log('Dommage, vous avez choisi la mauvaise musique !');
+            console.log('Dommage !');
+            setTimeout(() => {
+                setClickedId(null);
+                setIsCorrect(false);
+            }, 1500);
         }
     };
     return (

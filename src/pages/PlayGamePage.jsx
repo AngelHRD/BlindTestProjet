@@ -12,28 +12,30 @@ function PlayGamePage() {
     const [loading, setLoading] = useState(true);
     const { name: genre } = useParams();
 
+    const fetchMusic = async () => {
+        setLoading(true);
+        try {
+            const response = await ApiRequest.get(`/songs/${genre}`);
+            const randomizeSongs = [...new Set(response.data)].sort(() => Math.random() - 0.5).slice(0, 4);
+            setSongs(randomizeSongs);
+
+            const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
+            setSelectedSong(song);
+            console.log('selectedSong:', song);
+        } catch (error) {
+            console.error('Erreur lors du chargement:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchMusic = async () => {
-            try {
-                const response = await ApiRequest.get(`/songs/${genre}`);
-                const randomizeSongs = [...new Set(response.data)].sort(() => Math.random() - 0.5).slice(0, 4);
-
-                setSongs(randomizeSongs);
-                console.log('songs:', randomizeSongs);
-
-                const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
-
-                setSelectedSong(song);
-                console.log('selectedSong:', song);
-            } catch (error) {
-                console.error('Erreur lors du chargement:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchMusic();
     }, [genre]);
+
+    const handleNexSong = () => {
+        fetchMusic();
+    };
 
     if (loading) {
         return <Loader />;
@@ -54,7 +56,7 @@ function PlayGamePage() {
                 <SliderMp3 selectedSong={selectedSong} />
             </div>
 
-            <ButtonPlayGame songs={songs} selectedSong={selectedSong} />
+            <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
         </div>
     );
 }
