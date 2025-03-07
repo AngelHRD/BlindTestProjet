@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoxShadowGenre(data) {
-    console.log(data);
+    console.log('coucou', data);
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('3.7rem'); // Initialisation à 5rem
 
@@ -32,18 +32,18 @@ function BoxShadowGenre(data) {
                 </div>
             </div>
             <div className='flex flex-col gap-4'>
-                <p className='para'>Imbattable en blind test {data.data.title} ? C'est ce qu'on va voir !</p>
+                <p className='para'>Imbattable en blind test {data.data.title} ? C&apos;est ce qu&apos;on va voir !</p>
                 <p className='para'>
                     Prépare-toi à relever le défi ! Tu auras 15 secondes pour écouter chaque extrait et choisir laquelle
-                    des 4 propositions correspond à la chanson et à l'artiste ou groupe.
+                    des 4 propositions correspond à la chanson et à l&apos;artiste ou groupe.
                 </p>
                 <p className='para'>
-                    Attention, chaque seconde compte. À toi de montrer que tu as l'oreille ! Prêt à te mesurer à ce
-                    blind test ? C'est parti !
+                    Attention, chaque seconde compte. À toi de montrer que tu as l&apos;oreille ! Prêt à te mesurer à ce
+                    blind test ? C&apos;est parti !
                 </p>
             </div>
             <Link
-                to={`/genres/${data.slug}/blind-test`}
+                to={`/genres/${data.data.slug}/blind-test`}
                 className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-auto btn-text flex justify-center items-center'
             >
                 Let&apos;s go !
