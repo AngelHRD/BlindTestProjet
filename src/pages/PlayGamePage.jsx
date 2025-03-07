@@ -54,7 +54,7 @@ function PlayGamePage() {
                 <SliderMp3 selectedSong={selectedSong} />
             </div>
 
-            <ButtonPlayGame songs={songs} />
+            <ButtonPlayGame songs={songs} selectedSong={selectedSong} />
         </div>
     );
 }

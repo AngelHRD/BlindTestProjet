@@ -169,13 +169,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: #141313;
     text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    transform: translateY(0);
-    background: chartreuse;
-    background: linear-gradient(to bottom, #579d07, #19c207, #7ff000);
 }
 
 .btn-text-game:hover {
