@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
+import Loader from '../components/Loader';
 
 function GenrePage() {
     const { name } = useParams(); // Récupére le nom du genre depuis l'URL
@@ -35,6 +36,13 @@ function GenrePage() {
 
     if (!data) {
         return <div className='text-center mt-10'>Données non disponible</div>;
+    }
+    if (loading) {
+        return (
+            <div className='flex items-center justify-center min-h-screen'>
+                <Loader />
+            </div>
+        );
     }
 
     return (
