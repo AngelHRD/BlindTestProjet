@@ -1,0 +1,42 @@
+/*animation*/
+/* Container for the scrolling text */
+.scrolling-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* The actual scrolling text */
+.marquee1 {
+    display: inline-block;
+    animation: scrollText1 20s linear infinite;
+    font-size: 24px; /* Ajuste la taille selon tes préférences */
+    white-space: nowrap;
+}
+
+/* Keyframes pour un défilement continu */
+@keyframes scrollText1 {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee2 {
+    display: inline-block;
+    animation: scrollText2 20s linear infinite;
+    font-size: 24px; /* Ajuste la taille selon tes préférences */
+    white-space: nowrap;
+}
+
+/* Keyframes pour un défilement continu */
+@keyframes scrollText2 {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}

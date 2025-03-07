@@ -69,14 +69,15 @@ body {
 }
 
 /*titres blind test genre*/
-.text-fluid {
+.text-bt-genre {
     font-family: 'briller', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
-    font-size: 2.5rem;
-    line-height: 3rem;
+    line-height: normal;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 /* Logo */
@@ -145,11 +146,9 @@ body {
 /*Paragraphes*/
 .para {
     font-family: 'Roboto', sans-serif;
-    font-family: 'Roboto', sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
-    font-variation-settings: 'wdth' 100;
     font-variation-settings: 'wdth' 100;
     color: white;
     font-size: 1.1rem;
@@ -217,81 +216,4 @@ body {
     font-weight: 700;
     color: white;
     text-transform: uppercase;
-}
-
-/* Shadow box */
-
-.shadow-box {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
-    border: 1px solid #ffffff1a;
-    backdrop-filter: blur(40px);
-    box-shadow: -7px 7px 15px 0px #00000026;
-    width: 687px;
-    height: 764px;
-}
-
-/*animation*/
-/* Container for the scrolling text */
-.scrolling-container {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-/* The actual scrolling text */
-.marquee1 {
-    display: inline-block;
-    animation: scrollText1 20s linear infinite;
-    font-size: 24px; /* Ajuste la taille selon tes préférences */
-    white-space: nowrap;
-}
-
-/* Keyframes pour un défilement continu */
-@keyframes scrollText1 {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-.marquee2 {
-    display: inline-block;
-    animation: scrollText2 20s linear infinite;
-    font-size: 24px; /* Ajuste la taille selon tes préférences */
-    white-space: nowrap;
-}
-
-/* Keyframes pour un défilement continu */
-@keyframes scrollText2 {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
-
-.container-text-genre {
-    width: 100%;
-    height: 2.5rem;
-    max-height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.text-box {
-    display: inline-block;
-    white-space: nowrap;
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-    line-height: 3rem;
 }

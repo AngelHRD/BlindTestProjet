@@ -1,3 +1,5 @@
+import './cssComponents/marqueeText.css';
+
 function MarqueeText() {
     return (
         <div className='absolute top-[95vh] w-full overflow-hidden'>

@@ -1,49 +1,37 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoxShadowGenre(data) {
     const [text, setText] = useState(null);
-    const [fontSize, setFontSize] = useState('2rem'); // Initialisation à 2rem
-    const textBoxRef = useRef(null); // Référence vers l'élément texte
+    const [fontSize, setFontSize] = useState('3.7rem'); // Initialisation à 5rem
 
     useEffect(() => {
-        setText(data?.data?.title || 'Rock'); // Valeur par défaut si aucune donnée n'est fournie
+        const newText = data?.data?.title; // Valeur par défaut
+        setText(newText);
+
+        // Vérifie le nombre de mots dans le texte
+        const words = newText.trim().split(/\s+/);
+        setFontSize(words.length > 1 ? '2rem' : '3.7rem');
     }, [data]);
-
-    useEffect(() => {
-        if (!textBoxRef.current) return;
-
-        const adjustFontSize = () => {
-            let newFontSize = 32; // 2rem = 32px
-            const maxWidth = textBoxRef.current.offsetWidth; // Largeur de la div
-            const container = textBoxRef.current;
-
-            container.style.fontSize = `${newFontSize}px`; // Applique la taille max au départ
-
-            while (container.scrollWidth > maxWidth && newFontSize > 10) {
-                newFontSize--; // Réduit la taille de la police si ça dépasse
-                container.style.fontSize = `${newFontSize}px`;
-            }
-
-            setFontSize(`${newFontSize / 16}rem`); // Conversion en rem
-        };
-
-        // Ajoute un délai pour s'assurer que le texte est bien rendu avant le calcul
-        const timeout = setTimeout(adjustFontSize, 0);
-
-        return () => clearTimeout(timeout);
-    }, [text]); // Exécute l'effet quand `text` change
 
     return (
         <div className='bg-blur w-3/5 max-w-[800px] h-[550px] px-24 py-12 flex flex-col items-center gap-4 mt-5 bg-green-600'>
-            <div className='container-text-genre'>
-                <div className='text-box' id='dynamic-text' style={{ fontSize: fontSize }}>
+            <div className='flex flex-col items-center justify-center'>
+                <h2 className='t-owners'>
+                    Blin<span className='t-briller'>d</span> test
+                    <hr className='border-0.5 text-[chartreuse] w-full mt-2'></hr>
+                </h2>
+
+                {/*fontsize change dynamiquement la taille de la police selon le nombre de mots.*/}
+                <div
+                    className='text-bt-genre text-center flex items-center justify-center h-[5rem] my-2'
+                    style={{ fontSize }}
+                >
                     {text}
                 </div>
             </div>
-            <p className='para'>
-                Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
-            </p>
+
+            <p className='para'>Imbattable en blind test {data.data.title} ? C'est ce qu'on va voir !</p>
             <p className='para'>
                 Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la différence.
             </p>
