@@ -22,6 +22,7 @@ function PlayGamePage() {
                 console.log('songs:', randomizeSongs);
 
                 const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
+
                 setSelectedSong(song);
                 console.log('selectedSong:', song);
             } catch (error) {
@@ -35,11 +36,7 @@ function PlayGamePage() {
     }, [genre]);
 
     if (loading) {
-        return (
-            <div className='flex items-center justify-center min-h-screen'>
-                <Loader />
-            </div>
-        );
+        return <Loader />;
     }
 
     return (
