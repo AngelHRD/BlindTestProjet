@@ -1,27 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoxShadowGenre(data) {
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('2rem'); // Initialisation à 2rem
+    const textBoxRef = useRef(null); // Référence vers l'élément texte
 
     useEffect(() => {
-        const textBox = document.getElementById('dynamic-text');
-
-        // Met à jour le texte dynamique dès que data.data.title est disponible
-        setText(data?.data?.title);
-
-        let newFontSize = 32; // Taille max en px, correspondant à 2rem
-        const maxWidth = 100; // Largeur max à comparer
-
-        while (textBox.scrollWidth > maxWidth && newFontSize > 8) {
-            // Min taille de la police est 8px
-            newFontSize--; // Réduit la taille de la police si elle dépasse
-        }
-
-        // Conversion de la taille en rem
-        setFontSize(`${newFontSize / 16}rem`);
+        setText(data?.data?.title || 'Rock'); // Valeur par défaut si aucune donnée n'est fournie
     }, [data]);
+
+    useEffect(() => {
+        if (!textBoxRef.current) return;
+
+        const adjustFontSize = () => {
+            let newFontSize = 32; // 2rem = 32px
+            const maxWidth = textBoxRef.current.offsetWidth; // Largeur de la div
+            const container = textBoxRef.current;
+
+            container.style.fontSize = `${newFontSize}px`; // Applique la taille max au départ
+
+            while (container.scrollWidth > maxWidth && newFontSize > 10) {
+                newFontSize--; // Réduit la taille de la police si ça dépasse
+                container.style.fontSize = `${newFontSize}px`;
+            }
+
+            setFontSize(`${newFontSize / 16}rem`); // Conversion en rem
+        };
+
+        // Ajoute un délai pour s'assurer que le texte est bien rendu avant le calcul
+        const timeout = setTimeout(adjustFontSize, 0);
+
+        return () => clearTimeout(timeout);
+    }, [text]); // Exécute l'effet quand `text` change
 
     return (
         <div className='bg-blur w-3/5 max-w-[800px] h-[550px] px-24 py-12 flex flex-col items-center gap-4 mt-5 bg-green-600'>

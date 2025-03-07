@@ -26,7 +26,7 @@ function MarqueeText() {
                         <span className='t-briller'>d</span> test sl<span className='t-briller'>o</span>gan - Blin
                         <span className='t-briller'>d</span> test sl<span className='t-briller'>o</span>gan
                     </div>
-                    <div className='absolute top-2 left-1 z-0 t-owners-vide w-full'>
+                    <div className='absolute top-1 left-1 z-0 t-owners-vide w-full'>
                         - Blin<span className='t-briller-vide'>d</span> test sl
                         <span className='t-briller-vide'>o</span>gan - Blin<span className='t-briller-vide'>d</span>{' '}
                         test sl<span className='t-briller-vide'>o</span>gan - Blin
