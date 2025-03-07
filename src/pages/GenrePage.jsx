@@ -4,6 +4,7 @@ import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
 import BoxShadowGenre from '../components/BoxShadowGenre';
+import './cssPages/GenrePage.css';
 
 function GenrePage() {
     const { name } = useParams(); // Récupère le nom du genre depuis l'URL à l'aide du hook useParams de React Router.

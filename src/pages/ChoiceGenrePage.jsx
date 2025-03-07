@@ -3,6 +3,7 @@ import CardGenre from '../components/CardGenre';
 import ApiRequest from '../services/api';
 import LinkBack from '../components/LinkBack';
 import Loader from '../components/Loader';
+import './cssPages/choiceGenrePage.css';
 
 function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);

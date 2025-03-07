@@ -1,0 +1,11 @@
+/*titres blind test genre*/
+.text-bt-genre {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+    line-height: normal;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}

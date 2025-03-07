@@ -14,9 +14,6 @@ h2 {
     --chartreuse: #7ff000;
     --jaune: #adb005;
     --noir: #141313;
-    --chartreuse: #7ff000;
-    --jaune: #adb005;
-    --noir: #141313;
 }
 
 body {
@@ -68,18 +65,6 @@ body {
     -webkit-text-stroke: 0.5px #7ff000;
 }
 
-/*titres blind test genre*/
-.text-bt-genre {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-    line-height: normal;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-}
-
 /* Logo */
 
 .t-briller-logo {
@@ -97,33 +82,6 @@ body {
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.3px white;
-}
-
-/*footer typo*/
-.titre-footer-owners {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: #7ff000;
-}
-
-.titre-footer-briller {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    color: #7ff000;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-}
-
-.para-footer {
-    font-family: 'Roboto', sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-variation-settings: 'wdth' 100;
-    color: white;
-    font-size: 0.9rem;
 }
 
 /* Card genre */
@@ -194,26 +152,4 @@ body {
     border-radius: 35pt;
     border: 0.1px solid #262424;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
-}
-
-.bg-blur-nav {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-    backdrop-filter: blur(8px); /* Flou du fond */
-    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* search bar */
-
-.bg-search {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
-    backdrop-filter: blur(16.882352828979492px);
-    box-shadow: -2.95px 2.95px 6.33px 0px rgba(0, 0, 0, 0.15);
-}
-
-.search {
-    font-family: 'briller', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
 }

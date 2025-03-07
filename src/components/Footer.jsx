@@ -1,3 +1,5 @@
+import './cssComponents/footer.css';
+
 function Footer() {
     return (
         <footer className='w-full bg-blur-nav my-12 pt-10 flex flex-col items-center'>
