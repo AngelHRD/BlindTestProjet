@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoxShadowGenre(data) {
+    console.log(data);
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('3.7rem'); // Initialisation à 5rem
 
@@ -15,7 +16,7 @@ function BoxShadowGenre(data) {
     }, [data]);
 
     return (
-        <div className='bg-blur w-3/5 max-w-[800px] h-[550px] px-24 py-12 flex flex-col items-center gap-4 mt-5 bg-green-600'>
+        <div className='bg-blur w-3/5 max-w-[800px] h-[550px] px-24 py-12 flex flex-col items-center gap-4'>
             <div className='flex flex-col items-center justify-center'>
                 <h2 className='t-owners'>
                     Blin<span className='t-briller'>d</span> test
@@ -30,17 +31,19 @@ function BoxShadowGenre(data) {
                     {text}
                 </div>
             </div>
-
-            <p className='para'>Imbattable en blind test {data.data.title} ? C'est ce qu'on va voir !</p>
-            <p className='para'>
-                Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la différence.
-            </p>
-            <p className='para'>
-                Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu trouveras
-                des playlists variées qui mettront tes connaissances à l’épreuve.
-            </p>
+            <div className='flex flex-col gap-4'>
+                <p className='para'>Imbattable en blind test {data.data.title} ? C'est ce qu'on va voir !</p>
+                <p className='para'>
+                    Prépare-toi à relever le défi ! Tu auras 15 secondes pour écouter chaque extrait et choisir laquelle
+                    des 4 propositions correspond à la chanson et à l'artiste ou groupe.
+                </p>
+                <p className='para'>
+                    Attention, chaque seconde compte. À toi de montrer que tu as l'oreille ! Prêt à te mesurer à ce
+                    blind test ? C'est parti !
+                </p>
+            </div>
             <Link
-                to={`/genres`}
+                to={`/genres/${data.slug}/blind-test`}
                 className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-auto btn-text flex justify-center items-center'
             >
                 Let&apos;s go !

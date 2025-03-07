@@ -15,16 +15,19 @@ function BoxShadow() {
                 </div>
 
                 {/* paragraphes*/}
-                <p className='para'>
-                    Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
-                </p>
-                <p className='para'>
-                    Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la différence.
-                </p>
-                <p className='para'>
-                    Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
-                    trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
-                </p>
+                <div className='flex flex-col gap-4'>
+                    <p className='para'>
+                        Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
+                    </p>
+                    <p className='para'>
+                        Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la
+                        différence.
+                    </p>
+                    <p className='para'>
+                        Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
+                        trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
+                    </p>
+                </div>
 
                 {/* bouton*/}
                 <Link

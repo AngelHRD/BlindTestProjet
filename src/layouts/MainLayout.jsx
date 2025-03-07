@@ -7,7 +7,7 @@ function MainLayout() {
     return (
         <>
             <Header />
-            <main className={location.pathname === '/' ? '' : 'mt-18'}>
+            <main>
                 <Outlet />
                 {/* C'est où les routes enfant seront rendues */}
             </main>

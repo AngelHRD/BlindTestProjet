@@ -2,7 +2,7 @@ import './cssComponents/marqueeText.css';
 
 function MarqueeText() {
     return (
-        <div className='absolute top-[95vh] w-full overflow-hidden'>
+        <div className='absolute top-[95vh] w-full overflow-hidden mt-[-72px]'>
             <div className='scrolling-container relative flex overflow-x-hidden'>
                 <div className='marquee1'>
                     <div className='relative z-10 t-owners w-full'>
