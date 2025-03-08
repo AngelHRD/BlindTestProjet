@@ -5,7 +5,15 @@ function SliderMp3({ selectedSong }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0); // Nouvel état pour le temps actuel
     const audioRef = useRef(null);
+
+    // Formater le temps en minutes et secondes
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
 
     // Charger et lire la musique quand selectedSong change
     useEffect(() => {
@@ -14,10 +22,14 @@ function SliderMp3({ selectedSong }) {
             audioRef.current = audio;
 
             const handleMetadataLoaded = () => setDuration(audio.duration);
-            const handleTimeUpdate = () => setProgress((audio.currentTime / audio.duration) * 100);
+            const handleTimeUpdate = () => {
+                setProgress((audio.currentTime / audio.duration) * 100);
+                setCurrentTime(audio.currentTime); // Mettre à jour le temps actuel
+            };
             const handleEnded = () => {
                 setIsPlaying(false);
                 setProgress(0);
+                setCurrentTime(0); // Réinitialiser le temps actuel
             };
 
             audio.addEventListener('loadedmetadata', handleMetadataLoaded);
@@ -66,6 +78,7 @@ function SliderMp3({ selectedSong }) {
         setProgress(value);
         if (audioRef.current) {
             audioRef.current.currentTime = (value / 100) * duration;
+            setCurrentTime(audioRef.current.currentTime); // Mettre à jour le temps actuel
         }
     };
 
@@ -114,6 +127,10 @@ function SliderMp3({ selectedSong }) {
                     background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
                 }}
             />
+
+            <div className='text-white text-sm'>
+                {formatTime(currentTime)} / {formatTime(duration)}
+            </div>
         </>
     );
 }
