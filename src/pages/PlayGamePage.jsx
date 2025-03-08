@@ -53,7 +53,7 @@ function PlayGamePage() {
             </div>
 
             <div className='rounded-lg flex items-center justify-center py-10'>
-                <SliderMp3 selectedSong={selectedSong} />
+                <SliderMp3 key={selectedSong._id} selectedSong={selectedSong} />
             </div>
 
             <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
