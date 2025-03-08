@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 function CardGenre({ data }) {
     return (
-        <div className='relative w-full aspect-square rounded-2xl cursor-pointer overflow-hidden group bg-black z-10'>
-            <Link to={`/genres/${data.slug}`} className='w-full h-full block'>
+        <div className='relative aspect-square rounded-2xl cursor-pointer overflow-hidden group bg-black z-10'>
+            <Link to={`/genres/${data.slug}`}>
                 <div className='flex justify-end'>
                     <h3 className='absolute top-0 right-0 text-right t-owners-card break-words z-20 pt-4 pr-4 max-w-[80%]'>
                         {data.title}
@@ -12,7 +12,7 @@ function CardGenre({ data }) {
                 </div>
 
                 <img
-                    className='overflow-hidden object-cover scale-125 w-full h-full blur-sm transition-all duration-500 ease-in-out group-hover:blur-none'
+                    className='w-full h-full object-cover blur-sm transition-all duration-500 ease-in-out group-hover:blur-none'
                     src={data.img_card}
                     alt={data.description}
                 />
@@ -20,5 +20,14 @@ function CardGenre({ data }) {
         </div>
     );
 }
+
+CardGenre.propTypes = {
+    data: PropTypes.shape({
+        slug: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        img_card: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default CardGenre;
