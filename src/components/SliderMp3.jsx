@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 function SliderMp3({ selectedSong }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -116,5 +117,11 @@ function SliderMp3({ selectedSong }) {
         </>
     );
 }
+
+SliderMp3.propTypes = {
+    selectedSong: PropTypes.shape({
+        mp3: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default SliderMp3;
