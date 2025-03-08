@@ -289,3 +289,9 @@ body {
     -webkit-text-stroke: 0.5px #7ff000;
     line-height: 3rem;
 }
+
+.thumb-custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #7ff000;
+}

@@ -49,7 +49,7 @@ function PlayGamePage() {
                 <h2 className='t-owners'>
                     Blin<span className='t-briller'>d</span> test
                 </h2>
-                <h2 className='pl-4 t-briller-vide'>{selectedSong.genre}</h2>
+                <h2 className='pl-4 t-briller-vide'>{selectedSong?.genre}</h2>
             </div>
 
             <div className='rounded-lg flex items-center justify-center py-10'>

@@ -9,7 +9,7 @@ function SliderMp3({ selectedSong }) {
     // Charger et lire la musique quand selectedSong change
     useEffect(() => {
         if (selectedSong) {
-            const audio = new Audio(selectedSong.mp3); // Utilise l'URL du fichier audio
+            const audio = new Audio(selectedSong.mp3);
             audioRef.current = audio;
 
             const handleMetadataLoaded = () => setDuration(audio.duration);
@@ -34,7 +34,7 @@ function SliderMp3({ selectedSong }) {
         }
     }, [selectedSong]);
 
-    // Contrôler la lecture et la pause
+    // Contrôle la lecture et la pause
     const togglePlay = () => {
         if (audioRef.current) {
             if (isPlaying) {
@@ -45,6 +45,19 @@ function SliderMp3({ selectedSong }) {
             setIsPlaying(!isPlaying);
         }
     };
+
+    // Ecoute les touches espace et enter pour jouer ou mettre en pause la musique
+    useEffect(() => {
+        const handleKeyPress = (e) => {
+            if (e.code === 'Space' || e.code === 'Enter') {
+                e.preventDefault();
+                togglePlay();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [isPlaying]);
 
     // Mettre à jour la progression de l'audio
     const handleProgress = (e) => {
