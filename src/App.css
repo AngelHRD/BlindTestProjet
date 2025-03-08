@@ -23,6 +23,12 @@ body {
     background: rgba(20, 19, 19, 1);
 }
 
+/* Evite les décalages à cause de la scroll bar */
+html {
+    margin-left: calc(100vw - 100%);
+    overflow-y: auto;
+}
+
 /*Typographies ------------------------------*/
 
 /*Titres*/
