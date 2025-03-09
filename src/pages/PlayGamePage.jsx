@@ -42,7 +42,7 @@ function PlayGamePage() {
     }
 
     return (
-        <div className='container mx-auto px-4 min-h-screen lg:min-h-[calc(100vh-80px)] pt-5 relative'>
+        <section className='container mx-auto px-4 min-h-screen lg:min-h-[calc(100vh-80px)] pt-5 relative'>
             <LinkBack to='/genres' text='Quitter' />
 
             {/* Titre toujours en haut */}
@@ -64,7 +64,7 @@ function PlayGamePage() {
             <div className='grid justify-items-center grid-cols-1 sm:grid-cols-2 gap-x-10 gap-8 mx-auto mt-5 w-fit md:order-3 order-2'>
                 <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
             </div>
-        </div>
+        </section>
     );
 }
 
