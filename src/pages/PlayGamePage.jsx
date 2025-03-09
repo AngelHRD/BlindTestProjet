@@ -42,21 +42,28 @@ function PlayGamePage() {
     }
 
     return (
-        <div className='container mx-auto px-4 min-h-fit pt-5'>
+        <div className='container mx-auto px-4 min-h-screen lg:min-h-[calc(100vh-80px)] pt-5 relative'>
             <LinkBack to='/genres' text='Quitter' />
-            {/* Title */}
-            <div className='w-full my-3 flex flex-col text-center'>
-                <h2 className='t-owners'>
-                    Blin<span className='t-briller'>d</span> test
+
+            {/* Titre toujours en haut */}
+            <div className='w-full my-3 flex flex-col text-center order-1'>
+                <h2 className='t-owners-test text-3xl sm:text-3xl md:text-4xl lg:text-[3.7rem]'>
+                    Blin<span className='t-briller-test text-3xl sm:text-3xl md:text-4xl lg:text-[3.7rem]'>d</span> test
                 </h2>
-                <h2 className='pl-4 t-briller-vide'>{selectedSong?.genre}</h2>
+                <h3 className='pl-4 t-briller-vide-test text-3xl sm:text-3xl md:text-4xl lg:text-[3.7rem]'>
+                    {selectedSong?.genre}
+                </h3>
             </div>
 
-            <div className='rounded-lg flex items-center justify-center py-10'>
+            {/* Slider : en bas pour mobile, en haut pour desktop */}
+            <div className='absolute bottom-40 left-0 w-full flex items-center justify-center md:relative md:top-0 md:order-2 order-3 md:pb-10 sm:bottom-60 md:bottom-auto'>
                 <SliderMp3 key={selectedSong._id} selectedSong={selectedSong} />
             </div>
 
-            <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
+            {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
+            <div className='grid justify-items-center grid-cols-1 sm:grid-cols-2 gap-x-10 gap-8 mx-auto mt-5 w-fit md:order-3 order-2'>
+                <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
+            </div>
         </div>
     );
 }
