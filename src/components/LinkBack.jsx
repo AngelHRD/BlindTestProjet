@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function LinkBack({ to, text = 'Retour' }) {
@@ -18,5 +19,10 @@ function LinkBack({ to, text = 'Retour' }) {
         </Link>
     );
 }
+
+LinkBack.propTypes = {
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string,
+};
 
 export default LinkBack;

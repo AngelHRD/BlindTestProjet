@@ -1,22 +1,35 @@
 import { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 function SliderMp3({ selectedSong }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [currentTime, setCurrentTime] = useState(0); // Nouvel état pour le temps actuel
     const audioRef = useRef(null);
+
+    // Formater le temps en minutes et secondes
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
 
     // Charger et lire la musique quand selectedSong change
     useEffect(() => {
         if (selectedSong) {
-            const audio = new Audio(selectedSong.mp3); // Utilise l'URL du fichier audio
+            const audio = new Audio(selectedSong.mp3);
             audioRef.current = audio;
 
             const handleMetadataLoaded = () => setDuration(audio.duration);
-            const handleTimeUpdate = () => setProgress((audio.currentTime / audio.duration) * 100);
+            const handleTimeUpdate = () => {
+                setProgress((audio.currentTime / audio.duration) * 100);
+                setCurrentTime(audio.currentTime); // Mettre à jour le temps actuel
+            };
             const handleEnded = () => {
                 setIsPlaying(false);
                 setProgress(0);
+                setCurrentTime(0); // Réinitialiser le temps actuel
             };
 
             audio.addEventListener('loadedmetadata', handleMetadataLoaded);
@@ -34,7 +47,7 @@ function SliderMp3({ selectedSong }) {
         }
     }, [selectedSong]);
 
-    // Contrôler la lecture et la pause
+    // Contrôle la lecture et la pause
     const togglePlay = () => {
         if (audioRef.current) {
             if (isPlaying) {
@@ -46,12 +59,26 @@ function SliderMp3({ selectedSong }) {
         }
     };
 
+    // Ecoute les touches espace et enter pour jouer ou mettre en pause la musique
+    useEffect(() => {
+        const handleKeyPress = (e) => {
+            if (e.code === 'Space' || e.code === 'Enter') {
+                e.preventDefault();
+                togglePlay();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+        return () => window.removeEventListener('keydown', handleKeyPress);
+    }, [isPlaying]);
+
     // Mettre à jour la progression de l'audio
     const handleProgress = (e) => {
         const value = e.target.value;
         setProgress(value);
         if (audioRef.current) {
             audioRef.current.currentTime = (value / 100) * duration;
+            setCurrentTime(audioRef.current.currentTime); // Mettre à jour le temps actuel
         }
     };
 
@@ -100,8 +127,18 @@ function SliderMp3({ selectedSong }) {
                     background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
                 }}
             />
+
+            <div className='text-white text-sm'>
+                {formatTime(currentTime)} / {formatTime(duration)}
+            </div>
         </>
     );
 }
+
+SliderMp3.propTypes = {
+    selectedSong: PropTypes.shape({
+        mp3: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default SliderMp3;
