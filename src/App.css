@@ -43,30 +43,6 @@ html {
     position: relative;
 }
 
-.t-owners-test {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-    position: relative;
-}
-
-.t-briller-test {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-    position: relative;
-}
-
-.t-briller-vide-test {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-}
-
 .t-briller {
     font-family: 'briller', sans-serif;
     font-family: 'briller', sans-serif;
@@ -93,6 +69,36 @@ html {
     font-family: 'briller', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.t-owners-test {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+
+.t-briller-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+
+.t-briller-vide-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.t-owners-vide-test {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -226,7 +232,6 @@ html {
 
 .search {
     font-family: 'briller', sans-serif;
-    font-size: 20px;
     font-weight: 700;
     color: white;
     text-transform: uppercase;
