@@ -314,4 +314,8 @@ html {
     -webkit-appearance: none;
     appearance: none;
     background: #7ff000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
 }

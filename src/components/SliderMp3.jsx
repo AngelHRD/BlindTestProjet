@@ -150,7 +150,7 @@ function SliderMp3({ selectedSong }) {
                 max='100'
                 value={progress}
                 onChange={handleProgress}
-                className='w-7/12 appearance-none h-[5px] bg-[#7FF000] rounded-full mx-2 cursor-pointer'
+                className='w-7/12 appearance-none h-[5px] bg-[#7FF000] rounded-full mx-2 thumb-custom '
                 aria-label='Progression de la musique'
                 style={{
                     background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
