@@ -42,28 +42,30 @@ function PlayGamePage() {
     }
 
     return (
-        <section className='container mx-auto px-4 h-screen lg:h-[calc(100vh-80px)] pt-5 relative'>
-            <LinkBack to='/genres' text='Quitter' />
+        <section className='blur-color-green'>
+            <div className='container mx-auto px-4 h-screen lg:h-[calc(100vh-72px)] pt-5 relative'>
+                <LinkBack to='/genres' text='Quitter' />
 
-            {/* Titre toujours en haut */}
-            <div className='w-full flex flex-col text-center my-3 order-1'>
-                <h2 className='t-owners-test text-4xl md:text-6xl '>
-                    Blin
-                    <span className='t-briller-test text-4xl md:text-6xl'>d</span>
-                    test
-                </h2>
+                {/* Titre toujours en haut */}
+                <div className='w-full flex flex-col text-center my-3 order-1'>
+                    <h2 className='t-owners-test text-4xl md:text-7xl '>
+                        Blin
+                        <span className='t-briller-test text-4xl md:text-7xl'>d</span>
+                        test
+                    </h2>
 
-                <h3 className='t-briller-vide-test text-4xl md:text-6xl '>{selectedSong?.genre}</h3>
-            </div>
+                    <h3 className='t-briller-vide-test text-4xl md:text-6xl '>{selectedSong?.genre}</h3>
+                </div>
 
-            {/* Slider : en bas pour mobile, en haut pour desktop */}
-            <div className='absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center order-3 md:relative md:top-0 md:order-2 md:py-7 '>
-                <SliderMp3 key={selectedSong._id} selectedSong={selectedSong} />
-            </div>
+                {/* Slider : en bas pour mobile, en haut pour desktop */}
+                <div className='absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center order-3 md:relative md:top-0 md:order-2 md:py-7 '>
+                    <SliderMp3 key={selectedSong._id} selectedSong={selectedSong} />
+                </div>
 
-            {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
-            <div className='grid justify-items-center grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
-                <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
+                {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
+                <div className='grid justify-items-center grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
+                    <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
+                </div>
             </div>
         </section>
     );

@@ -319,3 +319,12 @@ html {
     border-radius: 50%;
     cursor: pointer;
 }
+
+/* TEST  */
+.blur-color-green {
+    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -50%, rgba(0, 120, 38, 0) 30%);
+}
+
+.blur-color-yellow {
+    background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
+}
