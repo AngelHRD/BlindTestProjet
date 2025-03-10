@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 
 function CardGenre({ data }) {
     return (
-        <div className='relative aspect-square rounded-2xl cursor-pointer overflow-hidden group bg-black z-10'>
-            <Link to={`/genres/${data.slug}`}>
-                <h3 className='absolute top-0 right-0 text-right t-owners-card break-words z-20 pt-4 pr-4'>
-                    {data.title}
-                </h3>
+        <div className='relative h-30 md:aspect-square rounded-4xl md:rounded-2xl cursor-pointer overflow-hidden group bg-black z-10 md:h-auto md:w-full'>
+            <Link to={`/genres/${data.slug}`} className='w-full h-full relative'>
+                <div
+                    className='absolute inset-0 flex items-center justify-center 
+                        md:top-2 md:right-2 md:justify-end md:items-start md:p-2'
+                >
+                    <h3 className='t-owners-card text-center break-words z-20 md:text-right'>{data.title}</h3>
+                </div>
 
                 <img
                     className='w-full h-full object-cover blur-sm transition-all duration-500 ease-in-out group-hover:blur-none'
