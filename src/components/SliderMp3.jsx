@@ -1,65 +1,103 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function SliderMp3({ selectedSong }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0); // Nouvel état pour le temps actuel
+    const [currentTime, setCurrentTime] = useState(0);
     const audioRef = useRef(null);
+    const isAudioInitialized = useRef(false);
 
-    // Formater le temps en minutes et secondes
+    // Constantes de départ et la durée maximale de l'audio
+    const startTime = 40;
+    const maxTimeSong = 30;
+
+    // Formate le temps en minutes:secondes
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     };
 
-    // Charger et lire la musique quand selectedSong change
+    // Initialise et gère l'audio quand selectedSong change
     useEffect(() => {
         if (selectedSong) {
+            if (audioRef.current) {
+                audioRef.current.pause();
+                audioRef.current.currentTime = 0;
+            }
+
             const audio = new Audio(selectedSong.mp3);
             audioRef.current = audio;
+            isAudioInitialized.current = true;
 
-            const handleMetadataLoaded = () => setDuration(audio.duration);
-            const handleTimeUpdate = () => {
-                setProgress((audio.currentTime / audio.duration) * 100);
-                setCurrentTime(audio.currentTime); // Mettre à jour le temps actuel
+            // Gestion des métadonnées de l'audio
+            const handleMetadataLoaded = () => {
+                const actualDuration = audio.duration;
+                const limitedDuration = Math.min(maxTimeSong, actualDuration - startTime);
+                setDuration(limitedDuration);
+                audio.currentTime = startTime;
             };
+
+            // Met à jour le progrès et le temps courant
+            const handleTimeUpdate = () => {
+                if (audioRef.current) {
+                    const adjustedCurrentTime = audioRef.current.currentTime - startTime;
+                    const limitedCurrentTime = Math.min(adjustedCurrentTime, maxTimeSong);
+                    setCurrentTime(limitedCurrentTime);
+                    setProgress((limitedCurrentTime / maxTimeSong) * 100);
+
+                    // Arrêter l'audio si la durée maximale est atteinte
+                    if (limitedCurrentTime >= maxTimeSong) {
+                        audioRef.current.pause();
+                        setIsPlaying(false);
+                    }
+                }
+            };
+
+            // Réinitialise l'état quand l'audio se termine
             const handleEnded = () => {
                 setIsPlaying(false);
+                setCurrentTime(0);
                 setProgress(0);
-                setCurrentTime(0); // Réinitialiser le temps actuel
             };
 
+            // Ajoute des écouteurs d'événements pour l'audio
             audio.addEventListener('loadedmetadata', handleMetadataLoaded);
             audio.addEventListener('timeupdate', handleTimeUpdate);
             audio.addEventListener('ended', handleEnded);
 
-            // Nettoyer les écouteurs d'événements et l'audio précédent
+            // Nettoie les écouteurs d'événements
             return () => {
-                audio.pause();
-                audioRef.current = null;
-                audio.removeEventListener('loadedmetadata', handleMetadataLoaded);
-                audio.removeEventListener('timeupdate', handleTimeUpdate);
-                audio.removeEventListener('ended', handleEnded);
+                if (audioRef.current) {
+                    audioRef.current.pause();
+                    audioRef.current = null;
+                    isAudioInitialized.current = false;
+                }
             };
         }
     }, [selectedSong]);
 
-    // Contrôle la lecture et la pause
+    // Gère la lecture et la pause de l'audio
     const togglePlay = () => {
         if (audioRef.current) {
             if (isPlaying) {
                 audioRef.current.pause();
+                setIsPlaying(false);
             } else {
-                audioRef.current.play();
+                const playPromise = audioRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch((error) => {
+                        console.error('Erreur lors de la lecture :', error);
+                    });
+                }
+                setIsPlaying(true);
             }
-            setIsPlaying(!isPlaying);
         }
     };
 
-    // Ecoute les touches espace et enter pour jouer ou mettre en pause la musique
+    // Gère les touches pour contrôler la lecture
     useEffect(() => {
         const handleKeyPress = (e) => {
             if (e.code === 'Space' || e.code === 'Enter') {
@@ -72,13 +110,14 @@ function SliderMp3({ selectedSong }) {
         return () => window.removeEventListener('keydown', handleKeyPress);
     }, [isPlaying]);
 
-    // Mettre à jour la progression de l'audio
+    // Gère le changement de la barre de progression
     const handleProgress = (e) => {
         const value = e.target.value;
         setProgress(value);
         if (audioRef.current) {
-            audioRef.current.currentTime = (value / 100) * duration;
-            setCurrentTime(audioRef.current.currentTime); // Mettre à jour le temps actuel
+            const newTime = startTime + (value / 100) * maxTimeSong;
+            audioRef.current.currentTime = newTime;
+            setCurrentTime(newTime - startTime);
         }
     };
 
@@ -93,15 +132,6 @@ function SliderMp3({ selectedSong }) {
                     stroke='currentColor'
                     className='h-10 w-10 cursor-pointer'
                     onClick={togglePlay}
-                    aria-label='Lire ou mettre en pause la musique'
-                    role='button'
-                    tabIndex='0'
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            togglePlay();
-                        }
-                    }}
                 >
                     {isPlaying ? (
                         <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 5.25v13.5m-7.5-13.5v13.5' />
@@ -114,27 +144,24 @@ function SliderMp3({ selectedSong }) {
                     )}
                 </svg>
             </div>
-
             <input
                 type='range'
                 min='0'
                 max='100'
                 value={progress}
                 onChange={handleProgress}
-                className='w-7/12 appearance-none h-[5px] bg-[#7FF000] rounded-full mx-2 thumb-custom cursor-pointer'
-                aria-label='Choisir la durée de la musique'
+                className='w-7/12 appearance-none h-[5px] bg-[#7FF000] rounded-full mx-2 thumb-custom '
+                aria-label='Progression de la musique'
                 style={{
                     background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
                 }}
             />
-
-            <div className='text-white text-sm'>
-                {formatTime(currentTime)} / {formatTime(duration)}
-            </div>
+            <span className='text-white text-lg'>{formatTime(Math.max(duration - currentTime, 0))}</span>
         </>
     );
 }
 
+// Définit les types attendus pour les props
 SliderMp3.propTypes = {
     selectedSong: PropTypes.shape({
         mp3: PropTypes.string.isRequired,

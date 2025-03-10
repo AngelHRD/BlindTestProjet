@@ -25,8 +25,8 @@ body {
 
 /* Evite les décalages à cause de la scroll bar */
 html {
-    margin-left: calc(100vw - 100%);
-    overflow-y: auto;
+    overflow-y: scroll;
+    margin-left: 0;
 }
 
 /*Typographies ------------------------------*/
@@ -41,6 +41,30 @@ html {
     text-transform: uppercase;
     color: white;
     position: relative;
+}
+
+.t-owners-test {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    position: relative;
+}
+
+.t-briller-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    position: relative;
+}
+
+.t-briller-vide-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
 }
 
 .t-briller {
@@ -171,21 +195,10 @@ html {
 }
 
 .btn-text-game {
-    font-family: 'owners', sans-serif;
+    font-family: 'Futura Lt BT';
     font-optical-sizing: auto;
-    font-weight: 400;
+    line-height: 100%;
     font-style: normal;
-    text-transform: uppercase;
-}
-
-.btn-text-game:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 8px 0 0 #6dc000, 0 15px 20px rgba(0, 0, 0, 0.3);
-}
-
-.btn-text-game:active {
-    transform: translateY(0.125rem);
-    box-shadow: 0 4px 0 0 #6dc000, 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
 /*div blur*/
@@ -300,4 +313,17 @@ html {
     -webkit-appearance: none;
     appearance: none;
     background: #7ff000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* TEST  */
+.blur-color-green {
+    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -50%, rgba(0, 120, 38, 0) 30%);
+}
+
+.blur-color-yellow {
+    background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
 }

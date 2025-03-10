@@ -34,7 +34,7 @@ function ChoiceGenrePage() {
 
     return (
         <>
-            <div className='container mx-auto px-4 min-h-fit pt-5'>
+            <section className='container mx-auto px-4 min-h-fit pt-5'>
                 <LinkBack to='/' text='Retour' />
 
                 {/* Title */}
@@ -79,7 +79,7 @@ function ChoiceGenrePage() {
                         <p className='text-center t-owners-card'>Aucun genre trouvé</p>
                     )}
                 </div>
-            </div>
+            </section>
         </>
     );
 }

@@ -11,39 +11,48 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
         setIsCorrect(correct);
 
         if (correct) {
-            console.log('Bravo !');
             setTimeout(() => {
                 onGoodAnswer();
                 setClickedId(null);
                 setIsCorrect(false);
             }, 2000);
         } else {
-            console.log('Dommage !');
             setTimeout(() => {
+                onGoodAnswer();
                 setClickedId(null);
                 setIsCorrect(false);
             }, 2000);
         }
     };
     return (
-        <div className='grid justify-items-center grid-cols-1 sm:grid-cols-2 gap-x-10 gap-8 mx-auto px-4 w-fit'>
+        <>
             {songs.map((song) => (
                 <button
                     key={song._id}
                     aria-label={`Choisir la musique : ${song.artist} - ${song.title}`}
                     className={`
-                        w-full max-w-xl min-w-80 py-6 px-8 tracking-wider transition-all duration-300 text-2xl rounded-xl btn-text-game
-                        ${clickedId !== song._id ? 'bg-gradient-to-b from-[#579d07] via-[#19c207] to-[#7ff000]' : ''}
-                        ${clickedId === song._id && isCorrect ? 'bg-green-500' : ''}
-                        ${clickedId === song._id && !isCorrect ? 'bg-[#7ff000]' : ''}
-                    `}
+                            w-full h-20 min-w-[300px] tracking-wide transition-all duration-300 rounded-lg btn-text-game   
+                            md:w-80 md:h-24 md:min-w-[350px] md:text-lg md:rounded-xl
+                            lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl lg:tracking-widest
+
+                            ${
+                                clickedId !== song._id
+                                    ? 'bg-gradient-to-r from-[rgba(127,240,0,0.752)] via-[#19c207] to-[#7ff000]'
+                                    : ''
+                            }
+                            ${clickedId === song._id && isCorrect ? 'bg-green-400 !font-semibold' : ''}
+                            ${clickedId === song._id && !isCorrect ? 'bg-red-400 line-through ' : ''}
+                        `}
                     onClick={() => handleClick(song._id)}
                     disabled={clickedId !== null}
                 >
-                    {clickedId === song._id && !isCorrect ? 'Mauvaise réponse' : `${song.artist} - ${song.title}`}
+                    {/* Artist - Song */}
+                    {clickedId === song._id && !isCorrect
+                        ? `Perdu !` // Ou 'Dommage !'
+                        : `${song.artist} - ${song.title}`}
                 </button>
             ))}
-        </div>
+        </>
     );
 }
 
