@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import ChoiceGenrePage from './pages/ChoiceGenrePage';
 import GenrePage from './pages/GenrePage';
@@ -13,11 +13,13 @@ function App() {
                 <Routes>
                     <Route element={<MainLayout />}>
                         <Route path='/' element={<Homepage />} />
-                        <Route path='*' element={<ErrorPage />} />
                         <Route path='/genres' element={<ChoiceGenrePage />} />
                         <Route path='/genres/:name' element={<GenrePage />} />
                         <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                     </Route>
+                    {/* Page error */}
+                    <Route path='/404' element={<ErrorPage />} />
+                    <Route path='*' element={<Navigate to='/404' replace />} />
                 </Routes>
             </Router>
         </>

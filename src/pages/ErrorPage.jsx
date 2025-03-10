@@ -4,7 +4,8 @@ const ErrorPage = () => {
     return (
         <section className='container h-screen mx-auto flex flex-col items-center justify-center'>
             <div className='relative text-center'>
-                <h1 className='text-4xl t-owners z-10'>404 - Page non trouvée</h1>
+                <h2 className='text-4xl t-owners z-10'>Erreur 404</h2>
+                <h1 className='text-4xl t-owners z-10 mt-5'> Page non trouvée</h1>
             </div>
 
             <div className='mt-10'>
