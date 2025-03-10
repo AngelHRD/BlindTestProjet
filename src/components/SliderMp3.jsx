@@ -5,8 +5,12 @@ function SliderMp3({ selectedSong }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0); // Nouvel état pour le temps actuel
+    const [currentTime, setCurrentTime] = useState(0);
     const audioRef = useRef(null);
+
+    // Configuration pour le découpage audio
+    const startTimeInSeconds = 10;
+    const maxDurationInSeconds = 30;
 
     // Formater le temps en minutes et secondes
     const formatTime = (time) => {
@@ -21,15 +25,42 @@ function SliderMp3({ selectedSong }) {
             const audio = new Audio(selectedSong.mp3);
             audioRef.current = audio;
 
-            const handleMetadataLoaded = () => setDuration(audio.duration);
-            const handleTimeUpdate = () => {
-                setProgress((audio.currentTime / audio.duration) * 100);
-                setCurrentTime(audio.currentTime); // Mettre à jour le temps actuel
+            const handleMetadataLoaded = () => {
+                // Définir la durée effective (soit la durée maximale, soit ce qui reste de la chanson)
+                const remainingDuration = audio.duration - startTimeInSeconds;
+                const effectiveDuration = Math.min(maxDurationInSeconds, remainingDuration);
+                setDuration(effectiveDuration);
+
+                // Positionner l'audio au point de départ
+                audio.currentTime = startTimeInSeconds;
             };
+
+            const handleTimeUpdate = () => {
+                // Calculer le temps relatif depuis le point de départ
+                const relativeTime = audio.currentTime - startTimeInSeconds;
+
+                // Calculer la progression en pourcentage basée sur la durée effective
+                const calculatedProgress = (relativeTime / duration) * 100;
+                setProgress(calculatedProgress > 100 ? 100 : calculatedProgress);
+                setCurrentTime(relativeTime > 0 ? relativeTime : 0);
+
+                // Arrêter l'audio si on atteint la durée maximale
+                if (audio.currentTime >= startTimeInSeconds + duration) {
+                    audio.pause();
+                    setIsPlaying(false);
+                    // Réinitialiser au point de départ
+                    audio.currentTime = startTimeInSeconds;
+                    setCurrentTime(0);
+                    setProgress(0);
+                }
+            };
+
             const handleEnded = () => {
                 setIsPlaying(false);
                 setProgress(0);
-                setCurrentTime(0); // Réinitialiser le temps actuel
+                setCurrentTime(0);
+                // Réinitialiser au point de départ
+                audio.currentTime = startTimeInSeconds;
             };
 
             audio.addEventListener('loadedmetadata', handleMetadataLoaded);
@@ -45,7 +76,7 @@ function SliderMp3({ selectedSong }) {
                 audio.removeEventListener('ended', handleEnded);
             };
         }
-    }, [selectedSong]);
+    }, [selectedSong, duration]);
 
     // Contrôle la lecture et la pause
     const togglePlay = () => {
@@ -53,16 +84,22 @@ function SliderMp3({ selectedSong }) {
             if (isPlaying) {
                 audioRef.current.pause();
             } else {
+                // Si on est à la fin, revenir au début
+                if (audioRef.current.currentTime >= startTimeInSeconds + duration) {
+                    audioRef.current.currentTime = startTimeInSeconds;
+                    setCurrentTime(0);
+                    setProgress(0);
+                }
                 audioRef.current.play();
             }
             setIsPlaying(!isPlaying);
         }
     };
 
-    // Ecoute les touches espace et enter pour jouer ou mettre en pause la musique
+    // Écoute les touches espace pour jouer ou mettre en pause la musique
     useEffect(() => {
         const handleKeyPress = (e) => {
-            if (e.code === 'Space' || e.code === 'Enter') {
+            if (e.code === 'Space') {
                 e.preventDefault();
                 togglePlay();
             }
@@ -77,8 +114,10 @@ function SliderMp3({ selectedSong }) {
         const value = e.target.value;
         setProgress(value);
         if (audioRef.current) {
-            audioRef.current.currentTime = (value / 100) * duration;
-            setCurrentTime(audioRef.current.currentTime); // Mettre à jour le temps actuel
+            // Convertir la progression en temps, en tenant compte du point de départ
+            const newTime = startTimeInSeconds + (value / 100) * duration;
+            audioRef.current.currentTime = newTime;
+            setCurrentTime(newTime - startTimeInSeconds);
         }
     };
 
