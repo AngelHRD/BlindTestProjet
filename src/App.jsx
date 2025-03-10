@@ -17,9 +17,7 @@ function App() {
                         <Route path='/genres/:name' element={<GenrePage />} />
                         <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                     </Route>
-                    {/* Page error */}
-                    <Route path='/404' element={<ErrorPage />} />
-                    <Route path='*' element={<Navigate to='/404' replace />} />
+                    <Route path='/*' element={<ErrorPage />} />
                 </Routes>
             </Router>
         </>
