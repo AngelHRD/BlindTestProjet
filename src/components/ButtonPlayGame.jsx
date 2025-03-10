@@ -11,15 +11,14 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
         setIsCorrect(correct);
 
         if (correct) {
-            console.log('Bravo !');
             setTimeout(() => {
                 onGoodAnswer();
                 setClickedId(null);
                 setIsCorrect(false);
             }, 2000);
         } else {
-            console.log('Dommage !');
             setTimeout(() => {
+                onGoodAnswer();
                 setClickedId(null);
                 setIsCorrect(false);
             }, 2000);
@@ -41,14 +40,16 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                                     ? 'bg-gradient-to-r from-[rgba(127,240,0,0.752)] via-[#19c207] to-[#7ff000]'
                                     : ''
                             }
-                            ${clickedId === song._id && isCorrect ? 'bg-green-500' : ''}
-                            ${clickedId === song._id && !isCorrect ? 'bg-[#7ff000] ' : ''}
+                            ${clickedId === song._id && isCorrect ? 'bg-green-400 !font-semibold' : ''}
+                            ${clickedId === song._id && !isCorrect ? 'bg-red-400 line-through ' : ''}
                         `}
                     onClick={() => handleClick(song._id)}
                     disabled={clickedId !== null}
                 >
                     {/* Artist - Song */}
-                    {clickedId === song._id && !isCorrect ? 'Mauvaise réponse' : `${song.artist} - ${song.title}`}
+                    {clickedId === song._id && !isCorrect
+                        ? `Perdu !` // Ou 'Dommage !'
+                        : `${song.artist} - ${song.title}`}
                 </button>
             ))}
         </>
