@@ -9,7 +9,7 @@ function CardGenre({ data }) {
                     className='absolute inset-0 flex items-center justify-center 
                         md:top-2 md:right-2 md:justify-end md:items-start md:p-2'
                 >
-                    <h3 className='t-owners-card text-center break-words z-20 md:text-right'>{data.title}</h3>
+                    <h2 className='t-owners-card text-center break-words z-20 md:text-right'>{data.title}</h2>
                 </div>
 
                 <img
