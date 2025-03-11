@@ -2,6 +2,7 @@ import LinkBack from '../components/LinkBack';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ApiRequest from '../services/api';
+import Loader from '../components/Loader';
 
 function ScorePage() {
     const [info, setInfo] = useState([]);
@@ -26,6 +27,10 @@ function ScorePage() {
         fetchInfo();
     }, [genre]);
 
+    if (loading) {
+        return <Loader />;
+    }
+
     return (
         <section className='blur-color-green-score'>
             <div className='container mx-auto px-4 h-screen lg:h-[calc(100vh-72px)] pt-5 relative text-white  '>
@@ -45,7 +50,7 @@ function ScorePage() {
                     <p className='text-xl md:text-4xl'>titres sur X</p>
                     <p className='text-xl md:text-4xl pt-40'>Améliore toi avec nos autres blind test !</p>
                     <Link className='px-4 py-2 mt-5 bg-[#7ff000] rounded-xl  text-black text-xl md:text-4xl'>
-                        Let's goooooo
+                        Let&apos;s goooooo
                     </Link>
                 </div>
             </div>
