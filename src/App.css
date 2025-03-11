@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tailwindcss';
 
 html {
     font-size: 16px; /* 1rem sera égal à 16px */
@@ -26,7 +25,6 @@ body {
 
 .t-owners {
     font-family: 'owners', sans-serif;
-    font-family: 'owners', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
@@ -36,7 +34,6 @@ body {
 
 .t-briller {
     font-family: 'briller', sans-serif;
-    font-family: 'briller', sans-serif;
     font-weight: 700;
     color: white;
     font-size: 3.7rem;
@@ -45,18 +42,14 @@ body {
 
 .t-owners-vide {
     font-family: 'owners', sans-serif;
-    font-family: 'owners', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
 }
 
 .t-briller-vide {
-    font-family: 'briller', sans-serif;
     font-family: 'briller', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
