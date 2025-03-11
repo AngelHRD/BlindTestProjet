@@ -1,4 +1,5 @@
 import LinkBack from '../components/LinkBack';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiRequest from '../services/api';
@@ -9,8 +10,11 @@ import Loader from '../components/Loader';
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
+    const [songCount, setSongCount] = useState(0);
     const [loading, setLoading] = useState(true);
     const { name: genre } = useParams();
+    const navigate = useNavigate();
+    const maxSongs = 5;
 
     const fetchMusic = async () => {
         setLoading(true);
@@ -21,7 +25,6 @@ function PlayGamePage() {
 
             const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
             setSelectedSong(song);
-            console.log('selectedSong:', song);
         } catch (error) {
             console.error('Erreur lors du chargement:', error);
         } finally {
@@ -34,7 +37,13 @@ function PlayGamePage() {
     }, [genre]);
 
     const handleNexSong = () => {
-        fetchMusic();
+        if (songCount < maxSongs - 1) {
+            setSongCount(songCount + 1);
+            console.log('songCount:', songCount);
+            fetchMusic();
+        } else {
+            return navigate(`/genres/${genre}/blind-test/score`);
+        }
     };
 
     if (loading) {
@@ -50,7 +59,7 @@ function PlayGamePage() {
                 <div className='w-full flex flex-col text-center my-3 order-1'>
                     <h2 className='t-owners-test text-4xl md:text-7xl '>
                         Blin
-                        <span className='t-briller-test text-4xl md:text-7xl'>d</span>
+                        <span className='t-briller-test text-4xl md:text-7xl'>d </span>
                         test
                     </h2>
 

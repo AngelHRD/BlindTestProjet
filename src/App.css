@@ -172,7 +172,11 @@ html {
 
 /* TEST  */
 .blur-color-green {
-    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -50%, rgba(0, 120, 38, 0) 30%);
+    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 30%);
+}
+
+.blur-color-green-score {
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 50%);
 }
 
 .blur-color-yellow {

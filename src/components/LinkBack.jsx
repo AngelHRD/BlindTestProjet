@@ -5,7 +5,7 @@ function LinkBack({ to, text = 'Retour' }) {
     return (
         <Link
             to={to}
-            className='md:flex hidden items-center gap-1 my-5 cursor-pointer w-fit hover:opacity-80'
+            className='md:flex flex   items-center gap-1 my-5 cursor-pointer w-fit hover:opacity-80'
             aria-label={text}
         >
             <svg
