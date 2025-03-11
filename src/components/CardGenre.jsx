@@ -7,7 +7,7 @@ function CardGenre({ data }) {
             <Link to={`/genres/${data.slug}`} className='w-full h-full relative'>
                 <div
                     className='absolute inset-0 flex items-center justify-center 
-                        md:top-2 md:right-2 md:justify-end md:items-start md:p-2'
+                        md:top-5 md:right-2 md:justify-end md:items-start md:p-2'
                 >
                     <h2 className='t-owners-card text-center break-words z-20 md:text-right'>{data.title}</h2>
                 </div>
