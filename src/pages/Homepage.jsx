@@ -44,11 +44,11 @@ function Homepage() {
 
                 {/* Deuxieme section*/}
                 {/* Container section 2*/}
-                <div className='w-full'>
+                <div className='w-full relative'>
                     {/* Container div 1 et enceinte*/}
-                    <div className='flex flex-row justify-center my-24 relative z-0'>
-                        <div className='bg-blur w-4/5 h-[400px] px-18 py-10 my-18'>
-                            <div className='flex flex-col gap-4 w-3/5'>
+                    <div className='flex flex-row justify-center lg:my-24 my-10 z-0'>
+                        <div className='bg-blur lg:w-4/5 w-full h-auto lg:px-18 px-[11vw] py-10 lg:my-18'>
+                            <div className='flex flex-col gap-4'>
                                 {/* titre*/}
 
                                 <div className='w-full my-3 flex flex-col'>
@@ -59,23 +59,25 @@ function Homepage() {
                                 </div>
 
                                 {/* paragraphes*/}
-                                <p className='para lg:text-[1.1rem] text-base'>
-                                    Bienvenue dans une expérience ultime pour tous les amateurs de musique et de
-                                    challenges.
-                                </p>
-                                <p className='para lg:text-[1.1rem] text-base'>
-                                    Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent
-                                    faire la différence.
-                                </p>
-                                <p className='para lg:text-[1.1rem] text-base'>
-                                    Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques
-                                    indémodables.
-                                </p>
+                                <div className='flex flex-col gap-4 w-3/5'>
+                                    <p className='para lg:text-[1.1rem] text-base'>
+                                        Bienvenue dans une expérience ultime pour tous les amateurs de musique et de
+                                        challenges.
+                                    </p>
+                                    <p className='para lg:text-[1.1rem] text-base'>
+                                        Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent
+                                        faire la différence.
+                                    </p>
+                                    <p className='para lg:text-[1.1rem] text-base hidden lg:block'>
+                                        Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques
+                                        indémodables.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-                        <div className='absolute right-0 z-10'>
-                            <img src='/public/assets/img/accueil/enceinte.png' className='w-[600px] rotate-10 '></img>
+                        <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-10'>
+                            <img src='/public/assets/img/accueil/enceinte.png' className='lg:w-[600px] rotate-10'></img>
                         </div>
                     </div>
                 </div>
