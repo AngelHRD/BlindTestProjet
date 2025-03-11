@@ -38,7 +38,7 @@ function Homepage() {
             {/* div container début */}
             <div className='lg:px-48 px-2 w-full lg:mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex lg:items-center lg:justify-end items-end bg-amber-400'>
+                <div className='h-screen flex lg:items-center lg:justify-end pt-[30vh] lg:pt-0'>
                     <BoxShadow genres={genres}></BoxShadow>
                 </div>
 
