@@ -11,10 +11,10 @@ function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [songCount, setSongCount] = useState(0);
-    const maxSongs = 5;
     const [loading, setLoading] = useState(true);
     const { name: genre } = useParams();
     const navigate = useNavigate();
+    const maxSongs = 5;
 
     const fetchMusic = async () => {
         setLoading(true);
@@ -42,7 +42,7 @@ function PlayGamePage() {
             console.log('songCount:', songCount);
             fetchMusic();
         } else {
-            return navigate('/genres');
+            return navigate(`/genres/${genre}/blind-test/score`);
         }
     };
 
