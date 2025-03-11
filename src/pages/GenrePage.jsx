@@ -4,6 +4,7 @@ import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
 import BoxShadowGenre from '../components/BoxShadowGenre';
+import './cssPages/GenrePage.css';
 
 function GenrePage() {
     const { name } = useParams(); // Récupère le nom du genre depuis l'URL à l'aide du hook useParams de React Router.
@@ -51,15 +52,17 @@ function GenrePage() {
     }
 
     return (
-        <div className='relative max-h-screen'>
+        <div className='relative max-h-screen h-[calc(100vh-72px)]'>
             {/* fond  */}
             <div className='absolute -top-18 bg-[#000002] w-full'>
                 <img src={data.img_desktop} alt={data.title} className='h-[100vh]' />
             </div>
-
-            <div className='relative px-48 w-full z-10'>
-                <LinkBack to='/genres' className='bg-amber-300' />
-                <div className='flex justify-end'>
+            {/* container retour et box  */}
+            <div className='relative px-48 w-full z-10 h-full'>
+                <div className='absolute top-5'>
+                    <LinkBack to='/genres' text='Retour' />
+                </div>
+                <div className='flex justify-end items-center h-full'>
                     <BoxShadowGenre data={data}></BoxShadowGenre>
                 </div>
             </div>

@@ -11,7 +11,7 @@ function SliderMp3({ selectedSong }) {
 
     // Constantes de départ et la durée maximale de l'audio
     const startTime = 40;
-    const maxTimeSong = 30;
+    const maxTimeSong = 15;
 
     // Formate le temps en minutes:secondes
     const formatTime = (time) => {

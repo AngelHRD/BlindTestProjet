@@ -24,15 +24,15 @@ function Homepage() {
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen'>
             {/* Image de fond accueil */}
-            <img className='absolute z-0' src='/public/assets/img/accueil/fond-accueil-1.webp'></img>
+            <img className='absolute z-0 mt-[-72px] ' src='/public/assets/img/accueil/fond-accueil-1.webp'></img>
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
 
             {/* div container début */}
-            <div className='px-48 w-full'>
+            <div className='px-48 w-full mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex flex-col items-end justify-center '>
+                <div className='h-screen flex flex-col items-end justify-center'>
                     <BoxShadow genres={genres}></BoxShadow>
                 </div>
 
