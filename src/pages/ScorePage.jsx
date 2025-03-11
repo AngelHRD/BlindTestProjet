@@ -37,9 +37,9 @@ function ScorePage() {
                 <LinkBack to='/genres' text='Quitter' />
 
                 <div className='flex flex-col  items-center bg-blur border h-10/12 '>
-                    <h2 className='t-owners-test text-5xl md:text-7xl pt-10 '>
+                    <h2 className='t-owners-test text-4xl md:text-7xl pt-10 '>
                         Blin
-                        <span className='t-briller-test text-5xl md:text-7xl'>d </span>
+                        <span className='t-briller-test text- md:text-7xl'>d </span>
                         test
                     </h2>
 
