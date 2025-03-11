@@ -58,7 +58,7 @@ function GenrePage() {
                 <img src={data.img_desktop} alt={data.title} className='h-[100vh]' />
             </div>
             {/* container retour et box  */}
-            <div className='relative px-48 w-full z-10 h-full'>
+            <div className='container mx-auto px-4 min-h-fit pt-10 md:pt-5 relative w-full z-10 h-full'>
                 <div className='absolute top-5'>
                     <LinkBack to='/genres' text='Retour' />
                 </div>

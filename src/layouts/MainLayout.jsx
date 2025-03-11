@@ -1,9 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
+import HeaderMobile from './HeaderMobile';
 
 function MainLayout() {
-    const location = useLocation(); // Récupère l'URL actuelle
-
     // Masquer le Header si l'utilisateur est sur la page d'erreur
     const hideHeader = location.pathname === '/404';
 
@@ -14,6 +13,7 @@ function MainLayout() {
                 <Outlet />
                 {/* C'est où les routes enfant seront rendues */}
             </main>
+            {!hideHeader && <HeaderMobile />} {/* Afficher le Header seulement si hideHeader est false */}
         </>
     );
 }

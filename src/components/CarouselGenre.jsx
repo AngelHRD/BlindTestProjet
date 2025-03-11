@@ -23,7 +23,10 @@ function CarouselGenre({ genres }) {
                 ))}
             </Swiper>
 
-            <Link to={`/genres`} className='w-full h-full para hover:underline flex justify-center'>
+            <Link
+                to={`/genres`}
+                className='w-full h-full para lg:text-[1.1rem] text-base hover:underline flex justify-center'
+            >
                 Voir tous les genres
             </Link>
         </div>

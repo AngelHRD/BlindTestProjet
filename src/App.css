@@ -32,7 +32,6 @@ html {
 .t-owners {
     font-family: 'owners', sans-serif;
     font-weight: 700;
-    font-size: 3.7rem;
     text-transform: uppercase;
     color: white;
     position: relative;
@@ -42,14 +41,12 @@ html {
     font-family: 'briller', sans-serif;
     font-weight: 700;
     color: white;
-    font-size: 3.7rem;
     text-transform: uppercase;
 }
 
 .t-owners-vide {
     font-family: 'owners', sans-serif;
     font-weight: 700;
-    font-size: 3.7rem;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -58,7 +55,6 @@ html {
 .t-briller-vide {
     font-family: 'briller', sans-serif;
     font-weight: 700;
-    font-size: 3.7rem;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -138,7 +134,6 @@ html {
     font-style: normal;
     font-variation-settings: 'wdth' 100;
     color: white;
-    font-size: 1.1rem;
 }
 
 .btn-text {
@@ -147,7 +142,6 @@ html {
     font-weight: 400;
     font-style: normal;
     color: #141313;
-    font-size: 1.1rem;
 }
 
 .btn-text-game {

@@ -24,15 +24,21 @@ function Homepage() {
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen'>
             {/* Image de fond accueil */}
-            <img className='absolute z-0 mt-[-72px] ' src='/public/assets/img/accueil/fond-accueil-1.webp'></img>
+            <img
+                className='absolute z-0 lg:mt-[-72px] '
+                src='/public/assets/img/accueil/fond-accueil-mobile-1.png'
+                srcSet='/public/assets/img/accueil/fond-accueil-mobile-1.png 640w,
+          /public/assets/img/accueil/fond-accueil-1.webp 768w'
+                sizes='(max-width: 767px) 100vw, 768px'
+            ></img>
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
 
             {/* div container début */}
-            <div className='px-48 w-full mt-[-72px] '>
+            <div className='lg:px-48 px-2 w-full lg:mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex flex-col items-end justify-center'>
+                <div className='h-screen flex lg:items-center lg:justify-end items-end bg-amber-400'>
                     <BoxShadow genres={genres}></BoxShadow>
                 </div>
 
@@ -46,22 +52,22 @@ function Homepage() {
                                 {/* titre*/}
 
                                 <div className='w-full my-3 flex flex-col'>
-                                    <h2 className='t-briller-vide'>Info</h2>
-                                    <h2 className='t-owners pl-4'>
-                                        Blin<span className='t-briller'>d</span> test
+                                    <h2 className='t-briller-vide lg:text-[3.7rem] text-4xl'>Info</h2>
+                                    <h2 className='t-owners pl-4 lg:text-[3.7rem] text-4xl'>
+                                        Blin<span className='t-briller lg:text-[3.7rem] text-4xl'>d</span> test
                                     </h2>
                                 </div>
 
                                 {/* paragraphes*/}
-                                <p className='para'>
+                                <p className='para lg:text-[1.1rem] text-base'>
                                     Bienvenue dans une expérience ultime pour tous les amateurs de musique et de
                                     challenges.
                                 </p>
-                                <p className='para'>
+                                <p className='para lg:text-[1.1rem] text-base'>
                                     Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent
                                     faire la différence.
                                 </p>
-                                <p className='para'>
+                                <p className='para lg:text-[1.1rem] text-base'>
                                     Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques
                                     indémodables.
                                 </p>
@@ -77,13 +83,13 @@ function Homepage() {
                 {/* troisieme section*/}
                 <div className='flex flex-col items-center'>
                     <div className='relative'>
-                        <div className='z-10 t-owners whitespace-nowrap'>
-                            c&apos;est quoi t<span className='t-briller'>o</span>n genr
-                            <span className='t-briller'>e</span>?
+                        <div className='z-10 t-owners whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                            c&apos;est quoi t<span className='t-briller lg:text-[3.7rem] text-4xl'>o</span>n genr
+                            <span className='t-briller lg:text-[3.7rem] text-4xl'>e</span>?
                         </div>
-                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap'>
-                            c&apos;est quoi t<span className='t-briller-vide'>o</span>n genr
-                            <span className='t-briller-vide'>e</span>?
+                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                            c&apos;est quoi t<span className='t-briller-vide lg:text-[3.7rem] text-4xl'>o</span>n genr
+                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>e</span>?
                         </div>
                     </div>
                     <CarouselGenre genres={genres}></CarouselGenre>
