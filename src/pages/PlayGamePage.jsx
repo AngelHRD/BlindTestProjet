@@ -59,7 +59,7 @@ function PlayGamePage() {
                 <div className='w-full flex flex-col text-center my-3 order-1'>
                     <h2 className='t-owners-test text-4xl md:text-7xl '>
                         Blin
-                        <span className='t-briller-test text-4xl md:text-7xl'>d</span>
+                        <span className='t-briller-test text-4xl md:text-7xl'>d </span>
                         test
                     </h2>
 

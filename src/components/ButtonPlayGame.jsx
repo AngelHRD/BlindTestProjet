@@ -44,6 +44,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                         bg-gradient-to-r from-[rgba(127,240,0,0.752)] via-[#19c207] to-[#7ff000]  
                         md:w-80 md:h-24 md:min-w-[350px] md:text-lg md:rounded-xl
                         lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl lg:tracking-widest
+                        
                         ${gameOver ? (song._id === selectedSong._id ? 'opacity-100' : 'opacity-0 ') : ''}
                         ${hideButton && song._id !== clickedId ? 'opacity-0 pointer-events-none' : ''}
                     `}

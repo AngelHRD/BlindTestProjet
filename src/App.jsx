@@ -5,6 +5,7 @@ import GenrePage from './pages/GenrePage';
 import MainLayout from './layouts/MainLayout';
 import PlayGamePage from './pages/PlayGamePage';
 import ErrorPage from './pages/ErrorPage';
+import ScorePage from './pages/ScorePage';
 
 function App() {
     return (
