@@ -19,6 +19,12 @@ body {
     background: rgba(20, 19, 19, 1);
 }
 
+/* Evite les décalages à cause de la scroll bar */
+html {
+    overflow-y: scroll;
+    margin-left: 0;
+}
+
 /*Typographies ------------------------------*/
 
 /*Titres*/
@@ -53,6 +59,36 @@ body {
     font-family: 'briller', sans-serif;
     font-weight: 700;
     font-size: 3.7rem;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.t-owners-test {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+
+.t-briller-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+}
+
+.t-briller-vide-test {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.t-owners-vide-test {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -115,27 +151,10 @@ body {
 }
 
 .btn-text-game {
-    font-family: 'owners', sans-serif;
+    font-family: 'Futura Lt BT';
     font-optical-sizing: auto;
-    font-weight: 400;
+    line-height: 100%;
     font-style: normal;
-    color: #141313;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    transform: translateY(0);
-    background: chartreuse;
-    background: linear-gradient(to bottom, #579d07, #19c207, #7ff000);
-}
-
-.btn-text-game:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 8px 0 0 #6dc000, 0 15px 20px rgba(0, 0, 0, 0.3);
-}
-
-.btn-text-game:active {
-    transform: translateY(0.125rem);
-    box-shadow: 0 4px 0 0 #6dc000, 0 8px 10px rgba(0, 0, 0, 0.3);
 }
 
 /*div blur*/
@@ -145,4 +164,23 @@ body {
     border-radius: 35pt;
     border: 0.1px solid #262424;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.thumb-custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #7ff000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* TEST  */
+.blur-color-green {
+    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -50%, rgba(0, 120, 38, 0) 30%);
+}
+
+.blur-color-yellow {
+    background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
 }
