@@ -76,21 +76,23 @@ function Homepage() {
                             </div>
                         </div>
 
-                        <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-10'>
+                        <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
                             <img src='/public/assets/img/accueil/enceinte.png' className='lg:w-[600px] rotate-10'></img>
                         </div>
                     </div>
                 </div>
 
                 {/* troisieme section*/}
-                <div className='flex flex-col items-center'>
-                    <div className='relative'>
+                <div className='flex flex-col items-center mt-30 lg:mt-0'>
+                    <div className='relative text-center'>
                         <div className='z-10 t-owners whitespace-nowrap lg:text-[3.7rem] text-4xl'>
-                            c&apos;est quoi t<span className='t-briller lg:text-[3.7rem] text-4xl'>o</span>n genr
+                            c&apos;est quoi <br className='block lg:hidden' /> t
+                            <span className='t-briller lg:text-[3.7rem] text-4xl'>o</span>n genr
                             <span className='t-briller lg:text-[3.7rem] text-4xl'>e</span>?
                         </div>
                         <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap lg:text-[3.7rem] text-4xl'>
-                            c&apos;est quoi t<span className='t-briller-vide lg:text-[3.7rem] text-4xl'>o</span>n genr
+                            c&apos;est quoi <br className='block lg:hidden' /> t
+                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>o</span>n genr
                             <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>e</span>?
                         </div>
                     </div>
