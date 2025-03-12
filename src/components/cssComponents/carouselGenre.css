@@ -23,8 +23,7 @@
 /* Styles pour les flèches de navigation */
 .swiper-button-next,
 .swiper-button-prev {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-    backdrop-filter: blur(8px); /* Flou du fond */
+    background: transparent;
     z-index: 10;
     font-size: 2rem; /* Taille des flèches */
     width: 4rem; /* Taille du bouton */
@@ -48,7 +47,7 @@
     color: #7ff000; /* Couleur des flèches */
 }
 
-/* Pour assurer la visibilité des flèches sur desktop */
+/* Masquer les flèches sur mobile */
 @media (min-width: 1024px) {
     .swiper-pagination {
         visibility: hidden;
