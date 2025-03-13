@@ -3,11 +3,13 @@ import CarouselGenre from '../components/CarouselGenre';
 import Footer from '../components/Footer';
 import MarqueeText from '../components/MarqueeText';
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import ApiRequest from '../services/api';
 
 function Homepage() {
     const [genres, setGenres] = useState([]);
     const [images, setImages] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [currentImage, setCurrentImage] = useState(null);
 
     const fetchData = async () => {
@@ -20,6 +22,8 @@ function Homepage() {
             console.log('image', responseimg.data);
         } catch (error) {
             console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -43,6 +47,10 @@ function Homepage() {
             window.removeEventListener('resize', updateImage);
         };
     }, [images]);
+
+    if (loading) {
+        return <Loader />;
+    }
 
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
