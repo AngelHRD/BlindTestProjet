@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function BoxShadowGenre(data) {
     console.log('coucou', data);
     const [text, setText] = useState(null);
-    const [fontSize, setFontSize] = useState('3.7rem'); // Initialisation à 5rem
+    const [fontSize, setFontSize] = useState('3.7rem'); // Taille initiale
 
     useEffect(() => {
         const newText = data?.data?.title; // Valeur par défaut
@@ -12,11 +12,36 @@ function BoxShadowGenre(data) {
 
         // Vérifie le nombre de mots dans le texte
         const words = newText.trim().split(/\s+/);
-        setFontSize(words.length > 1 ? '2rem' : '3.7rem');
+        const longWord = words.some((word) => word.length > 5); // Vérifie si un mot a plus de 5 lettres
+        const screenWidth = window.innerWidth;
+
+        // Si la largeur de l'écran est inférieure à 768px (taille mobile)
+        if (screenWidth < 768) {
+            setFontSize(longWord || words.length > 1 ? '1.6rem' : '3rem'); // Taille de police pour mobile
+        } else {
+            setFontSize(words.length > 1 ? '2rem' : '3.7rem'); // Ajuste selon le nombre de mots
+        }
+
+        // Écouteur pour mettre à jour la taille de la police lorsque l'écran est redimensionné
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 768) {
+                setFontSize(longWord || words.length > 1 ? '1.6rem' : '3rem'); // Taille pour mobile
+            } else {
+                setFontSize(words.length > 1 ? '2rem' : '3.7rem');
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Nettoyage de l'écouteur
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, [data]);
 
     return (
-        <div className='bg-blur mx-2 px-4 lg:w-3/5 lg:max-w-[800px] h-[550px] lg:mx-0 lg:px-24 py-12 flex flex-col items-center gap-4'>
+        <div className='bg-blur mx-2 px-4 lg:w-3/5 lg:max-w-[800px] lg:py-12 py-10 lg:mx-0 lg:px-24 flex flex-col items-center gap-4'>
             <div className='flex flex-col items-center justify-center'>
                 <h2 className='t-owners lg:text-[3.7rem] text-[10vw]'>
                     Blin<span className='t-briller lg:text-[3.7rem] text-[10vw]'>d</span> test
@@ -25,13 +50,13 @@ function BoxShadowGenre(data) {
 
                 {/*fontsize change dynamiquement la taille de la police selon le nombre de mots.*/}
                 <div
-                    className='text-bt-genre text-center flex items-center justify-center h-[5rem] my-2'
+                    className='text-bt-genre text-center flex items-center justify-center h-[5rem] lg:my-2'
                     style={{ fontSize }}
                 >
                     {text}
                 </div>
             </div>
-            <div className='flex flex-col gap-4'>
+            <div className='flex flex-col gap-4 '>
                 <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
                     Imbattable en blind test {data.data.title} ? C&apos;est ce qu&apos;on va voir !
                 </p>
@@ -46,7 +71,7 @@ function BoxShadowGenre(data) {
             </div>
             <Link
                 to={`/genres/${data.data.slug}/blind-test`}
-                className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-auto btn-text flex justify-center items-center lg:text-[1.2rem] text-base'
+                className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text flex justify-center items-center lg:text-[1.2rem] text-base absolute lg:block'
             >
                 Let&apos;s go !
             </Link>
