@@ -7,30 +7,47 @@ import ApiRequest from '../services/api';
 
 function Homepage() {
     const [genres, setGenres] = useState([]);
+    const [images, setImages] = useState([]);
+    const [currentImage, setCurrentImage] = useState(null);
 
-    const fetchGenres = async () => {
+    const fetchData = async () => {
         try {
-            const response = await ApiRequest.get(`/cards`);
-            setGenres(response.data);
-            console.log(response.data);
+            const responsecards = await ApiRequest.get(`/cards`);
+            setGenres(responsecards.data);
+            const responseimg = await ApiRequest.get(`/img`);
+            setImages(responseimg.data);
+            console.log('card', responsecards.data);
+            console.log('image', responseimg.data);
         } catch (error) {
             console.error(error);
         }
     };
 
     useEffect(() => {
-        fetchGenres();
+        fetchData();
     }, []);
+
+    useEffect(() => {
+        const updateImage = () => {
+            if (window.innerWidth <= 1024) {
+                setCurrentImage(images[0]?.img_phone);
+            } else {
+                setCurrentImage(images[0]?.img_desktop);
+            }
+        };
+
+        updateImage(); // Appel initial
+        window.addEventListener('resize', updateImage);
+
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, [images]);
+
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen'>
             {/* Image de fond accueil */}
-            <img
-                className='absolute z-0 lg:mt-[-72px] '
-                src='/public/assets/img/accueil/fond-accueil-mobile-1.png'
-                srcSet='/public/assets/img/accueil/fond-accueil-mobile-1.png 640w,
-          /public/assets/img/accueil/fond-accueil-1.webp 768w'
-                sizes='(max-width: 767px) 100vw, 768px'
-            ></img>
+            <img className='absolute z-0 lg:mt-[-72px]' src={currentImage} alt='background' />
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
@@ -38,7 +55,7 @@ function Homepage() {
             {/* div container début */}
             <div className='lg:px-48 px-2 w-full lg:mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex lg:items-center lg:justify-end pt-[30vh] lg:pt-0'>
+                <div className='h-screen flex flex-col  lg:flex-row lg:items-center lg:justify-end lg: lg:pt-0'>
                     <BoxShadow genres={genres}></BoxShadow>
                 </div>
 
@@ -77,7 +94,7 @@ function Homepage() {
                         </div>
 
                         <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
-                            <img src='/public/assets/img/accueil/enceinte.png' className='lg:w-[600px] rotate-10'></img>
+                            <img src={images[3]?.img} className='lg:w-[600px] rotate-10'></img>
                         </div>
                     </div>
                 </div>

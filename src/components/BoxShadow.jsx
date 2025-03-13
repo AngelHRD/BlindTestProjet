@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function BoxShadow() {
     return (
         <>
-            <div className='bg-blur w-full lg:w-3/5 max-w-[800px] mb-[10vh] lg:mb-0 lg:px-24 px-[11vw] lg:py-12 py-6 flex flex-col items-center gap-4 lg:mt-5 lg:text-[3.7rem] text-4xl'>
+            <div className='bg-blur w-full lg:w-3/5 max-w-[800px] mb-[10vh] lg:mb-0 lg:px-24 px-[11vw] lg:py-12 py-6 flex flex-col items-center gap-4 lg:mt-5 lg:text-[3.7rem] text-4xl mt-auto'>
                 {/* titre*/}
                 <div className='flex justify-center'>
                     <div className='w-full my-3 flex flex-col'>
