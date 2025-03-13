@@ -47,9 +47,18 @@
     color: #7ff000; /* Couleur des flèches */
 }
 
-/* Masquer les flèches sur mobile */
+/* Masquer les dots pagination sur pc */
 @media (min-width: 1024px) {
     .swiper-pagination {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 1024px) {
+    .swiper-button-next,
+    .swiper-button-prev,
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
         visibility: hidden;
     }
 }

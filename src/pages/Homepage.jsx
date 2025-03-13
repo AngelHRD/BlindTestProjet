@@ -45,7 +45,7 @@ function Homepage() {
     }, [images]);
 
     return (
-        <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen'>
+        <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
             <img className='absolute z-0 lg:mt-[-72px]' src={currentImage} alt='background' />
 
