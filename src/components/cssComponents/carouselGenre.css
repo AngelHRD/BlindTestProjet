@@ -1,0 +1,55 @@
+.swiper-pagination {
+    position: relative; /* Permet à la pagination d'être en dessous des cards */
+    margin-top: 20px; /* Espace entre les cartes et les dots */
+    display: flex;
+    justify-content: center;
+}
+
+/* Style pour les dots inactifs*/
+.swiper-pagination-bullet {
+    background-color: #888;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    margin: 0 5px; /* Espacement entre les dots */
+    transition: background-color 0.3s ease; /* Effet de transition */
+}
+
+/* Couleur du dot actif */
+.swiper-pagination-bullet-active {
+    background-color: #7ff000;
+}
+
+/* Styles pour les flèches de navigation */
+.swiper-button-next,
+.swiper-button-prev {
+    background: transparent;
+    z-index: 10;
+    font-size: 2rem; /* Taille des flèches */
+    width: 4rem; /* Taille du bouton */
+    height: 92%; /* Taille du bouton */
+    margin: 0px;
+    top: var(--swiper-navigation-top-offset, 0%); /*permet de décaler la position verticale des boutons de navigation.*/
+}
+
+.swiper-button-next {
+    right: var(--swiper-navigation-sides-offset, 0px); /*colle le bouton à droite*/
+    left: auto;
+}
+
+.swiper-button-prev {
+    left: var(--swiper-navigation-sides-offset, 0px); /*colle le bouton à gauche*/
+    right: auto;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    color: #7ff000; /* Couleur des flèches */
+}
+
+/* Masquer les flèches sur mobile */
+@media (min-width: 1024px) {
+    .swiper-pagination {
+        visibility: hidden;
+    }
+}
