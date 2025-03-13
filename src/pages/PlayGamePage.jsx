@@ -57,13 +57,13 @@ function PlayGamePage() {
 
                 {/* Titre toujours en haut */}
                 <div className='w-full flex flex-col text-center my-3 order-1'>
-                    <h2 className='t-owners-test text-4xl md:text-7xl '>
+                    <h2 className='t-owners text-4xl md:text-7xl '>
                         Blin
-                        <span className='t-briller-test text-4xl md:text-7xl'>d </span>
+                        <span className='t-briller text-4xl md:text-7xl'>d </span>
                         test
                     </h2>
 
-                    <h3 className='t-briller-vide-test text-4xl md:text-6xl '>{selectedSong?.genre}</h3>
+                    <h3 className='t-briller-vide text-4xl md:text-6xl '>{selectedSong?.genre}</h3>
                 </div>
 
                 {/* Slider : en bas pour mobile, en haut pour desktop */}
