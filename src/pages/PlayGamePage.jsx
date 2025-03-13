@@ -63,7 +63,7 @@ function PlayGamePage() {
                         test
                     </h2>
 
-                    <h3 className='t-briller-vide text-4xl md:text-6xl '>{selectedSong?.genre}</h3>
+                    <h3 className='t-briller-vide text-3xl md:text-6xl '>{selectedSong?.genre}</h3>
                 </div>
 
                 {/* Slider : en bas pour mobile, en haut pour desktop */}
