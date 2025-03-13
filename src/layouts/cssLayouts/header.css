@@ -1,0 +1,5 @@
+.bg-blur-nav {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(8px); /* Flou du fond */
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}

@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+html {
+    font-size: 16px; /* 1rem sera égal à 16px */
+}
+
+h2 {
+    line-height: 0.7;
+}
+
 /*Couleurs ------------------------------*/
 :root {
     --chartreuse: #7ff000;
@@ -11,6 +19,12 @@ body {
     background: rgba(20, 19, 19, 1);
 }
 
+/* Evite les décalages à cause de la scroll bar */
+html {
+    overflow-y: scroll;
+    margin-left: 0;
+}
+
 /*Typographies ------------------------------*/
 
 /*Titres*/
@@ -18,23 +32,21 @@ body {
 .t-owners {
     font-family: 'owners', sans-serif;
     font-weight: 700;
-    color: white;
-    font-size: 58px;
     text-transform: uppercase;
+    color: white;
+    position: relative;
 }
 
 .t-briller {
     font-family: 'briller', sans-serif;
     font-weight: 700;
     color: white;
-    font-size: 58px;
     text-transform: uppercase;
 }
 
 .t-owners-vide {
     font-family: 'owners', sans-serif;
     font-weight: 700;
-    font-size: 58px;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -43,7 +55,6 @@ body {
 .t-briller-vide {
     font-family: 'briller', sans-serif;
     font-weight: 700;
-    font-size: 58px;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
@@ -87,45 +98,66 @@ body {
 
 /*Paragraphes*/
 .para {
-    font-family: 'futura-pt', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    font-variation-settings: 'wdth' 100;
     color: white;
-    font-size: 25px;
+}
+
+.btn-text {
+    font-family: 'Roboto', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #141313;
+}
+
+.btn-text-game {
+    font-family: 'Futura Lt BT';
+    font-optical-sizing: auto;
+    line-height: 100%;
+    font-style: normal;
 }
 
 /*div blur*/
 .bg-blur {
-    background: linear-gradient(to bottom, white, black);
-    opacity: 0.1;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(8px);
     border-radius: 35pt;
-    backdrop-filter: blur(10px); /* Flou du fond */
-    border: 0.5px solid white;
+    border: 0.1px solid #262424;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* search bar */
-
-.bg-search {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
-    backdrop-filter: blur(16.882352828979492px);
-    box-shadow: -2.95px 2.95px 6.33px 0px rgba(0, 0, 0, 0.15);
+.bg-blur-dark {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+    backdrop-filter: blur(8px); /* Flou du fond */
+    border-radius: 35pt;
+    border: 0.1px solid #262424;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
 }
 
-.search {
-    font-family: 'briller', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
+.thumb-custom::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #7ff000;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
-/* Shadow box */
+/* TEST  */
+.blur-color-green {
+    background: radial-gradient(circle at 95% 85%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 30%);
+}
 
-.shadow-box {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
-    border: 1px solid #ffffff1a;
-    backdrop-filter: blur(40px);
-    box-shadow: -7px 7px 15px 0px #00000026;
-    width: 687px;
-    height: 764px;
+.blur-color-green-score {
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 65%),
+        radial-gradient(circle at 95% 83%, rgba(173, 176, 5, 0.6) 0%, rgba(173, 176, 5, 0) 18%);
+}
+
+.blur-color-yellow {
+    background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
 }

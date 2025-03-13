@@ -1,0 +1,26 @@
+/*footer typo*/
+.titre-footer-owners {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #7ff000;
+}
+
+.titre-footer-briller {
+    font-family: 'briller', sans-serif;
+    font-weight: 700;
+    color: #7ff000;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.para-footer {
+    font-family: 'Roboto', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: 'wdth' 100;
+    color: white;
+    font-size: 0.9rem;
+}
