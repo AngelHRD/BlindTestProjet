@@ -40,16 +40,15 @@ function ChoiceGenrePage() {
 
                 {/* Title */}
                 <div className='relative'>
-                    <h1 className='t-owners-test z-10 relative text-5xl md:text-7xl text-center md:text-left'>
+                    <h1 className='t-owners z-10 relative text-5xl md:text-7xl text-center md:text-left'>
                         C&apos;EST QUOI T
-                        <span className='t-briller-test text-5xl md:text-7xl text-center md:text-left'>O</span>N GENR
-                        <span className='t-briller-test text-5xl md:text-7xl text-center md:text-left'>E</span> ?
+                        <span className='t-briller text-5xl md:text-7xl text-center md:text-left'>O</span>N GENR
+                        <span className='t-briller text-5xl md:text-7xl text-center md:text-left'>E</span> ?
                     </h1>
-                    <p className='t-owners-vide-test text-5xl md:text-7xl absolute top-2 left-1 z-0 text-center md:text-left'>
+                    <p className='t-owners-vide text-5xl md:text-7xl absolute top-2 left-1 z-0 text-center md:text-left'>
                         C&apos;EST QUOI T
-                        <span className='t-briller-vide-test text-5xl md:text-7xl text-center md:text-left'>O</span>N
-                        GENR
-                        <span className='t-briller-vide-test text-5xl md:text-7xl text-center md:text-left'>E</span> ?
+                        <span className='t-briller-vide text-5xl md:text-7xl text-center md:text-left'>O</span>N GENR
+                        <span className='t-briller-vide text-5xl md:text-7xl text-center md:text-left'>E</span> ?
                     </p>
                 </div>
 
