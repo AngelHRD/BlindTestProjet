@@ -50,7 +50,7 @@ function BoxShadowGenre(data) {
 
                 {/*fontsize change dynamiquement la taille de la police selon le nombre de mots.*/}
                 <div
-                    className='text-bt-genre text-center flex items-center justify-center h-[5rem] lg:my-2'
+                    className='text-bt-genre text-center flex items-center justify-center lg:my-2'
                     style={{ fontSize }}
                 >
                     {text}
