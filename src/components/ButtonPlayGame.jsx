@@ -33,6 +33,11 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
         }
     };
 
+    // IDEE :
+
+    // - Ajout effet tremblement cas d'erreur et/ou feux d'artifice bonne réponse
+    // -Ajout effet de song bonne/mauvaise réponse
+
     return (
         <>
             {songs.map((song) => (

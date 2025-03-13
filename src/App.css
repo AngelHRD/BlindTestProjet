@@ -60,36 +60,6 @@ html {
     -webkit-text-stroke: 0.5px #7ff000;
 }
 
-.t-owners-test {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-}
-
-.t-briller-test {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: white;
-}
-
-.t-briller-vide-test {
-    font-family: 'briller', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-}
-
-.t-owners-vide-test {
-    font-family: 'owners', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #7ff000;
-}
-
 /* Logo */
 
 .t-briller-logo {
@@ -176,7 +146,7 @@ html {
 }
 
 .blur-color-green-score {
-    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 50%);
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 70%);
 }
 
 .blur-color-yellow {

@@ -19,7 +19,7 @@ function LinkBack({ to, text = 'Retour' }) {
             >
                 <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
             </svg>
-            <p className='text-white text-sm lg:text-xl md:text-lg'>{text}</p>
+            <p className='text-white text-lg md:text-xl '>{text}</p>
         </Link>
     );
 }
