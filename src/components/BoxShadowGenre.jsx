@@ -17,7 +17,7 @@ function BoxShadowGenre(data) {
 
         // Si la largeur de l'écran est inférieure à 768px (taille mobile)
         if (screenWidth < 768) {
-            setFontSize(longWord || words.length > 1 ? '1.6rem' : '3rem'); // Taille de police pour mobile
+            setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille de police pour mobile
         } else {
             setFontSize(words.length > 1 ? '2rem' : '3.7rem'); // Ajuste selon le nombre de mots
         }
@@ -26,7 +26,7 @@ function BoxShadowGenre(data) {
         const handleResize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < 768) {
-                setFontSize(longWord || words.length > 1 ? '1.6rem' : '3rem'); // Taille pour mobile
+                setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille pour mobile
             } else {
                 setFontSize(words.length > 1 ? '2rem' : '3.7rem');
             }
@@ -71,7 +71,7 @@ function BoxShadowGenre(data) {
             </div>
             <Link
                 to={`/genres/${data.data.slug}/blind-test`}
-                className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text flex justify-center items-center lg:text-[1.2rem] text-base absolute lg:block'
+                className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text justify-center items-center lg:text-[1.2rem] text-base hidden lg:flex'
             >
                 Let&apos;s go !
             </Link>

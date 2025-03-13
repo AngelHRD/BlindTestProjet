@@ -86,7 +86,7 @@ function GenrePage() {
                 <div className='absolute top-5'>
                     <LinkBack to='/genres' text='Retour' />
                 </div>
-                <div className='flex justify-center lg:justify-end lg:items-center lg:h-full'>
+                <div className='flex justify-center items-center lg:justify-end lg:items-center h-full'>
                     <BoxShadowGenre data={data}></BoxShadowGenre>
                 </div>
             </div>
