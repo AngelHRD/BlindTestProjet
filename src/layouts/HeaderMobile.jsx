@@ -7,7 +7,7 @@ function HeaderMobile() {
     const getFill = (path) => (location.pathname === path ? '#7ff000' : 'none');
 
     return (
-        <header className='fixed top-[92vh] left-1/2 transform -translate-x-1/2 w-auto px-6 p-2 bg-blur rounded-t-lg flex space-x-16 md:hidden z-50'>
+        <header className='fixed top-[92vh] left-1/2 transform -translate-x-1/2 w-auto px-6 p-2 bg-blur-dark rounded-t-lg flex space-x-16 lg:hidden z-50'>
             {/* Accueil */}
             <div className='flex flex-col items-center'>
                 <svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 80 80' width='25' height='25'>
