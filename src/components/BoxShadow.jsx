@@ -16,14 +16,14 @@ function BoxShadow() {
 
                 {/* paragraphes*/}
                 <div className='flex flex-col gap-4 flex-1'>
-                    <p className='para lg:text-[1.1rem] text-base'>
+                    <p className='para lg:text-[1.2rem] text-base'>
                         Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
                     </p>
-                    <p className='para lg:text-[1.1rem] text-base'>
+                    <p className='para lg:text-[1.2rem] text-base'>
                         Plonge dans un univers où chaque chanson, chaque note et chaque artiste peuvent faire la
                         différence.
                     </p>
-                    <p className='para lg:text-[1.1rem] text-base'>
+                    <p className='para lg:text-[1.2rem] text-base'>
                         Que tu sois un fan inconditionnel de pop, de rock, de rap ou de classiques indémodables, tu
                         trouveras des playlists variées qui mettront tes connaissances à l’épreuve.
                     </p>
