@@ -154,7 +154,7 @@ html {
 }
 
 .blur-color-green-score {
-    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 65%),
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 40%),
         radial-gradient(circle at 95% 83%, rgba(173, 176, 5, 0.6) 0%, rgba(173, 176, 5, 0) 18%);
 }
 
