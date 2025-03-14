@@ -110,17 +110,18 @@ function Homepage() {
                 {/* troisieme section*/}
                 <div className='flex flex-col items-center mt-30 lg:mt-0'>
                     <div className='relative text-center'>
-                        <div className='z-10 t-owners whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                        <div className='z-10 t-owners whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
-                            <span className='t-briller lg:text-[3.7rem] text-4xl'>o</span>n genr
-                            <span className='t-briller lg:text-[3.7rem] text-4xl'>e</span>?
+                            <span className='t-briller main-title'>o</span>n genr
+                            <span className='t-briller main-title'>e</span>?
                         </div>
-                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
-                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>o</span>n genr
-                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>e</span>?
+                            <p className='t-briller-vide main-title'>o</p>n genr
+                            <p className='t-briller-vide main-title'>e</p>?
                         </div>
                     </div>
+
                     <CarouselGenre genres={genres}></CarouselGenre>
                 </div>
             </div>

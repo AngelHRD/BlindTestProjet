@@ -61,6 +61,10 @@ html {
     -webkit-text-stroke: 0.5px #7ff000;
 }
 
+.main-title {
+    @apply text-4xl lg:text-[3.7rem];
+}
+
 /* Logo */
 
 .t-briller-logo {
