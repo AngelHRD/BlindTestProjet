@@ -65,6 +65,10 @@ html {
     @apply text-4xl lg:text-[3.7rem];
 }
 
+.second-title {
+    @apply text-3xl lg:text-[2.7rem] leading-[0.7];
+}
+
 /* Logo */
 
 .t-briller-logo {
