@@ -43,8 +43,8 @@ function BoxShadowGenre(data) {
     return (
         <div className='bg-blur mx-2 px-4 py-10  flex flex-col items-center gap-4 lg:w-3/5 lg:max-w-[800px] lg:py-12 lg:mx-0 lg:px-24'>
             <div className='flex flex-col items-center justify-center'>
-                <h2 className='t-owners lg:text-[3.7rem] text-[10vw]'>
-                    Blin<span className='t-briller lg:text-[3.7rem] text-[10vw]'>d</span> test
+                <h2 className='t-owners lg:text-[3.7rem] text-[10vw] leading-[0.7]'>
+                    Blin<span className='t-briller lg:text-[3.7rem] text-[10vw] leading-[0.7]'>d</span> test
                     <hr className='border-0.5 text-[chartreuse] w-full mt-2'></hr>
                 </h2>
 

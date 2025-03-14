@@ -4,9 +4,10 @@ html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
-h2 {
+/* Il s'applique partout c'est horriblement chiant, je te déteste  */
+/* h2 {
     line-height: 0.7;
-}
+} */
 
 /*Couleurs ------------------------------*/
 :root {
@@ -58,6 +59,10 @@ html {
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.main-title {
+    @apply text-4xl lg:text-[3.7rem];
 }
 
 /* Logo */
@@ -154,7 +159,7 @@ html {
 }
 
 .blur-color-green-score {
-    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 65%),
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 40%),
         radial-gradient(circle at 95% 83%, rgba(173, 176, 5, 0.6) 0%, rgba(173, 176, 5, 0) 18%);
 }
 

@@ -69,11 +69,7 @@ function GenrePage() {
         return <div className='text-center mt-10'>Données non disponible</div>;
     }
     if (loading) {
-        return (
-            <div className='flex items-center justify-center min-h-screen'>
-                <Loader />
-            </div>
-        );
+        return <Loader />;
     }
 
     return (

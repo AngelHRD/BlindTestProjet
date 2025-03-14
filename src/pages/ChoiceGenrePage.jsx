@@ -35,24 +35,23 @@ function ChoiceGenrePage() {
 
     return (
         <>
-            <section className='container mx-auto px-4 min-h-fit pt-10 md:pt-5'>
+            <section className='container mx-auto px-4 min-h-fit pt-10 md:pt-5 mb-22'>
                 <LinkBack to='/' text='Retour' />
 
                 {/* Title */}
                 <div className='relative'>
-                    <h1 className='t-owners z-10 relative text-5xl md:text-7xl text-center md:text-left'>
-                        C&apos;EST QUOI T
-                        <span className='t-briller text-5xl md:text-7xl text-center md:text-left'>O</span>N GENR
-                        <span className='t-briller text-5xl md:text-7xl text-center md:text-left'>E</span> ?
-                    </h1>
-                    <p className='t-owners-vide text-5xl md:text-7xl absolute top-2 left-1 z-0 text-center md:text-left'>
-                        C&apos;EST QUOI T
-                        <span className='t-briller-vide text-5xl md:text-7xl text-center md:text-left'>O</span>N GENR
-                        <span className='t-briller-vide text-5xl md:text-7xl text-center md:text-left'>E</span> ?
+                    <h2 className='t-owners z-10 relative main-title text-center md:text-left'>
+                        C&apos;EST QUOI T<span className='t-briller main-title text-center md:text-left'>O</span>N GENR
+                        <span className='t-briller main-title text-center md:text-left'>E</span> ?
+                    </h2>
+                    <p className='t-owners-vide main-title absolute top-1 left-1 z-0 text-center md:text-left'>
+                        C&apos;EST QUOI T<span className='t-briller-vide main-title text-center md:text-left'>O</span>N
+                        GENR
+                        <span className='t-briller-vide main-title text-center md:text-left'>E</span> ?
                     </p>
                 </div>
 
-                <p className='para mt-5 hidden md:block'>
+                <p className='para lg:text-[1.1rem] text-base mt-5 hidden md:block'>
                     Fan de pop, de rap ou de classiques indémodables ? Trouvez des playlists variées qui mettront tes
                     connaissances à l&apos;épreuve !
                 </p>
@@ -62,9 +61,11 @@ function ChoiceGenrePage() {
                     <input
                         type='text'
                         placeholder='Rechercher un genre'
-                        className='w-full h-12 rounded-lg px-5 search text-center placeholder:text-sm md:placeholder:text-xl  max-w-full'
+                        className='w-full h-12 rounded-lg px-5 text-center placeholder:text-[13px] text-[13px] lg:placeholder:text-xl lg:text-xl max-w-full t-briller font-bold text-white uppercase'
                         onChange={(e) => setSearch(e.target.value)}
                         value={search}
+                        onFocus={(e) => (e.target.placeholder = '')}
+                        onBlur={(e) => (e.target.placeholder = 'Rechercher un genre')}
                     />
                 </div>
 
