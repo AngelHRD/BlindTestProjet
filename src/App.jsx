@@ -6,11 +6,13 @@ import MainLayout from './layouts/MainLayout';
 import PlayGamePage from './pages/PlayGamePage';
 import ErrorPage from './pages/ErrorPage';
 import ScorePage from './pages/ScorePage';
+import ScrollToTop from './providers/ScrollToTop';
 
 function App() {
     return (
         <>
             <Router>
+                <ScrollToTop />
                 <Routes>
                     <Route element={<MainLayout />}>
                         <Route path='/' element={<Homepage />} />
