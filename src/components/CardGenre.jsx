@@ -15,6 +15,7 @@ function CardGenre({ data }) {
                     className='w-full h-full object-cover blur-sm transition-all duration-500 ease-in-out group-hover:blur-none'
                     src={data.img_card}
                     alt={data.description || 'Image de catégorie'}
+                    loading='lazy'
                 />
             </Link>
         </div>
