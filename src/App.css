@@ -4,11 +4,6 @@ html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
-/* Il s'applique partout c'est horriblement chiant, je te déteste (j'ai régler les titres + j'ai crée la fameuse varialbe poru la taille des titres plus bas */
-/* h2 {
-    line-height: 0.7;
-} */
-
 /*Couleurs ------------------------------*/
 :root {
     --chartreuse: #7ff000;
