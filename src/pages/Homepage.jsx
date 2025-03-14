@@ -76,10 +76,10 @@ function Homepage() {
                             <div className='flex flex-col gap-4'>
                                 {/* titre*/}
 
-                                <div className='w-full my-3 flex flex-col'>
-                                    <h2 className='t-briller-vide lg:text-[3.7rem] text-4xl'>Info</h2>
-                                    <h2 className='t-owners pl-4 lg:text-[3.7rem] text-4xl'>
-                                        Blin<span className='t-briller lg:text-[3.7rem] text-4xl'>d</span> test
+                                <div className='w-full my-3 flex flex-col '>
+                                    <h2 className='t-briller-vide lg:text-[3.7rem] text-4xl leading-[0.7] '>Info</h2>
+                                    <h2 className='t-owners pl-4 lg:text-[3.7rem] text-4xl leading-[0.7]'>
+                                        Blin<span className='t-briller lg:text-[3.7rem] text-4xl '>d</span> test
                                     </h2>
                                 </div>
 
