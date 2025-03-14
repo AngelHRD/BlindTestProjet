@@ -5,11 +5,3 @@
     backdrop-filter: blur(16.882352828979492px);
     box-shadow: -2.95px 2.95px 6.33px 0px rgba(0, 0, 0, 0.15);
 }
-
-.search {
-    font-family: 'briller', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    text-transform: uppercase;
-}
