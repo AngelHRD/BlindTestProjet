@@ -25,7 +25,7 @@ function CarouselGenre({ genres }) {
                 }}
                 className='w-full rounded-4xl md:rounded-2xl'
             >
-                {genres.map((genre, index) => (
+                {genres.map((genre) => (
                     <SwiperSlide key={genre._id}>
                         <CardGenre data={genre} />
                     </SwiperSlide>

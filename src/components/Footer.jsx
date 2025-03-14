@@ -4,39 +4,39 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <footer className='w-full bg-blur-nav mt-10 mb-22 lg:my-12 lg:pt-10 flex flex-col items-center'>
-            <div className='flex flex-col items-center lg:justify-center lg:flex-row lg:gap-60 mt-10 w-full lg:w-2/3'>
-                <div className='w-full flex flex-col items-center lg:items-start'>
-                    <h4 className='titre-footer-owners'>
+            <div className='flex flex-col items-center lg:justify-center lg:flex-row lg:gap-60 mt-10 w-full lg:w-2/3 justify-center'>
+                <div className='w-full flex flex-col items-center justify-center lg:items-center'>
+                    <h4 className='titre-footer-owners text-center'>
                         Inf<span className='titre-footer-briller'>o</span>
                     </h4>
-                    <Link>
-                        <p className='para-footer'>Mentions légales</p>
+                    <Link to='/'>
+                        <p className='para-footer mb-1 hover:underline'>Mentions légales</p>
                     </Link>
-                    <Link>
-                        <p className='para-footer'>Conditions d&apos;utilisation</p>
+                    <Link to='/'>
+                        <p className='para-footer hover:underline'>Conditions d&apos;utilisation</p>
                     </Link>
                     <hr className='border-0.5 text-[var(--chartreuse)] w-4/6 my-5 lg:hidden'></hr>
                 </div>
 
-                <div className='w-full flex flex-col items-center lg:items-start'>
-                    <h4 className='titre-footer-owners'>
+                <div className='w-full flex flex-col items-center justify-center lg:items-center'>
+                    <h4 className='titre-footer-owners text-center'>
                         Caté<span className='titre-footer-briller'>g</span>orie
                     </h4>
-                    <Link>
-                        <p className='para-footer'>Politique de confidentialité</p>
+                    <Link to='/'>
+                        <p className='para-footer mb-1 hover:underline'>Politique de confidentialité</p>
                     </Link>
                     <hr className='border-0.5 text-[var(--chartreuse)] w-4/6 my-5 lg:hidden'></hr>
                 </div>
 
-                <div className='w-full flex flex-col items-center lg:items-start'>
-                    <h4 className='titre-footer-owners'>
+                <div className='w-full flex flex-col items-center justify-center lg:items-center'>
+                    <h4 className='titre-footer-owners text-center'>
                         Jsp<span className='titre-footer-briller'>a</span>s
                     </h4>
-                    <Link>
-                        <p className='para-footer'>Lorem Ipsum</p>
+                    <Link to='/'>
+                        <p className='para-footer mb-1 hover:underline'>Lorem Ipsum</p>
                     </Link>
-                    <Link>
-                        <p className='para-footer'>Lorem Ipsum dolor</p>
+                    <Link to='/'>
+                        <p className='para-footer hover:underline'>Lorem Ipsum dolor</p>
                     </Link>
                 </div>
             </div>
@@ -44,7 +44,7 @@ function Footer() {
             <hr className='border-0.5 text-[var(--chartreuse)] w-4/6 my-5 lg:my-8'></hr>
 
             <div className='flex gap-5'>
-                <Link>
+                <Link to='/' aria-label='Aller sur notre facebook'>
                     <svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='50' height='50' viewBox='0 0 48 48'>
                         <linearGradient
                             id='Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1'
@@ -67,7 +67,8 @@ function Footer() {
                         ></path>
                     </svg>
                 </Link>
-                <Link>
+
+                <Link to='/' aria-label='Aller sur notre instagram'>
                     <svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='50' height='50' viewBox='0 0 48 48'>
                         <radialGradient
                             id='greyGradient1'

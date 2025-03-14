@@ -72,7 +72,7 @@ function PlayGamePage() {
                 </div>
 
                 {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
-                <div className='grid justify-items-center grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
+                <div className='grid justify-items-center lg:mb-12 grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
                     <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
                 </div>
             </div>
