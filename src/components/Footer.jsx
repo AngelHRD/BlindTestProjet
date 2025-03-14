@@ -54,8 +54,8 @@ function Footer() {
                             y2='40.615'
                             gradientUnits='userSpaceOnUse'
                         >
-                            <stop offset='0' stop-color='#B0B0B0'></stop>
-                            <stop offset='1' stop-color='#808080'></stop>
+                            <stop offset='0' stopColor='#B0B0B0'></stop>
+                            <stop offset='1' stopColor='#808080'></stop>
                         </linearGradient>
                         <path
                             fill='url(#Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1)'
@@ -77,8 +77,8 @@ function Footer() {
                             r='44.899'
                             gradientUnits='userSpaceOnUse'
                         >
-                            <stop offset='0' stop-color='#B0B0B0'></stop>
-                            <stop offset='1' stop-color='#808080'></stop>
+                            <stop offset='0' stopColor='#B0B0B0'></stop>
+                            <stop offset='1' stopColor='#808080'></stop>
                         </radialGradient>
                         <path
                             fill='url(#greyGradient1)'
@@ -93,8 +93,8 @@ function Footer() {
                             gradientTransform='matrix(1 0 0 .6663 0 1.849)'
                             gradientUnits='userSpaceOnUse'
                         >
-                            <stop offset='0' stop-color='#A0A0A0'></stop>
-                            <stop offset='1' stop-color='#808080' stop-opacity='0'></stop>
+                            <stop offset='0' stopColor='#A0A0A0'></stop>
+                            <stop offset='1' stopColor='#808080' stopOpacity='0'></stop>
                         </radialGradient>
                         <path
                             fill='url(#greyGradient2)'
