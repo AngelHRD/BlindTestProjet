@@ -61,9 +61,11 @@ function ChoiceGenrePage() {
                     <input
                         type='text'
                         placeholder='Rechercher un genre'
-                        className='w-full h-12 rounded-lg px-5 search text-center placeholder:text-sm md:placeholder:text-xl  max-w-full'
+                        className='w-full h-12 rounded-lg px-5 search text-center placeholder:text-sm md:placeholder:text-xl max-w-full '
                         onChange={(e) => setSearch(e.target.value)}
                         value={search}
+                        onFocus={(e) => (e.target.placeholder = '')}
+                        onBlur={(e) => (e.target.placeholder = 'Rechercher un genre')}
                     />
                 </div>
 
