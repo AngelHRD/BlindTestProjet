@@ -63,13 +63,13 @@ function Homepage() {
             {/* div container début */}
             <div className='lg:px-48 px-2 w-full lg:mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex flex-col  lg:flex-row lg:items-center lg:justify-end lg: lg:pt-0'>
+                <section className='h-screen flex flex-col  lg:flex-row lg:items-center lg:justify-end lg: lg:pt-0'>
                     <BoxShadow genres={genres}></BoxShadow>
-                </div>
+                </section>
 
                 {/* Deuxieme section*/}
                 {/* Container section 2*/}
-                <div className='w-full relative'>
+                <section className='w-full relative'>
                     {/* Container div 1 et enceinte*/}
                     <div className='flex flex-row justify-center lg:my-24 my-10 z-0'>
                         <div className='bg-blur lg:w-4/5 w-full h-auto lg:px-18 px-[11vw] py-10 lg:my-18'>
@@ -105,10 +105,10 @@ function Homepage() {
                             <img src={images[3]?.img} className='lg:w-[600px] rotate-10'></img>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {/* troisieme section*/}
-                <div className='flex flex-col items-center mt-30 lg:mt-0'>
+                <section className='flex flex-col items-center mt-30 lg:mt-0'>
                     <div className='relative text-center'>
                         <div className='z-10 t-owners whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
@@ -117,16 +117,16 @@ function Homepage() {
                         </div>
                         <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
-                            <p className='t-briller-vide main-title'>o</p>n genr
-                            <p className='t-briller-vide main-title'>e</p>?
+                            <span className='t-briller-vide main-title'>o</span>n genr
+                            <span className='t-briller-vide main-title'>e</span>?
                         </div>
                     </div>
 
-                    <CarouselGenre genres={genres}></CarouselGenre>
-                </div>
+                    <CarouselGenre genres={genres} />
+                </section>
             </div>
             {/* Footer */}
-            <Footer></Footer>
+            <Footer />
 
             {/* div container fin */}
         </div>
