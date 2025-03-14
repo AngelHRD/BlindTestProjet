@@ -5,6 +5,7 @@ import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
 import BoxShadowGenre from '../components/BoxShadowGenre';
 import './cssPages/GenrePage.css';
+import { Link } from 'react-router-dom';
 
 function GenrePage() {
     const { name } = useParams(); // Récupère le nom du genre depuis l'URL à l'aide du hook useParams de React Router.
@@ -82,12 +83,20 @@ function GenrePage() {
                 <img src={imageFondGenre} alt={data.title} className='h-[100vh] object-cover object-left bottom-0' />
             </div>
             {/* container retour et box  */}
-            <div className='container lg:mx-auto px-4 min-h-fit pt-10 md:pt-5 relative z-10 h-full'>
+            <div className='container lg:mx-auto px-4 min-h-fit pt-10 md:pt-5 relative z-10 h-full flex flex-col'>
                 <div className='absolute top-5'>
                     <LinkBack to='/genres' text='Retour' />
                 </div>
-                <div className='flex justify-center items-center lg:justify-end lg:items-center h-full'>
+                <div className='flex justify-center items-center lg:justify-end lg:items-center lg:h-full flex-grow'>
                     <BoxShadowGenre data={data}></BoxShadowGenre>
+                </div>
+                <div className=' w-full flex justify-center items-center mb-10 lg:mb-0'>
+                    <Link
+                        to={`/genres/${data.slug}/blind-test`}
+                        className='bg-[chartreuse] w-3/4 h-14 rounded-xl btn-text flex justify-center items-center text-base lg:hidden'
+                    >
+                        Let&apos;s go !
+                    </Link>
                 </div>
             </div>
         </div>
