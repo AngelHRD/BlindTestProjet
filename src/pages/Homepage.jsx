@@ -55,7 +55,7 @@ function Homepage() {
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
-            <img className='absolute z-0 lg:mt-[-72px]' src={currentImage} alt='background' />
+            <img className='absolute z-0 lg:mt-[-72px] ' draggable='false' src={currentImage} alt='background' />
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
@@ -68,9 +68,7 @@ function Homepage() {
                 </section>
 
                 {/* Deuxieme section*/}
-                {/* Container section 2*/}
                 <section className='w-full relative'>
-                    {/* Container div 1 et enceinte*/}
                     <div className='flex flex-row justify-center lg:my-24 my-10 z-0'>
                         <div className='bg-blur lg:w-4/5 w-full h-auto lg:px-18 px-[11vw] py-10 lg:my-18'>
                             <div className='flex flex-col gap-4'>
@@ -102,7 +100,7 @@ function Homepage() {
                         </div>
 
                         <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
-                            <img src={images[3]?.img} className='lg:w-[600px] rotate-10'></img>
+                            <img src={images[3]?.img} className='lg:w-[600px] rotate-10' draggable='false'></img>
                         </div>
                     </div>
                 </section>
