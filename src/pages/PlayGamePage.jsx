@@ -6,6 +6,7 @@ import ApiRequest from '../services/api';
 import SliderMp3 from '../components/SliderMp3';
 import ButtonPlayGame from '../components/ButtonPlayGame';
 import Loader from '../components/Loader';
+import QuitConfirmation from '../components/QuitConfirmation'; // 🔹 Importation du composant QuitConfirmation
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
@@ -16,6 +17,8 @@ function PlayGamePage() {
     const { name: genre } = useParams();
     const navigate = useNavigate();
     const maxSongs = 5;
+    const [showQuitOverlay, setShowQuitOverlay] = useState(false); // 🔹 État pour afficher l'overlay
+    const [isPaused, setIsPaused] = useState(false); // 🔹 État pour gérer la pause du jeu
 
     const fetchMusic = async () => {
         setLoading(true);
@@ -59,6 +62,21 @@ function PlayGamePage() {
         }
     };
 
+    const handleQuitClick = () => {
+        console.log('Bouton Quitter cliqué');
+        setShowQuitOverlay(true); // 🔹 Afficher l'overlay
+        setIsPaused(true); // 🔹 Mettre le jeu en pause
+    };
+
+    const handleCancelQuit = () => {
+        setShowQuitOverlay(false); // 🔹 Cacher l'overlay
+        setIsPaused(false); // 🔹 Reprendre le jeu
+    };
+
+    const handleConfirmQuit = () => {
+        navigate('/genres'); // 🔹 Redirection vers la page des genres
+    };
+
     if (loading) {
         return <Loader />;
     }
@@ -67,13 +85,30 @@ function PlayGamePage() {
         <section className={countdown !== 0 ? 'blur-color-green-countdown' : 'blur-color-green'}>
             {/* la class précédente applique .blur-color-green-score lorsque countdown est actif et revient à .blur-color-green une fois qu'il est fini. */}
             <div className='container mx-auto px-4 h-screen lg:h-[calc(100vh-72px)] pt-5 relative flex flex-col overflow-hidden'>
-                <LinkBack to='/genres' text='Quitter' />
+                {/* 🔹 Modification : bouton "Quitter" ouvre l'overlay au lieu de rediriger immédiatement */}
+                <button
+                    onClick={handleQuitClick}
+                    className='md:flex flex items-center gap-1 lg:my-5 my-2.5  cursor-pointer w-fit hover:opacity-80'
+                >
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth={1.5}
+                        stroke='currentColor'
+                        className='size-8 text-white'
+                        aria-hidden='true'
+                    >
+                        <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
+                    </svg>
+                    <p className='text-white text-lg md:text-xl '>Quitter</p>
+                </button>
 
                 {/* Affichage du compte à rebours avant le jeu */}
                 {countdown !== 0 ? (
-                    <div className=' flex flex-col flex-grow justify-center'>
+                    <div className=' flex flex-col flex-grow justify-center items-center'>
                         {/* ShadowBox  */}
-                        <div className='w-full flex flex-col h-full items-center bg-blur mt-5 mb-20 py-10'>
+                        <div className='w-4/5 flex flex-col h-full items-center bg-blur mt-5 mb-20 py-10'>
                             {/* Titre */}
                             <div className=' h-1/5 flex flex-col items-center justify-center'>
                                 {/* <h2 className='t-owners text-4xl md:text-7xl '>
@@ -120,6 +155,8 @@ function PlayGamePage() {
                     </>
                 )}
             </div>
+            {/* 🔹 Affichage du composant QuitConfirmation */}
+            <QuitConfirmation isOpen={showQuitOverlay} onConfirm={handleConfirmQuit} onCancel={handleCancelQuit} />
         </section>
     );
 }
