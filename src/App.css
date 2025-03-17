@@ -166,3 +166,17 @@ html {
 .blur-color-yellow {
     background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
 }
+
+.blur-color-green-countdown {
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0) -5%, rgba(0, 120, 38, 0) 50%),
+        radial-gradient(circle at 95% 83%, rgba(173, 176, 5, 0.6) 0%, rgba(173, 176, 5, 0) 18%);
+}
+/*font score et décompte*/
+
+.font-score-countdown {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #141313;
+    font-size: 11vw;
+}
