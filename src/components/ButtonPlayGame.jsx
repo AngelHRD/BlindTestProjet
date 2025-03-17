@@ -45,9 +45,8 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                     key={song._id}
                     aria-label={`Choisir la musique : ${song.artist} - ${song.title}`}
                     className={`
-                        w-full h-20 min-w-[300px] tracking-wide transition-all duration-300 rounded-lg btn-text-game 
+                        w-full h-16 min-w-[300px] tracking-wide transition-all duration-300 rounded-lg btn-text-game 
                         bg-gradient-to-r from-[rgba(127,240,0,0.752)] via-[#19c207] to-[#7ff000]  
-                        md:w-80 md:h-24 md:min-w-[350px] md:text-lg md:rounded-xl
                         lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl lg:tracking-widest
                         
                         ${gameOver ? (song._id === selectedSong._id ? 'opacity-100' : 'opacity-0 ') : ''}

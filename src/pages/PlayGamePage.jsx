@@ -99,21 +99,21 @@ function PlayGamePage() {
                     <>
                         {/* Affichage du jeu */}
                         {/* Titre */}
-                        <div className='w-full flex flex-col text-center my-3 order-1'>
-                            <h2 className='t-owners text-4xl md:text-7xl '>
+                        <div className='w-full flex flex-col text-center my-3 '>
+                            <h2 className='t-owners main-title '>
                                 Blin
-                                <span className='t-briller text-4xl md:text-7xl'>d </span>
+                                <span className='t-briller main-title'>d </span>
                                 test
                             </h2>
-                            <h3 className='t-briller-vide text-3xl md:text-6xl '>{selectedSong?.genre}</h3>
+                            <h3 className='t-briller-vide second-title  '>{selectedSong?.genre}</h3>
                         </div>
 
-                        {/* Slider */}
+                        {/* Slider : en bas pour mobile, en haut pour desktop */}
                         <div className='absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center order-3 md:relative md:top-0 md:order-2 md:py-7 '>
-                            <SliderMp3 key={selectedSong?._id} selectedSong={selectedSong} />
+                            <SliderMp3 key={selectedSong._id} selectedSong={selectedSong} />
                         </div>
 
-                        {/* Boutons */}
+                        {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
                         <div className='grid justify-items-center grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
                             <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
                         </div>

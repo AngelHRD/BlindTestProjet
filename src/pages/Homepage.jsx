@@ -100,7 +100,12 @@ function Homepage() {
                         </div>
 
                         <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
-                            <img src={images[3]?.img} className='lg:w-[600px] rotate-10' draggable='false'></img>
+                            <img
+                                src={images[3]?.img}
+                                className='lg:w-[600px] rotate-10'
+                                alt={images[3]?.description}
+                                draggable='false'
+                            ></img>
                         </div>
                     </div>
                 </section>

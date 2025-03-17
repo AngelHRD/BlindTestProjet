@@ -4,11 +4,6 @@ html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
-/* Il s'applique partout c'est horriblement chiant, je te déteste  */
-/* h2 {
-    line-height: 0.7;
-} */
-
 /*Couleurs ------------------------------*/
 :root {
     --chartreuse: #7ff000;
@@ -63,6 +58,10 @@ html {
 
 .main-title {
     @apply text-4xl lg:text-[3.7rem];
+}
+
+.second-title {
+    @apply text-3xl lg:text-[2.7rem] leading-[0.7];
 }
 
 /* Logo */
