@@ -179,3 +179,20 @@ html {
     color: #141313;
     font-size: 11vw;
 }
+
+/*bouton color anim*/
+@property --border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@theme {
+    --animate-rotate-border: border-rotate 4s linear infinite;
+
+    @keyframes border-rotate {
+        to {
+            --border-angle: 360deg;
+        }
+    }
+}
