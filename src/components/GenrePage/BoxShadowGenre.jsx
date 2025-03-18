@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ButtonPerso from '../ButtonPerso';
 
-function BoxShadowGenre(data) {
+function BoxShadowGenre({ data }) {
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('3.7rem');
     const [maxSongs, setMaxSongs] = useState(parseInt(localStorage.getItem('maxSongs')));
 
     useEffect(() => {
-        if (!data?.data?.title) return; // Vérifie que le titre existe avant de continuer
+        if (!data?.title) return; // Vérifie que le titre existe avant de continuer
 
-        const newText = data.data.title;
+        const newText = data.title;
 
         // Évite de re-set l'état si la valeur est déjà correcte
         setText((prevText) => (prevText !== newText ? newText : prevText));
@@ -58,7 +59,7 @@ function BoxShadowGenre(data) {
             </div>
             <div className='flex flex-col gap-4 mx-4 lg:mx-0'>
                 <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
-                    Imbattable en blind test {data.data.title} ? C&apos;est ce qu&apos;on va voir !
+                    Imbattable en blind test {data.title} ? C&apos;est ce qu&apos;on va voir !
                 </p>
                 <p className='para lg:text-[1.2rem] text-base text-center lg:text-start'>
                     Prépare-toi à relever le défi !
@@ -78,7 +79,6 @@ function BoxShadowGenre(data) {
                     <input
                         id='maxSongs'
                         type='number'
-                        defaultValue='5'
                         required
                         min='5'
                         max='30'
@@ -89,7 +89,7 @@ function BoxShadowGenre(data) {
                 </label>
             </div>
             <ButtonPerso
-                to={`/genres/${data.data.slug}/blind-test`}
+                to={`/genres/${data.slug}/blind-test`}
                 text="Let's gooo !"
                 width='lg:w-3/4 w-full'
                 height='lg:h-14 h-10'
@@ -98,5 +98,9 @@ function BoxShadowGenre(data) {
         </div>
     );
 }
+
+BoxShadowGenre.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default BoxShadowGenre;
