@@ -11,6 +11,7 @@ function Homepage() {
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentImage, setCurrentImage] = useState(null);
+    const [scrollPosition, setScrollPosition] = useState(0); // State pour la position du scroll
 
     const fetchData = async () => {
         try {
@@ -47,10 +48,24 @@ function Homepage() {
             window.removeEventListener('resize', updateImage);
         };
     }, [images]);
+    // Écouter l'événement de scroll pour appliquer le parallax et la rotation
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollPosition(window.scrollY); // Met à jour la position du scroll
+        };
 
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     if (loading) {
         return <Loader />;
     }
+    // Calcul des transformations (parallax et rotation) basées sur la position du scroll
+    const translateY = Math.min(scrollPosition * 0.1, 100); // Limite la translation verticale à 200px maximum
+    const rotate = Math.min(scrollPosition * 0.02, 18); // Limite la rotation à 20° maximum
 
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
@@ -99,10 +114,15 @@ function Homepage() {
                             </div>
                         </div>
 
-                        <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
+                        <div
+                            style={{
+                                transform: `translateY(${translateY}px) rotate(${rotate}deg)`, // Transformation basée sur le scroll
+                            }}
+                            className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-2/6 lg:top-[-90px] lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0 blur-color-green-center'
+                        >
                             <img
                                 src={images[3]?.img}
-                                className='lg:w-[600px] rotate-10'
+                                className='lg:w-[600px]'
                                 alt={images[3]?.description}
                                 draggable='false'
                             ></img>
