@@ -168,6 +168,7 @@ function PlayGamePage() {
                                 selectedSong={selectedSong}
                                 currentRound={currentRound}
                                 maxSongs={maxSongs}
+                                onSongEnd={handleNextSong}
                             />
                         </div>
 

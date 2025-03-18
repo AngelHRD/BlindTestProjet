@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-function SliderMp3({ selectedSong, currentRound, maxSongs }) {
+function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -25,6 +25,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
         if (selectedSong) {
             if (audioRef.current) {
                 audioRef.current.pause();
+                audioRef.current.src = '';
                 audioRef.current.currentTime = 0;
             }
 
@@ -38,6 +39,14 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
                 const limitedDuration = Math.min(maxTimeSong, actualDuration - startTime);
                 setDuration(limitedDuration);
                 audio.currentTime = startTime;
+
+                // Lancer la musique après 0.75 secondes
+                setTimeout(() => {
+                    audio.play().catch((error) => {
+                        console.error('Erreur lors de la lecture :', error);
+                    });
+                    setIsPlaying(true);
+                }, 750);
             };
 
             // Met à jour le progrès et le temps courant
@@ -52,6 +61,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
                     if (limitedCurrentTime >= maxTimeSong) {
                         audioRef.current.pause();
                         setIsPlaying(false);
+                        onSongEnd();
                     }
                 }
             };
@@ -61,6 +71,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
                 setIsPlaying(false);
                 setCurrentTime(0);
                 setProgress(0);
+                onSongEnd();
             };
 
             // Ajoute des écouteurs d'événements pour l'audio
@@ -72,12 +83,13 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
             return () => {
                 if (audioRef.current) {
                     audioRef.current.pause();
+                    audioRef.current.src = '';
                     audioRef.current = null;
                     isAudioInitialized.current = false;
                 }
             };
         }
-    }, [selectedSong]);
+    }, [selectedSong, onSongEnd]);
 
     // Gère la lecture et la pause de l'audio
     const togglePlay = useCallback(() => {
@@ -197,6 +209,7 @@ SliderMp3.propTypes = {
     }).isRequired,
     currentRound: PropTypes.number.isRequired,
     maxSongs: PropTypes.number.isRequired,
+    onSongEnd: PropTypes.func.isRequired,
 };
 
 export default SliderMp3;
