@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoxShadowGenre(data) {
-    console.log('coucou', data);
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('3.7rem');
-    const [maxSongs, setMaxSongs] = useState(() => {
-        localStorage.getItem('maxSongs') || 5;
-    });
+    const [maxSongs, setMaxSongs] = useState(parseInt(localStorage.getItem('maxSongs')));
 
     useEffect(() => {
         if (!data?.data?.title) return; // Vérifie que le titre existe avant de continuer
@@ -38,6 +35,10 @@ function BoxShadowGenre(data) {
             window.removeEventListener('resize', handleResize);
         };
     }, [data]);
+
+    useEffect(() => {
+        localStorage.setItem('maxSongs', maxSongs);
+    }, [maxSongs]);
 
     return (
         <div className='bg-blur mx-2 px-4 py-10  flex flex-col items-center gap-4 lg:w-3/5 lg:max-w-[800px] lg:py-12 lg:mx-0 lg:px-24'>
@@ -70,6 +71,23 @@ function BoxShadowGenre(data) {
                     blind test ? C&apos;est parti !
                 </p>
             </div>
+
+            <div className='flex lg:justify-start justify-center items-center w-full gap-5'>
+                <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base'>
+                    Choisissez votre nombres de musiques :
+                </label>
+                <input
+                    type='number'
+                    defaultValue='5'
+                    required
+                    min='5'
+                    max='20'
+                    value={maxSongs}
+                    onChange={(e) => setMaxSongs(e.target.value)}
+                    className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-10'
+                />
+            </div>
+
             <Link
                 to={`/genres/${data.data.slug}/blind-test`}
                 className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text justify-center items-center lg:text-[1.2rem] text-base hidden lg:flex'

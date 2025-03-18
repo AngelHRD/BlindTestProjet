@@ -18,8 +18,6 @@ function Homepage() {
             setGenres(responsecards.data);
             const responseimg = await ApiRequest.get(`/img`);
             setImages(responseimg.data);
-            console.log('card', responsecards.data);
-            console.log('image', responseimg.data);
         } catch (error) {
             console.error(error);
         } finally {
