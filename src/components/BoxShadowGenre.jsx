@@ -75,17 +75,18 @@ function BoxShadowGenre(data) {
             <div className='flex lg:justify-start justify-center items-center w-full gap-5'>
                 <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base'>
                     Choisissez votre nombres de musiques :
+                    <input
+                        id='maxSongs'
+                        type='number'
+                        defaultValue='5'
+                        required
+                        min='5'
+                        max='30'
+                        value={maxSongs}
+                        onChange={(e) => setMaxSongs(e.target.value)}
+                        className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-10 text-center'
+                    />
                 </label>
-                <input
-                    type='number'
-                    defaultValue='5'
-                    required
-                    min='5'
-                    max='20'
-                    value={maxSongs}
-                    onChange={(e) => setMaxSongs(e.target.value)}
-                    className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-10'
-                />
             </div>
 
             <Link
