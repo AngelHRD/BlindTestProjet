@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiRequest from '../services/api';
 import SliderMp3 from '../components/PlayGamePage/SliderMp3';
@@ -18,6 +18,8 @@ function PlayGamePage() {
     const [score, setScore] = useState(0);
 
     const { name: genre } = useParams();
+    console.log('genre', genre);
+
     const navigate = useNavigate();
     const maxSongs = parseInt(localStorage.getItem('maxSongs') || 5);
 
@@ -27,12 +29,13 @@ function PlayGamePage() {
         setScore(0);
     }, [genre]);
 
-    const fetchMusic = async () => {
+    const fetchMusic = useCallback(async () => {
         setLoading(true);
         try {
             const response = await ApiRequest.get(`/songs/${genre}`);
             const randomizeSongs = [...new Set(response.data)].sort(() => Math.random() - 0.5).slice(0, 4);
             setSongs(randomizeSongs);
+            console.log('randomizeSongs', randomizeSongs);
 
             const song = randomizeSongs[Math.floor(Math.random() * randomizeSongs.length)];
             setSelectedSong(song);
@@ -42,12 +45,12 @@ function PlayGamePage() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [genre, navigate]);
 
     // Récupérer les musiques au chargement de la page
     useEffect(() => {
         fetchMusic();
-    }, [genre]);
+    }, [fetchMusic]);
 
     // Passer à la musique suivante + gestion du score
     const handleNextSong = (isCorrect) => {

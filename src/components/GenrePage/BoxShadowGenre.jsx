@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ButtonPerso from '../ButtonPerso';
+import MaxSongsInput from './MaxSongsInput';
+import { useRef } from 'react';
 
 function BoxShadowGenre({ data }) {
+    const [maxSongs, setMaxSongs] = useState(Number(localStorage.getItem('maxSongs')) || 5);
+    const [isValid, setIsValid] = useState(true);
     const [text, setText] = useState(null);
     const [fontSize, setFontSize] = useState('3.7rem');
-    const [maxSongs, setMaxSongs] = useState(parseInt(localStorage.getItem('maxSongs')));
+    const buttonRef = useRef(null);
 
     useEffect(() => {
         if (!data?.title) return; // Vérifie que le titre existe avant de continuer
 
-        const newText = data.title;
+        const newText = data?.title;
 
         // Évite de re-set l'état si la valeur est déjà correcte
         setText((prevText) => (prevText !== newText ? newText : prevText));
@@ -37,9 +41,10 @@ function BoxShadowGenre({ data }) {
         };
     }, [data]);
 
-    useEffect(() => {
-        localStorage.setItem('maxSongs', maxSongs);
-    }, [maxSongs]);
+    const handleMaxSongsUpdate = (newMaxSongs) => {
+        setMaxSongs(newMaxSongs);
+        setIsValid(newMaxSongs >= 5 && newMaxSongs <= 30);
+    };
 
     return (
         <div className='bg-blur mx-2 px-4 py-10  flex flex-col items-center gap-4 lg:w-3/5 lg:max-w-[800px] lg:py-12 lg:mx-0 lg:px-24'>
@@ -59,7 +64,7 @@ function BoxShadowGenre({ data }) {
             </div>
             <div className='flex flex-col gap-4 mx-4 lg:mx-0'>
                 <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
-                    Imbattable en blind test {data.title} ? C&apos;est ce qu&apos;on va voir !
+                    Imbattable en blind test {data?.title} ? C&apos;est ce qu&apos;on va voir !
                 </p>
                 <p className='para lg:text-[1.2rem] text-base text-center lg:text-start'>
                     Prépare-toi à relever le défi !
@@ -73,27 +78,18 @@ function BoxShadowGenre({ data }) {
                 </p>
             </div>
 
-            <div className='flex lg:justify-start justify-center items-center w-full gap-5'>
-                <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base'>
-                    Choisissez votre nombres de musiques :
-                    <input
-                        id='maxSongs'
-                        type='number'
-                        required
-                        min='5'
-                        max='30'
-                        value={maxSongs}
-                        onChange={(e) => setMaxSongs(e.target.value)}
-                        className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-10 text-center'
-                    />
-                </label>
+            <div className='flex flex-col justify-center items-center w-full gap-2 mt-10'>
+                <MaxSongsInput initialValue={maxSongs} onChange={handleMaxSongsUpdate} buttonRef={buttonRef} />
             </div>
+
             <ButtonPerso
-                to={`/genres/${data.slug}/blind-test`}
+                to={isValid ? `/genres/${data?.slug}/blind-test` : '#'}
+                ref={buttonRef}
                 text="Let's gooo !"
                 width='lg:w-3/4 w-full'
                 height='lg:h-14 h-10'
                 hidden='hidden lg:block'
+                disabled={!isValid}
             />
         </div>
     );

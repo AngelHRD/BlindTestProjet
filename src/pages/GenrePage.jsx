@@ -33,7 +33,7 @@ function GenrePage() {
         };
 
         fetchGenre();
-    }, [genre]);
+    }, [genre, navigate]);
 
     useEffect(() => {
         const updateImageSource = () => {
