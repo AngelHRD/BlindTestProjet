@@ -4,37 +4,36 @@ import { Link } from 'react-router-dom';
 function BoxShadowGenre(data) {
     console.log('coucou', data);
     const [text, setText] = useState(null);
-    const [fontSize, setFontSize] = useState('3.7rem'); // Taille initiale
+    const [fontSize, setFontSize] = useState('3.7rem');
+    const [maxSongs, setMaxSongs] = useState(() => {
+        localStorage.getItem('maxSongs') || 5;
+    });
 
     useEffect(() => {
-        const newText = data?.data?.title; // Valeur par défaut
-        setText(newText);
+        if (!data?.data?.title) return; // Vérifie que le titre existe avant de continuer
 
-        // Vérifie le nombre de mots dans le texte
-        const words = newText.trim().split(/\s+/);
-        const longWord = words.some((word) => word.length > 5); // Vérifie si un mot a plus de 5 lettres
-        const screenWidth = window.innerWidth;
+        const newText = data.data.title;
 
-        // Si la largeur de l'écran est inférieure à 768px (taille mobile)
-        if (screenWidth < 768) {
-            setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille de police pour mobile
-        } else {
-            setFontSize(words.length > 1 ? '2rem' : '3.7rem'); // Ajuste selon le nombre de mots
-        }
+        // Évite de re-set l'état si la valeur est déjà correcte
+        setText((prevText) => (prevText !== newText ? newText : prevText));
 
-        // Écouteur pour mettre à jour la taille de la police lorsque l'écran est redimensionné
-        const handleResize = () => {
+        const adjustFontSize = (text) => {
+            const words = text.trim().split(/\s+/);
+            const longWord = words.some((word) => word.length > 5);
             const screenWidth = window.innerWidth;
+
             if (screenWidth < 768) {
-                setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille pour mobile
+                setFontSize(longWord || words.length > 1 ? '6vw' : '9vw');
             } else {
                 setFontSize(words.length > 1 ? '2rem' : '3.7rem');
             }
         };
 
+        adjustFontSize(newText); // Applique une première fois la taille de police
+
+        const handleResize = () => adjustFontSize(newText);
         window.addEventListener('resize', handleResize);
 
-        // Nettoyage de l'écouteur
         return () => {
             window.removeEventListener('resize', handleResize);
         };
