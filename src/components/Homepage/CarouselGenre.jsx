@@ -1,12 +1,13 @@
-import CardGenre from '../Homepage/BoxShadow';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Import pour réaliser le carousel avec swiper
+import CardGenre from '../ChoiceGenrePage/CardGenre';
+import PropTypes from 'prop-types';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { Navigation, Grid, Pagination } from 'swiper/modules';
+import '../cssComponents/carouselGenre.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
-import '../cssComponents/carouselGenre.css';
 
 function CarouselGenre({ genres }) {
     return (
@@ -41,5 +42,9 @@ function CarouselGenre({ genres }) {
         </div>
     );
 }
+
+CarouselGenre.propTypes = {
+    genres: PropTypes.array.isRequired,
+};
 
 export default CarouselGenre;

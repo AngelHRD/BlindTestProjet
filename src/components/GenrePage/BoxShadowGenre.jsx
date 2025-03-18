@@ -88,13 +88,6 @@ function BoxShadowGenre(data) {
                     />
                 </label>
             </div>
-
-            {/* <Link
-                to={`/genres/${data.data.slug}/blind-test`}
-                className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text justify-center items-center lg:text-[1.2rem] text-base hidden lg:flex'
-            >
-                Let&apos;s go !
-            </Link>  */}
             <ButtonPerso
                 to={`/genres/${data.data.slug}/blind-test`}
                 text="Let's gooo !"
