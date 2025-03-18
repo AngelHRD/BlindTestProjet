@@ -6,12 +6,14 @@ import Loader from '../components/Loader';
 import BoxShadowGenre from '../components/BoxShadowGenre';
 import './cssPages/GenrePage.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function GenrePage() {
-    const { name } = useParams();
+    const { name: genre } = useParams();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [imageFondGenre, setImageFondGenre] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchGenre = async () => {
@@ -19,23 +21,18 @@ function GenrePage() {
                 const response = await ApiRequest.get(`/cards`);
                 const allGenres = response.data;
 
-                const genre = allGenres.find((g) => g.slug.toLowerCase() === name.toLowerCase());
-
-                if (genre) {
-                    setData(genre);
-                } else {
-                    setData(null);
-                }
+                const selectedGenre = allGenres.find((g) => g.slug.toLowerCase() === genre.toLowerCase());
+                setData(selectedGenre);
             } catch (error) {
                 console.error('Erreur API:', error);
-                setData(null);
+                navigate('/error');
             } finally {
                 setLoading(false);
             }
         };
 
         fetchGenre();
-    }, [name]);
+    }, [genre]);
 
     useEffect(() => {
         const updateImageSource = () => {

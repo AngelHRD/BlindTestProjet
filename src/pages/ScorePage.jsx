@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
+import { useNavigate } from 'react-router-dom';
 
 function ScorePage() {
     const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(true);
     const { name: genre } = useParams();
+    const navigate = useNavigate();
+
     const [maxSongs, setMaxSongs] = useState(() => parseInt(localStorage.getItem('maxSongs')) || 5);
     const [score, setScore] = useState(() => parseInt(localStorage.getItem('score')) || 0);
 
@@ -22,6 +25,7 @@ function ScorePage() {
             setInfo(response.data);
         } catch (error) {
             console.error('Erreur lors du chargement:', error);
+            navigate('/error');
         } finally {
             setLoading(false);
         }

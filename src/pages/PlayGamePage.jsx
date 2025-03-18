@@ -38,6 +38,7 @@ function PlayGamePage() {
             setSelectedSong(song);
         } catch (error) {
             console.error('Erreur lors du chargement:', error);
+            navigate('/error');
         } finally {
             setLoading(false);
         }
