@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import ButtonPerso from './ButtonPerso';
 
 function BoxShadowGenre(data) {
     console.log('coucou', data);
@@ -71,12 +71,19 @@ function BoxShadowGenre(data) {
                     blind test ? C&apos;est parti !
                 </p>
             </div>
-            <Link
+            {/* <Link
                 to={`/genres/${data.data.slug}/blind-test`}
                 className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text justify-center items-center lg:text-[1.2rem] text-base hidden lg:flex'
             >
                 Let&apos;s go !
-            </Link>
+            </Link> */}
+            <ButtonPerso
+                to={`/genres/${data.data.slug}/blind-test`}
+                text="Let's gooo !"
+                width='lg:w-3/4 w-full'
+                height='lg:h-14 h-10'
+                hidden='hidden lg:block'
+            />
         </div>
     );
 }

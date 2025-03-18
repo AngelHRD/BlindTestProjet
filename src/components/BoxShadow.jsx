@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import ButtonPerso from './ButtonPerso';
 
 function BoxShadow() {
     return (
@@ -30,12 +30,13 @@ function BoxShadow() {
                 </div>
 
                 {/* bouton*/}
-                <Link
+                {/* <Link
                     to={`/genres`}
                     className='bg-[chartreuse] lg:w-3/4 w-full lg:h-14 h-10 rounded-xl lg:mt-6 btn-text flex justify-center items-center lg:text-[1.2rem] text-base'
                 >
-                    Let&apos;s go !
-                </Link>
+                    Jouer !
+                </Link> */}
+                <ButtonPerso to='/genres' text='Jouer !' width='lg:w-3/4 w-full' height='h-14' />
             </div>
         </>
     );

@@ -5,7 +5,8 @@ import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
 import BoxShadowGenre from '../components/BoxShadowGenre';
 import './cssPages/GenrePage.css';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import ButtonPerso from '../components/ButtonPerso';
 
 function GenrePage() {
     const { name } = useParams(); // Récupère le nom du genre depuis l'URL à l'aide du hook useParams de React Router.
@@ -87,12 +88,13 @@ function GenrePage() {
                     <BoxShadowGenre data={data}></BoxShadowGenre>
                 </div>
                 <div className=' w-full flex justify-center items-center mb-10 lg:mb-0'>
-                    <Link
+                    <ButtonPerso
                         to={`/genres/${data.slug}/blind-test`}
-                        className='bg-[chartreuse] w-3/4 h-14 rounded-xl btn-text flex justify-center items-center text-base lg:hidden'
-                    >
-                        Let&apos;s go !
-                    </Link>
+                        text='Commencer !'
+                        width='w-3/4'
+                        height='h-14'
+                        hidden='block lg:hidden'
+                    />
                 </div>
             </div>
         </div>
