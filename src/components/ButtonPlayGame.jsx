@@ -18,7 +18,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
         if (correct) {
             setHideButton(true);
             setTimeout(() => {
-                onGoodAnswer();
+                onGoodAnswer(true);
                 setClickedId(null);
                 setIsCorrect(false);
             }, 3000);
@@ -26,7 +26,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
             setHideButton(true);
             setGameOver(true);
             setTimeout(() => {
-                onGoodAnswer();
+                onGoodAnswer(false);
                 setClickedId(null);
                 setIsCorrect(false);
             }, 3000);

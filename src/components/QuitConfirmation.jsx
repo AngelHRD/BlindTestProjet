@@ -15,7 +15,7 @@ export default function QuitConfirmation({ isOpen, onConfirm, onCancel }) {
                             T&apos;aband<span className='t-briller-vide main-title'>o</span>nnes ?
                         </div>
                     </div>
-                    <p className='para'>
+                    <p className='para lg:text-[1.1rem] text-base'>
                         On comprend, tout le monde n&apos;a pas le niveau pour nos blind tests mais bon... tu es sûr de
                         toi ?
                     </p>

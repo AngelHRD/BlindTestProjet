@@ -1,4 +1,3 @@
-import LinkBack from '../components/LinkBack';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -6,19 +5,27 @@ import ApiRequest from '../services/api';
 import SliderMp3 from '../components/SliderMp3';
 import ButtonPlayGame from '../components/ButtonPlayGame';
 import Loader from '../components/Loader';
-import QuitConfirmation from '../components/QuitConfirmation'; // 🔹 Importation du composant QuitConfirmation
+import QuitConfirmation from '../components/QuitConfirmation';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
-    const [songCount, setSongCount] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [countdown, setCountdown] = useState(null); // null pour "Prêt ?", puis 3,2,1
+    const [countdown, setCountdown] = useState(null);
+    const [showQuitOverlay, setShowQuitOverlay] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const [currentRound, setCurrentRound] = useState(0);
+    const [score, setScore] = useState(0);
+
     const { name: genre } = useParams();
     const navigate = useNavigate();
-    const maxSongs = 5;
-    const [showQuitOverlay, setShowQuitOverlay] = useState(false); // 🔹 État pour afficher l'overlay
-    const [isPaused, setIsPaused] = useState(false); // 🔹 État pour gérer la pause du jeu
+    const maxSongs = parseInt(localStorage.getItem('maxSongs') || 5);
+
+    // Réinitialiser le score à 0
+    useEffect(() => {
+        localStorage.setItem('score', 0);
+        setScore(0);
+    }, [genre]);
 
     const fetchMusic = async () => {
         setLoading(true);
@@ -31,15 +38,34 @@ function PlayGamePage() {
             setSelectedSong(song);
         } catch (error) {
             console.error('Erreur lors du chargement:', error);
+            navigate('/error');
         } finally {
             setLoading(false);
         }
     };
 
+    // Récupérer les musiques au chargement de la page
     useEffect(() => {
         fetchMusic();
     }, [genre]);
 
+    // Passer à la musique suivante + gestion du score
+    const handleNextSong = (isCorrect) => {
+        setScore((prevScore) => {
+            const updatedScore = isCorrect ? prevScore + 1 : prevScore;
+            localStorage.setItem('score', updatedScore);
+            return updatedScore;
+        });
+
+        if (currentRound + 1 >= maxSongs) {
+            navigate(`/genres/${genre}/blind-test/score`);
+        } else {
+            setCurrentRound((prevRound) => prevRound + 1);
+            fetchMusic();
+        }
+    };
+
+    // Compte à rebours avant le début du jeu
     useEffect(() => {
         let timer;
         if (countdown === null) {
@@ -52,18 +78,7 @@ function PlayGamePage() {
         return () => clearTimeout(timer);
     }, [countdown]);
 
-    const handleNexSong = () => {
-        if (songCount < maxSongs - 1) {
-            setSongCount(songCount + 1);
-            console.log('songCount:', songCount);
-            fetchMusic();
-        } else {
-            return navigate(`/genres/${genre}/blind-test/score`);
-        }
-    };
-
     const handleQuitClick = () => {
-        console.log('Bouton Quitter cliqué');
         setShowQuitOverlay(true); // 🔹 Afficher l'overlay
         setIsPaused(true); // 🔹 Mettre le jeu en pause
     };
@@ -150,7 +165,7 @@ function PlayGamePage() {
 
                         {/* Boutons : entre le titre et le slider pour mobile, sous le slider pour desktop */}
                         <div className='grid justify-items-center grid-cols-1 gap-x-10 gap-8 mx-auto mt-10 w-fit order-2 md:mt-5 md:order-3 sm:grid-cols-2 '>
-                            <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNexSong} />
+                            <ButtonPlayGame songs={songs} selectedSong={selectedSong} onGoodAnswer={handleNextSong} />
                         </div>
                     </>
                 )}

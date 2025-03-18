@@ -20,8 +20,9 @@ function App() {
                         <Route path='/genres/:name' element={<GenrePage />} />
                         <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                         <Route path='/genres/:name/blind-test/score' element={<ScorePage />} />
+                        <Route path='*' element={<ErrorPage />} />
                     </Route>
-                    <Route path='/*' element={<ErrorPage />} />
+                    <Route path='/error' element={<ErrorPage />} />
                 </Routes>
             </Router>
         </>

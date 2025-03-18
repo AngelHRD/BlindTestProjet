@@ -2,43 +2,43 @@ import { useState, useEffect } from 'react';
 import ButtonPerso from './ButtonPerso';
 
 function BoxShadowGenre(data) {
-    console.log('coucou', data);
     const [text, setText] = useState(null);
-    const [fontSize, setFontSize] = useState('3.7rem'); // Taille initiale
+    const [fontSize, setFontSize] = useState('3.7rem');
+    const [maxSongs, setMaxSongs] = useState(parseInt(localStorage.getItem('maxSongs')));
 
     useEffect(() => {
-        const newText = data?.data?.title; // Valeur par défaut
-        setText(newText);
+        if (!data?.data?.title) return; // Vérifie que le titre existe avant de continuer
 
-        // Vérifie le nombre de mots dans le texte
-        const words = newText.trim().split(/\s+/);
-        const longWord = words.some((word) => word.length > 5); // Vérifie si un mot a plus de 5 lettres
-        const screenWidth = window.innerWidth;
+        const newText = data.data.title;
 
-        // Si la largeur de l'écran est inférieure à 768px (taille mobile)
-        if (screenWidth < 768) {
-            setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille de police pour mobile
-        } else {
-            setFontSize(words.length > 1 ? '2rem' : '3.7rem'); // Ajuste selon le nombre de mots
-        }
+        // Évite de re-set l'état si la valeur est déjà correcte
+        setText((prevText) => (prevText !== newText ? newText : prevText));
 
-        // Écouteur pour mettre à jour la taille de la police lorsque l'écran est redimensionné
-        const handleResize = () => {
+        const adjustFontSize = (text) => {
+            const words = text.trim().split(/\s+/);
+            const longWord = words.some((word) => word.length > 5);
             const screenWidth = window.innerWidth;
+
             if (screenWidth < 768) {
-                setFontSize(longWord || words.length > 1 ? '6vw' : '9vw'); // Taille pour mobile
+                setFontSize(longWord || words.length > 1 ? '6vw' : '9vw');
             } else {
                 setFontSize(words.length > 1 ? '2rem' : '3.7rem');
             }
         };
 
+        adjustFontSize(newText); // Applique une première fois la taille de police
+
+        const handleResize = () => adjustFontSize(newText);
         window.addEventListener('resize', handleResize);
 
-        // Nettoyage de l'écouteur
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, [data]);
+
+    useEffect(() => {
+        localStorage.setItem('maxSongs', maxSongs);
+    }, [maxSongs]);
 
     return (
         <div className='bg-blur mx-2 px-4 py-10  flex flex-col items-center gap-4 lg:w-3/5 lg:max-w-[800px] lg:py-12 lg:mx-0 lg:px-24'>
@@ -71,12 +71,30 @@ function BoxShadowGenre(data) {
                     blind test ? C&apos;est parti !
                 </p>
             </div>
+
+            <div className='flex lg:justify-start justify-center items-center w-full gap-5'>
+                <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base'>
+                    Choisissez votre nombres de musiques :
+                    <input
+                        id='maxSongs'
+                        type='number'
+                        defaultValue='5'
+                        required
+                        min='5'
+                        max='30'
+                        value={maxSongs}
+                        onChange={(e) => setMaxSongs(e.target.value)}
+                        className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-10 text-center'
+                    />
+                </label>
+            </div>
+
             {/* <Link
                 to={`/genres/${data.data.slug}/blind-test`}
                 className='bg-[chartreuse] w-3/4 h-14 rounded-xl mt-6 btn-text justify-center items-center lg:text-[1.2rem] text-base hidden lg:flex'
             >
                 Let&apos;s go !
-            </Link> */}
+            </Link>  */}
             <ButtonPerso
                 to={`/genres/${data.data.slug}/blind-test`}
                 text="Let's gooo !"
