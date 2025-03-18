@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
 import { useNavigate } from 'react-router-dom';
+import ButtonPerso from '../components/ButtonPerso';
 
 function ScorePage() {
     const [info, setInfo] = useState([]);
@@ -64,12 +65,13 @@ function ScorePage() {
                     {/* Texte + bouton*/}
                     <div className='flex-grow-[1] flex flex-col justify-end items-center gap-y-4'>
                         <p className='text-lg lg:text-2xl para mx-2'>Améliore toi avec nos autres blind test !</p>
-                        <Link
+
+                        <ButtonPerso
                             to='/genres'
-                            className='px-14 py-2 para bg-[#7ff000]  rounded-xl !text-black text-xl lg:text-3xl w-fit'
-                        >
-                            Plus de blind test
-                        </Link>
+                            text='Plus de blind test !'
+                            width='lg:w-1/2 w-full'
+                            height='lg:h-14 h-10'
+                        />
                     </div>
                 </div>
             </div>

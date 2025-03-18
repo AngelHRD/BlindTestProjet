@@ -36,7 +36,7 @@ function BoxShadow() {
                 >
                     Jouer !
                 </Link> */}
-                <ButtonPerso to='/genres' text='Jouer !' width='lg:w-3/4 w-full' height='h-14' />
+                <ButtonPerso to='/genres' text='Jouer !' width='lg:w-3/4 w-full' height='lg:h-14 h-10' />
             </div>
         </>
     );
