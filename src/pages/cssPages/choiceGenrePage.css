@@ -1,7 +1,0 @@
-/* search bar */
-
-.bg-search {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.11) 5.3%, rgba(32, 32, 32, 0.11) 92.12%);
-    backdrop-filter: blur(16.882352828979492px);
-    box-shadow: -2.95px 2.95px 6.33px 0px rgba(0, 0, 0, 0.15);
-}

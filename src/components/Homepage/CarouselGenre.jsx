@@ -1,12 +1,12 @@
-import CardGenre from './CardGenre';
+import CardGenre from '../Homepage/BoxShadow';
 import { Swiper, SwiperSlide } from 'swiper/react'; // Import pour réaliser le carousel avec swiper
+import { Link } from 'react-router-dom';
+import { Navigation, Grid, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import { Navigation, Grid, Pagination } from 'swiper/modules'; // Import des modules Grid (pour swiper mobile), navigation pour swiper et pagination pour indiquer à quel "page" on est sur mobile
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
-import { Link } from 'react-router-dom';
-import './cssComponents/carouselGenre.css'; // Import de la feuille de style liée
+import '../cssComponents/carouselGenre.css';
 
 function CarouselGenre({ genres }) {
     return (

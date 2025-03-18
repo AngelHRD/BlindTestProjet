@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import './cssLayouts/header.css';
 
 function Header() {
     return (
         <>
-            <header className='sticky top-0 left-0 z-50 w-full bg-blur-nav'>
+            <header className='sticky top-0 left-0 z-50 w-full  bg-[linear-gradient(to_bottom,rgba(255,255,255,0.1),rgba(0,0,0,0.1))] backdrop-blur-[8px] shadow-[0px_0px_16px_0px_rgba(0,0,0,0.1)] '>
                 <nav className='h-18 items-center mx-35 justify-start hidden md:flex'>
                     <Link className='relative w-fit' to='/'>
                         <h1 className='t-briller-logo relative z-0 text-center'>blindify</h1>

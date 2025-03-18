@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import LinkBack from '../components/LinkBack';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
-import BoxShadowGenre from '../components/BoxShadowGenre';
+import BoxShadowGenre from '../components/GenrePage/BoxShadowGenre';
 import './cssPages/GenrePage.css';
 // import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';

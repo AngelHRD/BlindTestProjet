@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiRequest from '../services/api';
-import SliderMp3 from '../components/SliderMp3';
-import ButtonPlayGame from '../components/ButtonPlayGame';
+import SliderMp3 from '../components/PlayGamePage/SliderMp3';
+import ButtonPlayGame from '../components/PlayGamePage/ButtonPlayGame';
 import Loader from '../components/Loader';
-import QuitConfirmation from '../components/QuitConfirmation';
+import QuitConfirmation from '../components/PlayGamePage/QuitConfirmation';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);

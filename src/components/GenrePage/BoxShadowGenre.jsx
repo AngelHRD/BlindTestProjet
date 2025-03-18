@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import ButtonPerso from './ButtonPerso';
+import ButtonPerso from '../ButtonPerso';
 
 function BoxShadowGenre(data) {
     const [text, setText] = useState(null);

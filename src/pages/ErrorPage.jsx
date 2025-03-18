@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import ButtonPerso from '../components/ButtonPerso';
 
 const ErrorPage = () => {

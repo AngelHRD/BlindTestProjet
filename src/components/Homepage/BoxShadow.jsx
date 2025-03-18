@@ -1,4 +1,4 @@
-import ButtonPerso from './ButtonPerso';
+import ButtonPerso from '../ButtonPerso';
 
 function BoxShadow() {
     return (

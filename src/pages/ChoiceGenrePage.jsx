@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import CardGenre from '../components/CardGenre';
+import CardGenre from '../components/ChoiceGenrePage/CardGenre';
 import ApiRequest from '../services/api';
 import LinkBack from '../components/LinkBack';
 import Loader from '../components/Loader';
-import './cssPages/choiceGenrePage.css';
 
 function ChoiceGenrePage() {
     const [genres, setGenres] = useState([]);
@@ -57,7 +56,7 @@ function ChoiceGenrePage() {
                 </p>
 
                 {/* Search bar */}
-                <div className='max-w-2xl mx-auto my-8 rounded-xl bg-search md:my-10'>
+                <div className='max-w-2xl mx-auto my-8 rounded-xl md:my-10  bg-[linear-gradient(to_bottom,rgba(255,255,255,0.11)_5.3%,rgba(32,32,32,0.11)_92.12%)] backdrop-blur-[16.88px] shadow-[-2.95px_2.95px_6.33px_0px_rgba(0,0,0,0.15)] '>
                     <input
                         type='text'
                         placeholder='Rechercher un genre'

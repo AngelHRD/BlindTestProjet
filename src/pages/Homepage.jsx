@@ -1,7 +1,7 @@
-import BoxShadow from '../components/BoxShadow';
-import CarouselGenre from '../components/CarouselGenre';
-import Footer from '../components/Footer';
-import MarqueeText from '../components/MarqueeText';
+import BoxShadow from '../components/Homepage/BoxShadow';
+import CarouselGenre from '../components/Homepage/CarouselGenre';
+import Footer from '../components/Homepage/Footer';
+import MarqueeText from '../components/Homepage/MarqueeText';
 import { useState, useEffect } from 'react';
 import Loader from '../components/Loader';
 import ApiRequest from '../services/api';

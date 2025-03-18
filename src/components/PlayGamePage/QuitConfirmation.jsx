@@ -1,4 +1,4 @@
-import ButtonPerso from './ButtonPerso';
+import ButtonPerso from '../ButtonPerso';
 
 export default function QuitConfirmation({ isOpen, onConfirm, onCancel }) {
     if (!isOpen) return null; // Ne rend rien si l'overlay n'est pas actif
