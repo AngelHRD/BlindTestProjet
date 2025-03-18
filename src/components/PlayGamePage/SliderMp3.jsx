@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 function SliderMp3({ selectedSong, currentRound, maxSongs }) {
@@ -80,7 +80,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
     }, [selectedSong]);
 
     // Gère la lecture et la pause de l'audio
-    const togglePlay = () => {
+    const togglePlay = useCallback(() => {
         if (audioRef.current) {
             if (isPlaying) {
                 audioRef.current.pause();
@@ -95,7 +95,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
                 setIsPlaying(true);
             }
         }
-    };
+    }, [isPlaying]);
 
     // Gère les touches pour contrôler la lecture
     useEffect(() => {
@@ -108,7 +108,7 @@ function SliderMp3({ selectedSong, currentRound, maxSongs }) {
 
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [isPlaying]);
+    }, [isPlaying, togglePlay]);
 
     // Gère le changement de la barre de progression
     const handleProgress = (e) => {
@@ -195,6 +195,8 @@ SliderMp3.propTypes = {
     selectedSong: PropTypes.shape({
         mp3: PropTypes.string.isRequired,
     }).isRequired,
+    currentRound: PropTypes.number.isRequired,
+    maxSongs: PropTypes.number.isRequired,
 };
 
 export default SliderMp3;
