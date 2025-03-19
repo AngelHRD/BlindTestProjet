@@ -61,6 +61,7 @@ function Homepage() {
     if (loading) {
         return <Loader />;
     }
+
     // Calcul des transformations (parallax et rotation) basées sur la position du scroll
     const translateY = Math.min(scrollPosition * 0.1, 100); // Limite la translation verticale à 200px maximum
     const rotate = Math.min(scrollPosition * 0.02, 18); // Limite la rotation à 20° maximum
@@ -68,7 +69,14 @@ function Homepage() {
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
-            <img className='absolute z-0 lg:mt-[-72px] ' draggable='false' src={currentImage} alt='background' />
+            <img
+                className='absolute z-0 lg:mt-[-72px] w-full   '
+                draggable='false'
+                src={currentImage}
+                alt='background'
+                loading='eager'
+                fetchPriority='high'
+            />
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
@@ -123,6 +131,7 @@ function Homepage() {
                                 className='lg:w-[600px]'
                                 alt={images[3]?.description}
                                 draggable='false'
+                                loading='lazy'
                             ></img>
                         </div>
                     </div>
