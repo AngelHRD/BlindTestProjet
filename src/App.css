@@ -197,12 +197,11 @@ input[type='number']::-webkit-outer-spin-button {
     initial-value: 0deg;
 }
 
+@keyframes border-rotate {
+    to {
+        --border-angle: 360deg;
+    }
+}
 @theme {
     --animate-rotate-border: border-rotate 4s linear infinite;
-
-    @keyframes border-rotate {
-        to {
-            --border-angle: 360deg;
-        }
-    }
 }
