@@ -159,12 +159,7 @@ function PlayGamePage() {
                     <>
                         {/* Affichage du jeu */}
                         {/* Titre */}
-                        <div className='w-full flex flex-col text-center my-3 '>
-                            <h2 className='t-owners main-title '>
-                                Blin
-                                <span className='t-briller main-title'>d </span>
-                                test
-                            </h2>
+                        <div className='w-full flex flex-col text-center mb-3 '>
                             <h3 className='t-briller-vide second-title  '>{selectedSong?.genre}</h3>
                         </div>
 
