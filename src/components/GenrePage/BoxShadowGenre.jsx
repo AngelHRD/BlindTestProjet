@@ -66,20 +66,13 @@ function BoxShadowGenre({ data }) {
                 <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
                     Imbattable en blind test {data?.title} ? C&apos;est ce qu&apos;on va voir !
                 </p>
+                <MaxSongsInput initialValue={maxSongs} onChange={handleMaxSongsUpdate} buttonRef={buttonRef} />
                 <p className='para lg:text-[1.2rem] text-base text-center lg:text-start'>
                     Prépare-toi à relever le défi !
                     <br />
                     Tu auras 15 secondes pour écouter chaque extrait et choisir laquelle des 4 propositions correspond à
                     la chanson et à l&apos;artiste ou groupe.
                 </p>
-                <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
-                    Attention, chaque seconde compte. À toi de montrer que tu as l&apos;oreille ! Prêt à te mesurer à ce
-                    blind test ? C&apos;est parti !
-                </p>
-            </div>
-
-            <div className='flex flex-col justify-center items-center w-full gap-2 mt-10'>
-                <MaxSongsInput initialValue={maxSongs} onChange={handleMaxSongsUpdate} buttonRef={buttonRef} />
             </div>
 
             <ButtonPerso

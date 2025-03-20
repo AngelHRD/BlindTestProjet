@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function MaxSongsInput({ initialValue, onChange, buttonRef }) {
-    const [error, setError] = useState('');
-    const [isValid, setIsValid] = useState(true);
     const [maxSongs, setMaxSongs] = useState(initialValue || 5);
     const [lastValidValue, setLastValidValue] = useState(initialValue || 5);
 
@@ -28,13 +26,9 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
         const numericValue = Number(maxSongs);
 
         if (maxSongs === '' || numericValue < 5 || numericValue > 30 || isNaN(numericValue)) {
-            setError('Veuillez choisir un nombre entre 5 et 30.');
-            setIsValid(false);
             setMaxSongs(lastValidValue);
             return false;
         } else {
-            setError('');
-            setIsValid(true);
             setLastValidValue(numericValue);
             return true;
         }
@@ -49,10 +43,10 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            e.preventDefault(); // ⚠️ Empêcher le comportement par défaut
+            e.preventDefault();
             if (validateInput() && buttonRef?.current) {
                 setTimeout(() => {
-                    buttonRef.current.click(); // ✅ Clique sur le bouton après validation
+                    buttonRef.current.click();
                 }, 10);
             }
         }
@@ -60,20 +54,24 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
 
     return (
         <>
-            <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base'>
+            <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base my-5'>
                 Choisissez votre nombre de musiques :
-                <input
+                <select
                     id='maxSongs'
-                    type='text'
                     required
                     value={maxSongs}
                     onChange={handleMaxSongsChange}
                     onBlur={handleBlur}
                     onKeyDown={handleKeyDown}
-                    className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-8 text-center'
-                />
+                    className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-12 text-center'
+                >
+                    {[...Array(6)].map((_, index) => (
+                        <option className='bg-[#141313] w-12 ' key={index * 5 + 5} value={index * 5 + 5}>
+                            {index * 5 + 5}
+                        </option>
+                    ))}
+                </select>
             </label>
-            {!isValid && <p className='text-red-500 text-sm mt-2'>{error}</p>}
         </>
     );
 }
