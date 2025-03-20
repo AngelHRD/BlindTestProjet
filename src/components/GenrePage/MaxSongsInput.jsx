@@ -42,7 +42,7 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
     return (
         <>
             <div className='flex flex-col gap-4 mb-2'>
-                <p className='text-white text-left para lg:text-[1.2rem] text-base'>
+                <p className='text-white text-left para lg:text-[1.2rem] text-base '>
                     Choisissez votre nombre de musiques :
                 </p>
                 <div className='flex justify-center gap-4'>
