@@ -10,7 +10,7 @@ const ButtonPerso = forwardRef(({ to, text, width, height, onClick, hidden = 'bl
     if (onClick) {
         return (
             <button ref={ref} onClick={onClick} className={classes} aria-label={text} disabled={disabled}>
-                <p className='flex h-full w-full items-center justify-center rounded-lg bg-neutral-800 hover:bg-neutral-700 text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
+                <p className='flex h-full w-full items-center justify-center rounded-lg bg-neutral-900 hover:bg-neutral-800 text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
                     {text}
                 </p>
             </button>
@@ -19,7 +19,7 @@ const ButtonPerso = forwardRef(({ to, text, width, height, onClick, hidden = 'bl
 
     return (
         <Link to={disabled ? '#' : to} className={classes} aria-label={text} ref={ref}>
-            <p className='flex h-full w-full items-center justify-center rounded-lg bg-neutral-800 hover:bg-neutral-700 text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
+            <p className='flex h-full w-full items-center justify-center rounded-lg bg-neutral-900 hover:bg-neutral-800 text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
                 {text}
             </p>
         </Link>
