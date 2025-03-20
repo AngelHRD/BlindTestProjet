@@ -44,7 +44,7 @@ function ScorePage() {
         <section className=' h-screen lg:h-[calc(100vh-72px)] flex flex-col justify-center'>
             <div className='container mx-auto p-6 lg:py-12 flex flex-col justify-center lg:items-center gap-y-5 lg:gap-y-10 h-full'>
                 <p className='text-2xl md:text-4xl para'>Bien joué ! Tu as trouvé</p>
-                <div className='h-[500px] w-[500px] lg:text-xl linear scale-[1.03] animate-rotate-border rounded-full bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
+                <div className='aspect-[1/1] lg:h-full w-full lg:w-auto lg:text-xl linear scale-[1.03] animate-rotate-border rounded-full bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
                     <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
                         {/* Texte centré  */}
 
