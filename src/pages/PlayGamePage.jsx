@@ -6,6 +6,7 @@ import SliderMp3 from '../components/PlayGamePage/SliderMp3';
 import ButtonPlayGame from '../components/PlayGamePage/ButtonPlayGame';
 import Loader from '../components/Loader';
 import QuitConfirmation from '../components/PlayGamePage/QuitConfirmation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
@@ -69,23 +70,12 @@ function PlayGamePage() {
     };
 
     // Compte à rebours avant le début du jeu
-    // useEffect(() => {
-    //     let timer;
-    //     if (countdown === null) {
-    //         // Affiche "Prêt ?" pendant 1 seconde
-    //         timer = setTimeout(() => setCountdown(3), 1500);
-    //     } else if (countdown > 0 && false) {
-    //         // Décompte 3..2..1
-    //         timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-    //     }
-    //     return () => clearTimeout(timer);
-    // }, [countdown]);
 
     useEffect(() => {
-        if (countdown > 0 && false) {
+        if (countdown > 0) {
             const timer = setTimeout(() => {
                 setCountdown(countdown - 1);
-            }, 1000);
+            }, 1200);
             return () => clearTimeout(timer);
         }
     }, [countdown]);
@@ -143,13 +133,24 @@ function PlayGamePage() {
                             <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
                                 {/* Texte centré  */}
                                 <div className='flex justify-center items-center h-full '>
-                                    <h2 className='font-score-countdown'>{countdown}</h2>
+                                    <AnimatePresence mode='popLayout'>
+                                        <motion.h2
+                                            key={countdown} // Change l'animation à chaque changement de chiffre
+                                            className='font-score-countdown'
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 1.2 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            {countdown}
+                                        </motion.h2>
+                                    </AnimatePresence>
                                 </div>
                             </div>
                         </div>
                         <button
                             onClick={() => setCountdown(0)}
-                            className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5'
+                            className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer'
                         >
                             Skip
                         </button>
