@@ -227,5 +227,5 @@ html {
     }
 }
 @theme {
-    --animate-rotate-border-countdown: border-rotate-countdown 1.2s linear infinite;
+    --animate-rotate-border-countdown: border-rotate-countdown 1s linear infinite;
 }

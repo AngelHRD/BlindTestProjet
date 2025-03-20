@@ -75,7 +75,7 @@ function PlayGamePage() {
         if (countdown > 0) {
             const timer = setTimeout(() => {
                 setCountdown(countdown - 1);
-            }, 1200);
+            }, 1000);
             return () => clearTimeout(timer);
         }
     }, [countdown]);
