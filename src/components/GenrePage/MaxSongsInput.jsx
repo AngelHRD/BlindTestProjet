@@ -46,13 +46,15 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
                     Choisissez votre nombre de musiques :
                 </p>
                 <div className='flex justify-center gap-4'>
-                    {[5, 10, 15].map((value) => (
+                    {[10, 20, 30].map((value) => (
                         <button
                             key={value}
                             onClick={() => handleMaxSongsChange(value)}
                             onKeyDown={handleKeyDown}
                             className={`px-6 py-2 cursor-pointer rounded-lg text-center text-xl transition-colors duration-500 ease-in-out text-[chartreuse] ${
-                                maxSongs === value ? 'bg-neutral-800 ' : 'bg-neutral-900 hover:bg-neutral-800 '
+                                maxSongs === value
+                                    ? 'bg-neutral-800 shadow-[chartreuse]/60 shadow-xs '
+                                    : 'bg-neutral-900 hover:bg-neutral-800 '
                             }`}
                         >
                             {value}
