@@ -6,12 +6,13 @@ import SliderMp3 from '../components/PlayGamePage/SliderMp3';
 import ButtonPlayGame from '../components/PlayGamePage/ButtonPlayGame';
 import Loader from '../components/Loader';
 import QuitConfirmation from '../components/PlayGamePage/QuitConfirmation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [countdown, setCountdown] = useState(null);
+    const [countdown, setCountdown] = useState(3);
     const [showQuitOverlay, setShowQuitOverlay] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [currentRound, setCurrentRound] = useState(0);
@@ -69,16 +70,14 @@ function PlayGamePage() {
     };
 
     // Compte à rebours avant le début du jeu
+
     useEffect(() => {
-        let timer;
-        if (countdown === null) {
-            // Affiche "Prêt ?" pendant 1 seconde
-            timer = setTimeout(() => setCountdown(3), 1500);
-        } else if (countdown > 0) {
-            // Décompte 3..2..1
-            timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+        if (countdown > 0) {
+            const timer = setTimeout(() => {
+                setCountdown(countdown - 1);
+            }, 1200);
+            return () => clearTimeout(timer);
         }
-        return () => clearTimeout(timer);
     }, [countdown]);
 
     const handleQuitClick = () => {
@@ -100,7 +99,7 @@ function PlayGamePage() {
     }
 
     return (
-        <section className={countdown !== 0 ? 'blur-color-green-countdown' : 'blur-color-green'}>
+        <section className={countdown !== 0 ? 'bg-[#141313]' : 'blur-color-green'}>
             {/* la class précédente applique .blur-color-green-score lorsque countdown est actif et revient à .blur-color-green une fois qu'il est fini. */}
             <div className='container mx-auto px-4 h-screen lg:h-[calc(100vh-72px)] pt-5 relative flex flex-col overflow-hidden'>
                 {/* 🔹 Modification : bouton "Quitter" ouvre l'overlay au lieu de rediriger immédiatement */}
@@ -125,28 +124,36 @@ function PlayGamePage() {
                 {/* Affichage du compte à rebours avant le jeu */}
                 {countdown !== 0 ? (
                     <div className=' flex flex-col flex-grow justify-center items-center'>
-                        {/* ShadowBox  */}
-                        <div className='w-4/5 flex flex-col h-full items-center bg-blur mt-5 mb-20 py-10'>
-                            {/* Titre */}
-                            <div className=' h-1/5 flex flex-col items-center justify-center'>
-                                {/* <h2 className='t-owners text-4xl md:text-7xl '>
-                                    Blin<span className='t-briller text-4xl md:text-7xl'>d </span> test
-                                </h2>
-                                <h3 className='t-briller-vide text-3xl md:text-6xl -mt-5'>{genre}</h3> */}
+                        {/* Pret ? */}
+                        {/* <div className=' h-1/5 flex flex-col items-center justify-center'>
+                            <h2 className='t-owners text-4xl md:text-7xl '>Pret ?</h2>
+                        </div> */}
+                        {/* fond avec contour  */}
+                        <div className='h-[500px] w-[500px] lg:text-xl linear scale-[1.03] animate-rotate-border-countdown rounded-full bg-conic/[from_var(--border-angle-countdown)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
+                            <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
+                                {/* Texte centré  */}
+                                <div className='flex justify-center items-center h-full '>
+                                    <AnimatePresence mode='popLayout'>
+                                        <motion.h2
+                                            key={countdown} // Change l'animation à chaque changement de chiffre
+                                            className='font-score-countdown'
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            exit={{ opacity: 0, scale: 1.2 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            {countdown}
+                                        </motion.h2>
+                                    </AnimatePresence>
+                                </div>
                             </div>
-
-                            {/* Texte centré  */}
-                            <div className='flex justify-center items-center h-3/5 '>
-                                <h2 className='font-score-countdown'>{countdown === null ? 'Prêt ?' : countdown}</h2>
-                            </div>
-
-                            <button
-                                onClick={() => setCountdown(0)}
-                                className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5'
-                            >
-                                Skip
-                            </button>
                         </div>
+                        <button
+                            onClick={() => setCountdown(0)}
+                            className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer'
+                        >
+                            Skip
+                        </button>
                     </div>
                 ) : (
                     <>
