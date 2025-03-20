@@ -136,10 +136,24 @@ html {
 
 .bg-blur-dark {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-    backdrop-filter: blur(8px); /* Flou du fond */
+    backdrop-filter: blur(8px);
     border-radius: 35pt;
     border: 0.1px solid #262424;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.bg-blur-genre {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(8px);
+    border-radius: 35pt;
+    border: 0.1px solid #262424;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+    .bg-blur-genre {
+        background: linear-gradient(to bottom, rgb(0, 0, 0, 0.85), rgba(0, 0, 0, 0.64));
+        backdrop-filter: blur(10px);
+    }
 }
 
 .thumb-custom::-webkit-slider-thumb {
@@ -150,12 +164,6 @@ html {
     height: 15px;
     border-radius: 50%;
     cursor: pointer;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }
 
 /* TEST  */

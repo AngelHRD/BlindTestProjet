@@ -9,16 +9,10 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
         localStorage.setItem('maxSongs', maxSongs);
     }, [maxSongs]);
 
-    const handleMaxSongsChange = (e) => {
-        const value = e.target.value;
-
-        if (value === '') {
-            setMaxSongs('');
-            return;
-        }
-
-        if (/^\d+$/.test(value)) {
-            setMaxSongs(Number(value));
+    const handleMaxSongsChange = (value) => {
+        setMaxSongs(value);
+        if (onChange) {
+            onChange(value);
         }
     };
 
@@ -31,13 +25,6 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
         } else {
             setLastValidValue(numericValue);
             return true;
-        }
-    };
-
-    const handleBlur = () => {
-        validateInput();
-        if (onChange) {
-            onChange(Number(maxSongs));
         }
     };
 
@@ -54,24 +41,25 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
 
     return (
         <>
-            <label htmlFor='maxSongs' className='text-white para lg:text-[1.2rem] text-base my-5'>
-                Choisissez votre nombre de musiques :
-                <select
-                    id='maxSongs'
-                    required
-                    value={maxSongs}
-                    onChange={handleMaxSongsChange}
-                    onBlur={handleBlur}
-                    onKeyDown={handleKeyDown}
-                    className='!text-[chartreuse] para lg:text-[1.2rem] text-base w-12 text-center'
-                >
-                    {[...Array(6)].map((_, index) => (
-                        <option className='bg-[#141313] w-12 ' key={index * 5 + 5} value={index * 5 + 5}>
-                            {index * 5 + 5}
-                        </option>
+            <div className='flex flex-col gap-4 mb-2'>
+                <p className='text-white text-left para lg:text-[1.2rem] text-base'>
+                    Choisissez votre nombre de musiques :
+                </p>
+                <div className='flex justify-center gap-4'>
+                    {[5, 10, 15].map((value) => (
+                        <button
+                            key={value}
+                            onClick={() => handleMaxSongsChange(value)}
+                            onKeyDown={handleKeyDown}
+                            className={`px-6 py-2 cursor-pointer rounded-lg text-center text-xl transition-colors duration-500 ease-in-out text-[chartreuse] ${
+                                maxSongs === value ? 'bg-neutral-800 ' : 'bg-neutral-900 hover:bg-neutral-800 '
+                            }`}
+                        >
+                            {value}
+                        </button>
                     ))}
-                </select>
-            </label>
+                </div>
+            </div>
         </>
     );
 }
