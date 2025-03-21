@@ -1,23 +1,28 @@
-import BoxShadow from '../components/BoxShadow';
-import CarouselGenre from '../components/CarouselGenre';
-import Footer from '../components/Footer';
-import MarqueeText from '../components/MarqueeText';
+import BoxShadow from '../components/Homepage/BoxShadow';
+import CarouselGenre from '../components/Homepage/CarouselGenre';
+import Footer from '../components/Homepage/Footer';
+import MarqueeText from '../components/Homepage/MarqueeText';
 import { useState, useEffect } from 'react';
+import Loader from '../components/Loader';
 import ApiRequest from '../services/api';
 
 function Homepage() {
     const [genres, setGenres] = useState([]);
     const [images, setImages] = useState([]);
-    const [isMobile, setIsMobile] = useState(false);
-    // const [currentImage, setCurrentImage] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [currentImage, setCurrentImage] = useState(null);
+    const [scrollPosition, setScrollPosition] = useState(0); // State pour la position du scroll
 
     const fetchData = async () => {
         try {
             const responsecards = await ApiRequest.get(`/cards`);
             setGenres(responsecards.data);
-            console.log('card', responsecards.data);
+            const responseimg = await ApiRequest.get(`/img`);
+            setImages(responseimg.data);
         } catch (error) {
             console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -26,27 +31,51 @@ function Homepage() {
     }, []);
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 1024);
+        const updateImage = () => {
+            if (window.innerWidth <= 1024) {
+                setCurrentImage(images[0]?.img_phone);
+            } else {
+                setCurrentImage(images[0]?.img_desktop);
+            }
         };
 
-        window.addEventListener('resize', handleResize);
-        handleResize(); // Pour vérifier la taille de l'écran au chargement initial
+        updateImage(); // Appel initial
+        window.addEventListener('resize', updateImage);
 
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', updateImage);
+        };
+    }, [images]);
+    // Écouter l'événement de scroll pour appliquer le parallax et la rotation
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollPosition(window.scrollY); // Met à jour la position du scroll
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
+    if (loading) {
+        return <Loader />;
+    }
+
+    // Calcul des transformations (parallax et rotation) basées sur la position du scroll
+    const translateY = Math.min(scrollPosition * 0.1, 100); // Limite la translation verticale à 200px maximum
+    const rotate = Math.min(scrollPosition * 0.02, 18); // Limite la rotation à 20° maximum
 
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
             <img
-                className='absolute z-0 lg:mt-[-72px]'
-                src={
-                    isMobile
-                        ? '/assets/img/accueil/fond-accueil-mobile-1.webp'
-                        : '/assets/img/accueil/fond-accueil-pc-1.webp'
-                }
+                className='absolute z-0 lg:mt-[-72px] w-full   '
+                draggable='false'
+                src={currentImage}
                 alt='background'
+                loading='eager'
+                fetchPriority='high'
             />
 
             {/* Scrolling slogan du blind test */}
@@ -55,23 +84,21 @@ function Homepage() {
             {/* div container début */}
             <div className='lg:px-48 px-2 w-full lg:mt-[-72px] '>
                 {/* Premiere section*/}
-                <div className='h-screen flex flex-col  lg:flex-row lg:items-center lg:justify-end lg: lg:pt-0'>
+                <section className='h-screen flex flex-col  lg:flex-row lg:items-center lg:justify-end lg: lg:pt-0'>
                     <BoxShadow genres={genres}></BoxShadow>
-                </div>
+                </section>
 
                 {/* Deuxieme section*/}
-                {/* Container section 2*/}
-                <div className='w-full relative'>
-                    {/* Container div 1 et enceinte*/}
+                <section className='w-full relative'>
                     <div className='flex flex-row justify-center lg:my-24 my-10 z-0'>
                         <div className='bg-blur lg:w-4/5 w-full h-auto lg:px-18 px-[11vw] py-10 lg:my-18'>
                             <div className='flex flex-col gap-4'>
                                 {/* titre*/}
 
-                                <div className='w-full my-3 flex flex-col'>
-                                    <h2 className='t-briller-vide lg:text-[3.7rem] text-4xl'>Info</h2>
-                                    <h2 className='t-owners pl-4 lg:text-[3.7rem] text-4xl'>
-                                        Blin<span className='t-briller lg:text-[3.7rem] text-4xl'>d</span> test
+                                <div className='w-full my-3 flex flex-col '>
+                                    <h2 className='t-briller-vide main-title leading-[0.7] '>Info</h2>
+                                    <h2 className='t-owners pl-4 main-title leading-[0.7]'>
+                                        Blin<span className='t-briller main-title'>d</span> test
                                     </h2>
                                 </div>
 
@@ -93,31 +120,43 @@ function Homepage() {
                             </div>
                         </div>
 
-                        <div className='absolute right-0 top-3/4 -translate-y-1/2 translate-x-2/6 lg:top-0 lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0'>
-                            <img src={images[3]?.img} className='lg:w-[600px] rotate-10'></img>
+                        <div
+                            style={{
+                                transform: `translateY(${translateY}px) rotate(${rotate}deg)`, // Transformation basée sur le scroll
+                            }}
+                            className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-2/6 lg:top-[-90px] lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0 blur-color-green-center'
+                        >
+                            <img
+                                src={images[3]?.img}
+                                className='lg:w-[600px]'
+                                alt={images[3]?.description}
+                                draggable='false'
+                                loading='lazy'
+                            ></img>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {/* troisieme section*/}
-                <div className='flex flex-col items-center mt-30 lg:mt-0'>
+                <section className='flex flex-col items-center mt-30 lg:mt-0'>
                     <div className='relative text-center'>
-                        <div className='z-10 t-owners whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                        <div className='z-10 t-owners whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
-                            <span className='t-briller lg:text-[3.7rem] text-4xl'>o</span>n genr
-                            <span className='t-briller lg:text-[3.7rem] text-4xl'>e</span>?
+                            <span className='t-briller main-title'>o</span>n genr
+                            <span className='t-briller main-title'>e</span>?
                         </div>
-                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap lg:text-[3.7rem] text-4xl'>
+                        <div className='absolute left-1 top-1 z-0 t-owners-vide whitespace-nowrap main-title'>
                             c&apos;est quoi <br className='block lg:hidden' /> t
-                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>o</span>n genr
-                            <span className='t-briller-vide lg:text-[3.7rem] text-4xl'>e</span>?
+                            <span className='t-briller-vide main-title'>o</span>n genr
+                            <span className='t-briller-vide main-title'>e</span>?
                         </div>
                     </div>
-                    <CarouselGenre genres={genres}></CarouselGenre>
-                </div>
+
+                    <CarouselGenre genres={genres} />
+                </section>
             </div>
             {/* Footer */}
-            <Footer></Footer>
+            <Footer />
 
             {/* div container fin */}
         </div>
