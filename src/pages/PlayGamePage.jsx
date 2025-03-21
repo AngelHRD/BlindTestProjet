@@ -136,7 +136,7 @@ function PlayGamePage() {
                                     <AnimatePresence mode='popLayout'>
                                         <motion.h2
                                             key={countdown} // Change l'animation à chaque changement de chiffre
-                                            className='font-score-countdown'
+                                            className='font-score-countdown text-[40vw] lg:text-[11vw]'
                                             initial={{ opacity: 0, scale: 0.8 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             exit={{ opacity: 0, scale: 1.2 }}
