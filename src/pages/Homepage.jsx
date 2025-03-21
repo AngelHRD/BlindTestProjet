@@ -8,16 +8,14 @@ import ApiRequest from '../services/api';
 function Homepage() {
     const [genres, setGenres] = useState([]);
     const [images, setImages] = useState([]);
-    const [currentImage, setCurrentImage] = useState(null);
+    const [isMobile, setIsMobile] = useState(false);
+    // const [currentImage, setCurrentImage] = useState(null);
 
     const fetchData = async () => {
         try {
             const responsecards = await ApiRequest.get(`/cards`);
             setGenres(responsecards.data);
-            const responseimg = await ApiRequest.get(`/img`);
-            setImages(responseimg.data);
             console.log('card', responsecards.data);
-            console.log('image', responseimg.data);
         } catch (error) {
             console.error(error);
         }
@@ -28,26 +26,28 @@ function Homepage() {
     }, []);
 
     useEffect(() => {
-        const updateImage = () => {
-            if (window.innerWidth <= 1024) {
-                setCurrentImage(images[0]?.img_phone);
-            } else {
-                setCurrentImage(images[0]?.img_desktop);
-            }
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 1024);
         };
 
-        updateImage(); // Appel initial
-        window.addEventListener('resize', updateImage);
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Pour vérifier la taille de l'écran au chargement initial
 
-        return () => {
-            window.removeEventListener('resize', updateImage);
-        };
-    }, [images]);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
-            <img className='absolute z-0 lg:mt-[-72px]' src={currentImage} alt='background' />
+            <img
+                className='absolute z-0 lg:mt-[-72px]'
+                src={
+                    isMobile
+                        ? '/assets/img/accueil/fond-accueil-mobile-1.webp'
+                        : '/assets/img/accueil/fond-accueil-pc-1.webp'
+                }
+                alt='background'
+            />
 
             {/* Scrolling slogan du blind test */}
             <MarqueeText></MarqueeText>
