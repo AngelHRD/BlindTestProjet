@@ -8,21 +8,20 @@ import ApiRequest from '../services/api';
 
 function Homepage() {
     const [genres, setGenres] = useState([]);
-    const [images, setImages] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [currentImage, setCurrentImage] = useState(null);
+    // const [images, setImages] = useState([]);
+    // const [loading, setLoading] = useState(true);
+    // const [currentImage, setCurrentImage] = useState(null);
     const [scrollPosition, setScrollPosition] = useState(0); // State pour la position du scroll
+    const [images, setImages] = useState([]);
+    const [isMobile, setIsMobile] = useState(false);
 
     const fetchData = async () => {
         try {
             const responsecards = await ApiRequest.get(`/cards`);
             setGenres(responsecards.data);
-            const responseimg = await ApiRequest.get(`/img`);
-            setImages(responseimg.data);
+            console.log('card', responsecards.data);
         } catch (error) {
             console.error(error);
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -31,21 +30,16 @@ function Homepage() {
     }, []);
 
     useEffect(() => {
-        const updateImage = () => {
-            if (window.innerWidth <= 1024) {
-                setCurrentImage(images[0]?.img_phone);
-            } else {
-                setCurrentImage(images[0]?.img_desktop);
-            }
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 1024);
         };
 
-        updateImage(); // Appel initial
-        window.addEventListener('resize', updateImage);
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Pour vérifier la taille de l'écran au chargement initial
 
-        return () => {
-            window.removeEventListener('resize', updateImage);
-        };
-    }, [images]);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     // Écouter l'événement de scroll pour appliquer le parallax et la rotation
     useEffect(() => {
         const handleScroll = () => {
@@ -58,9 +52,9 @@ function Homepage() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-    if (loading) {
-        return <Loader />;
-    }
+    // if (loading) {
+    //     return <Loader />;
+    // }
 
     // Calcul des transformations (parallax et rotation) basées sur la position du scroll
     const translateY = Math.min(scrollPosition * 0.1, 100); // Limite la translation verticale à 200px maximum
@@ -70,12 +64,13 @@ function Homepage() {
         <div className='bg-[var(--noir)] relative flex flex-col items-center max-w-screen overflow-x-hidden'>
             {/* Image de fond accueil */}
             <img
-                className='absolute z-0 lg:mt-[-72px] w-full   '
-                draggable='false'
-                src={currentImage}
+                className='absolute z-0 lg:mt-[-72px]'
+                src={
+                    isMobile
+                        ? '/public/assets/img/accueil/fond-accueil-mobile-1.webp'
+                        : '/public/assets/img/accueil/fond-accueil-pc-1.webp'
+                }
                 alt='background'
-                loading='eager'
-                fetchPriority='high'
             />
 
             {/* Scrolling slogan du blind test */}
@@ -127,9 +122,9 @@ function Homepage() {
                             className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-2/6 lg:top-[-90px] lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0 blur-color-green-center'
                         >
                             <img
-                                src={images[3]?.img}
+                                src='/public/assets/img/accueil/enceinte.webp'
                                 className='lg:w-[600px]'
-                                alt={images[3]?.description}
+                                alt='enceinte'
                                 draggable='false'
                                 loading='lazy'
                             ></img>
