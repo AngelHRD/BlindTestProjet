@@ -1,4 +1,4 @@
-import './cssComponents/marqueeText.css';
+import '../cssComponents/marqueeText.css';
 
 function MarqueeText() {
     return (

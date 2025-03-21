@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-function SliderMp3({ selectedSong }) {
+function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
@@ -25,6 +25,7 @@ function SliderMp3({ selectedSong }) {
         if (selectedSong) {
             if (audioRef.current) {
                 audioRef.current.pause();
+                audioRef.current.src = '';
                 audioRef.current.currentTime = 0;
             }
 
@@ -38,6 +39,14 @@ function SliderMp3({ selectedSong }) {
                 const limitedDuration = Math.min(maxTimeSong, actualDuration - startTime);
                 setDuration(limitedDuration);
                 audio.currentTime = startTime;
+
+                // Lancer la musique après 0.75 secondes
+                setTimeout(() => {
+                    audio.play().catch((error) => {
+                        console.error('Erreur lors de la lecture :', error);
+                    });
+                    setIsPlaying(true);
+                }, 750);
             };
 
             // Met à jour le progrès et le temps courant
@@ -52,6 +61,7 @@ function SliderMp3({ selectedSong }) {
                     if (limitedCurrentTime >= maxTimeSong) {
                         audioRef.current.pause();
                         setIsPlaying(false);
+                        onSongEnd();
                     }
                 }
             };
@@ -61,6 +71,7 @@ function SliderMp3({ selectedSong }) {
                 setIsPlaying(false);
                 setCurrentTime(0);
                 setProgress(0);
+                onSongEnd();
             };
 
             // Ajoute des écouteurs d'événements pour l'audio
@@ -72,15 +83,16 @@ function SliderMp3({ selectedSong }) {
             return () => {
                 if (audioRef.current) {
                     audioRef.current.pause();
+                    audioRef.current.src = '';
                     audioRef.current = null;
                     isAudioInitialized.current = false;
                 }
             };
         }
-    }, [selectedSong]);
+    }, [selectedSong, onSongEnd]);
 
     // Gère la lecture et la pause de l'audio
-    const togglePlay = () => {
+    const togglePlay = useCallback(() => {
         if (audioRef.current) {
             if (isPlaying) {
                 audioRef.current.pause();
@@ -95,7 +107,7 @@ function SliderMp3({ selectedSong }) {
                 setIsPlaying(true);
             }
         }
-    };
+    }, [isPlaying]);
 
     // Gère les touches pour contrôler la lecture
     useEffect(() => {
@@ -108,7 +120,7 @@ function SliderMp3({ selectedSong }) {
 
         window.addEventListener('keydown', handleKeyPress);
         return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [isPlaying]);
+    }, [isPlaying, togglePlay]);
 
     // Gère le changement de la barre de progression
     const handleProgress = (e) => {
@@ -123,40 +135,69 @@ function SliderMp3({ selectedSong }) {
 
     return (
         <>
-            <div className='text-white'>
-                <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth={1.5}
-                    stroke='currentColor'
-                    className='h-10 w-10 cursor-pointer'
-                    onClick={togglePlay}
-                >
-                    {isPlaying ? (
-                        <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 5.25v13.5m-7.5-13.5v13.5' />
-                    ) : (
-                        <path
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                            d='M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z'
+            <div className='flex flex-col items-center w-full'>
+                <div className='flex items-center justify-center w-full gap-4'>
+                    {/* Bouton Play/Pause */}
+                    <button onClick={togglePlay} className='text-white focus:outline-none'>
+                        {isPlaying ? (
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                strokeWidth={1.5}
+                                stroke='currentColor'
+                                className='h-10 w-10 cursor-pointer'
+                            >
+                                <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M15.75 5.25v13.5m-7.5-13.5v13.5'
+                                />
+                            </svg>
+                        ) : (
+                            <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                strokeWidth={1.5}
+                                stroke='currentColor'
+                                className='h-10 w-10 cursor-pointer'
+                            >
+                                <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z'
+                                />
+                            </svg>
+                        )}
+                    </button>
+
+                    {/* Barre de progression */}
+                    <div className='flex items-center w-full max-w-8/12'>
+                        <input
+                            type='range'
+                            min='0'
+                            max='100'
+                            value={progress}
+                            onChange={handleProgress}
+                            className='w-full appearance-none h-[5px] bg-[#7FF000] rounded-full thumb-custom'
+                            aria-label='Progression de la musique'
+                            style={{
+                                background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
+                            }}
                         />
-                    )}
-                </svg>
+                        <span className='text-white text-lg ml-2'>
+                            {formatTime(Math.max(duration - currentTime, 0))}
+                        </span>
+                    </div>
+                </div>
+
+                <div className='text-center text-white mt-3 text-xl '>
+                    <p>
+                        {currentRound + 1} sur {maxSongs}
+                    </p>
+                </div>
             </div>
-            <input
-                type='range'
-                min='0'
-                max='100'
-                value={progress}
-                onChange={handleProgress}
-                className='w-7/12 appearance-none h-[5px] bg-[#7FF000] rounded-full mx-2 thumb-custom '
-                aria-label='Progression de la musique'
-                style={{
-                    background: `linear-gradient(to right, #7ff000 ${progress}%, #ffffff ${progress}%)`,
-                }}
-            />
-            <span className='text-white text-lg'>{formatTime(Math.max(duration - currentTime, 0))}</span>
         </>
     );
 }
@@ -166,6 +207,9 @@ SliderMp3.propTypes = {
     selectedSong: PropTypes.shape({
         mp3: PropTypes.string.isRequired,
     }).isRequired,
+    currentRound: PropTypes.number.isRequired,
+    maxSongs: PropTypes.number.isRequired,
+    onSongEnd: PropTypes.func.isRequired,
 };
 
 export default SliderMp3;

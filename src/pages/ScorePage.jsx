@@ -1,23 +1,32 @@
-import LinkBack from '../components/LinkBack';
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ApiRequest from '../services/api';
 import Loader from '../components/Loader';
+import { useNavigate } from 'react-router-dom';
+import ButtonPerso from '../components/ButtonPerso';
 
 function ScorePage() {
     const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(true);
     const { name: genre } = useParams();
+    const navigate = useNavigate();
+
+    const [maxSongs, setMaxSongs] = useState(() => parseInt(localStorage.getItem('maxSongs')) || 5);
+    const [score, setScore] = useState(() => parseInt(localStorage.getItem('score')) || 0);
+
+    useEffect(() => {
+        setMaxSongs(parseInt(localStorage.getItem('maxSongs')) || 5);
+        setScore(parseInt(localStorage.getItem('score')) || 0);
+    }, []);
 
     const fetchInfo = async () => {
         setLoading(true);
         try {
             const response = await ApiRequest.get(`/songs/${genre}`);
             setInfo(response.data);
-
-            console.log('response', response.data);
         } catch (error) {
             console.error('Erreur lors du chargement:', error);
+            navigate('/error');
         } finally {
             setLoading(false);
         }
@@ -32,50 +41,30 @@ function ScorePage() {
     }
 
     return (
-        <section className='blur-color-green-score min-h-screen lg:h-[calc(100vh-100px)]'>
-            <div className='container mx-auto px-4 pt-5  min-h-screen  '>
-                <LinkBack to='/' text='Quitter' />
+        <section className=' h-screen lg:h-[calc(100vh-72px)] flex flex-col justify-center'>
+            <div className='container mx-auto p-6 lg:py-12 flex flex-col justify-center items-center lg:gap-y-10 h-full'>
+                <div className='w-full flex-grow flex flex-col justify-center items-center gap-y-10'>
+                    <p className='text-[6vw] md:text-[2vw] para'>Bien joué ! Tu as trouvé</p>
+                    <div className='aspect-[1/1] lg:h-full w-full lg:w-auto lg:text-xl linear scale-[1.03] animate-rotate-border rounded-full bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
+                        <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
+                            {/* Texte centré  */}
 
-                <div className='w-full flex flex-col text-center my-3 order-1 bg-blur p-4 text-white'>
-                    <h2 className='t-ow h- ners text-4xl md:text-7xl '>
-                        Blin
-                        <span className='t-briller text-4xl md:text-7xl'>d </span>
-                        test
-                    </h2>
-                    <h3 className='t-briller-vide text-3xl md:text-6xl '>{genre}</h3>
-                    <p className='text-2xl md:text-4xl pt-10 '>Bien joué ! Tu as trouvé </p>
-                    <p className='t-owners text-8xl md:text-9xl pt-5 !text-black'>8</p>
-                    <p className='text-xl md:text-4xl pb-5'>titres sur 10</p>
-                    <p className='text-xl md:text-4xl '>Améliore toi avec nos autres blind test !</p>
-                    <Link
+                            <div>
+                                <p className='font-score-countdown text-[40vw] lg:text-[15vw] leading-none'> {score}</p>{' '}
+                                <p className='text-lg lg:text-[1.5vw] para leading-0'>titres sur {maxSongs} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='w-full mb-10 lg:mb-0 flex justify-center'>
+                    <ButtonPerso
                         to='/genres'
-                        className='px-14 py-2 mt-5 bg-[#7ff000] rounded-xl  text-black text-xl md:text-4xl w-fit mx-auto'
-                    >
-                        Let&apos;s gooo
-                    </Link>{' '}
+                        text='Plus de blind test !'
+                        width='lg:w-2/5 w-full'
+                        height='lg:h-14 h-10'
+                    />
                 </div>
             </div>
-            {/* <div className='container mx-auto px-4 text-white  '>
-                <LinkBack to='/genres' text='Quitter' />
-
-                <div className='flex flex-col items-center bg-blur border min-h-10/12 '>
-                    <h2 className='t-owners text-4xl md:text-7xl pt-5 md:pt-10 '>
-                        Blin
-                        <span className='t-briller text- md:text-7xl'>d </span>
-                        test
-                    </h2>
-
-                    <h3 className='t-briller-vide text-3xl md:text-6xl '>{genre}</h3>
-
-                    <p className='text-2xl md:text-4xl pt-10 '>Bien joué ! Tu as trouvé </p>
-                    <p className='t-owners text-8xl md:text-9xl py-10 !text-black'>8</p>
-                    <p className='text-xl md:text-4xl'>titres sur X</p>
-                    <p className='text-xl md:text-4xl '>Améliore toi avec nos autres blind test !</p>
-                    <Link className='px-4 py-2 mt-5 bg-[#7ff000] rounded-xl  text-black text-xl md:text-4xl'>
-                        Let&apos;s goooooo
-                    </Link>
-                </div>
-            </div> */}
         </section>
     );
 }

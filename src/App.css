@@ -4,10 +4,6 @@ html {
     font-size: 16px; /* 1rem sera égal à 16px */
 }
 
-h2 {
-    line-height: 0.7;
-}
-
 /*Couleurs ------------------------------*/
 :root {
     --chartreuse: #7ff000;
@@ -58,6 +54,14 @@ html {
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 0.5px #7ff000;
+}
+
+.main-title {
+    @apply text-4xl lg:text-[3.7rem];
+}
+
+.second-title {
+    @apply text-3xl lg:text-[2.7rem] leading-[0.7];
 }
 
 /* Logo */
@@ -124,7 +128,7 @@ html {
 /*div blur*/
 .bg-blur {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-    backdrop-filter: blur(8px); /* Flou du fond */
+    backdrop-filter: blur(8px);
     border-radius: 35pt;
     border: 0.1px solid #262424;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
@@ -132,10 +136,24 @@ html {
 
 .bg-blur-dark {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-    backdrop-filter: blur(8px); /* Flou du fond */
+    backdrop-filter: blur(8px);
     border-radius: 35pt;
     border: 0.1px solid #262424;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+
+.bg-blur-genre {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    backdrop-filter: blur(8px);
+    border-radius: 35pt;
+    border: 0.1px solid #262424;
+    box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 768px) {
+    .bg-blur-genre {
+        background: linear-gradient(to bottom, rgb(0, 0, 0, 0.85), rgba(0, 0, 0, 0.64));
+        backdrop-filter: blur(10px);
+    }
 }
 
 .thumb-custom::-webkit-slider-thumb {
@@ -154,9 +172,59 @@ html {
 }
 
 .blur-color-green-score {
-    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.658) -30%, rgba(0, 120, 38, 0) 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0, 0.94) -30%, rgba(0, 120, 38, 0) 40%),
+        radial-gradient(circle at 95% 83%, rgba(173, 176, 5, 0.6) 0%, rgba(173, 176, 5, 0) 18%);
 }
 
 .blur-color-yellow {
     background: radial-gradient(circle at 50% 50%, rgba(173, 176, 5, 0.6) 0%, rgba(120, 114, 0, 0) 100%);
+}
+
+.blur-color-green-countdown {
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0) -50%, rgba(0, 120, 38, 0) 35%);
+}
+
+.blur-color-green-center {
+    background: radial-gradient(circle at 50% 50%, rgba(127, 240, 0) -5%, rgba(0, 120, 38, 0) 50%);
+}
+/*font score et décompte*/
+
+.font-score-countdown {
+    font-family: 'owners', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px #7ff000;
+}
+
+/*bouton color anim*/
+@property --border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes border-rotate {
+    to {
+        --border-angle: 360deg;
+    }
+}
+@theme {
+    --animate-rotate-border: border-rotate 4s linear infinite;
+}
+
+/*background countdown anim*/
+@property --border-angle-countdown {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes border-rotate-countdown {
+    to {
+        --border-angle-countdown: 360deg;
+    }
+}
+@theme {
+    --animate-rotate-border-countdown: border-rotate-countdown 1s linear infinite;
 }

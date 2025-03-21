@@ -1,12 +1,13 @@
-import CardGenre from './CardGenre';
-import { Swiper, SwiperSlide } from 'swiper/react'; // Import pour réaliser le carousel avec swiper
+import CardGenre from '../ChoiceGenrePage/CardGenre';
+import PropTypes from 'prop-types';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
+import { Navigation, Grid, Pagination } from 'swiper/modules';
+import '../cssComponents/carouselGenre.css';
 import 'swiper/css';
-import { Navigation, Grid, Pagination } from 'swiper/modules'; // Import des modules Grid (pour swiper mobile), navigation pour swiper et pagination pour indiquer à quel "page" on est sur mobile
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
 import 'swiper/css/pagination';
-import { Link } from 'react-router-dom';
-import './cssComponents/carouselGenre.css'; // Import de la feuille de style liée
 
 function CarouselGenre({ genres }) {
     return (
@@ -25,7 +26,7 @@ function CarouselGenre({ genres }) {
                 }}
                 className='w-full rounded-4xl md:rounded-2xl'
             >
-                {genres.map((genre, index) => (
+                {genres.map((genre) => (
                     <SwiperSlide key={genre._id}>
                         <CardGenre data={genre} />
                     </SwiperSlide>
@@ -41,5 +42,9 @@ function CarouselGenre({ genres }) {
         </div>
     );
 }
+
+CarouselGenre.propTypes = {
+    genres: PropTypes.array.isRequired,
+};
 
 export default CarouselGenre;

@@ -18,7 +18,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
         if (correct) {
             setHideButton(true);
             setTimeout(() => {
-                onGoodAnswer();
+                onGoodAnswer(true);
                 setClickedId(null);
                 setIsCorrect(false);
             }, 3000);
@@ -26,7 +26,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
             setHideButton(true);
             setGameOver(true);
             setTimeout(() => {
-                onGoodAnswer();
+                onGoodAnswer(false);
                 setClickedId(null);
                 setIsCorrect(false);
             }, 3000);
@@ -45,17 +45,17 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                     key={song._id}
                     aria-label={`Choisir la musique : ${song.artist} - ${song.title}`}
                     className={`
-                        w-full h-20 min-w-[300px] tracking-wide transition-all duration-300 rounded-lg btn-text-game 
-                        bg-gradient-to-r from-[rgba(127,240,0,0.752)] via-[#19c207] to-[#7ff000]  
-                        md:w-80 md:h-24 md:min-w-[350px] md:text-lg md:rounded-xl
-                        lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl lg:tracking-widest
+                        w-full h-16 min-w-[300px] 
+                        lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl linear max-w-sm scale-[1.03] animate-rotate-border cursor-pointer rounded-lg bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-lg transition-all duration-500 ease-in-out hover:shadow-[chartreuse]/10
                         
                         ${gameOver ? (song._id === selectedSong._id ? 'opacity-100' : 'opacity-0 ') : ''}
                         ${hideButton && song._id !== clickedId ? 'opacity-0 pointer-events-none' : ''}
                     `}
                     onClick={() => handleClick(song._id)}
                 >
-                    {song.artist} - {song.title}
+                    <div className='flex h-full w-full items-center justify-center rounded-lg bg-[var(--noir)] p-10 text-center text-xl text-white transition-colors duration-500 ease-in-out hover:bg-neutral-900'>
+                        {song.artist} - {song.title}
+                    </div>
                 </button>
             ))}
         </>
