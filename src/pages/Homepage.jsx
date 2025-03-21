@@ -8,11 +8,10 @@ import ApiRequest from '../services/api';
 
 function Homepage() {
     const [genres, setGenres] = useState([]);
-    // const [images, setImages] = useState([]);
+
     // const [loading, setLoading] = useState(true);
-    // const [currentImage, setCurrentImage] = useState(null);
+
     const [scrollPosition, setScrollPosition] = useState(0); // State pour la position du scroll
-    const [images, setImages] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
 
     const fetchData = async () => {
