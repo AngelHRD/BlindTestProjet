@@ -66,8 +66,8 @@ function Homepage() {
                 className='absolute z-0 lg:mt-[-72px]'
                 src={
                     isMobile
-                        ? '/public/assets/img/accueil/fond-accueil-mobile-1.webp'
-                        : '/public/assets/img/accueil/fond-accueil-pc-1.webp'
+                        ? './assets/img/accueil/fond-accueil-mobile-1.webp'
+                        : './assets/img/accueil/fond-accueil-pc-1.webp'
                 }
                 alt='background'
             />
@@ -121,7 +121,7 @@ function Homepage() {
                             className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-2/6 lg:top-[-90px] lg:translate-y-0 lg:translate-x-0 lg:w-auto z-0 blur-color-green-center'
                         >
                             <img
-                                src='/public/assets/img/accueil/enceinte.webp'
+                                src='./assets/img/accueil/enceinte.webp'
                                 className='lg:w-[600px]'
                                 alt='enceinte'
                                 draggable='false'
