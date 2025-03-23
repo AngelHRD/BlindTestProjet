@@ -130,7 +130,7 @@ function PlayGamePage() {
                         {/* Affichage du jeu */}
                         {/* Titre */}
                         <div className='w-full flex flex-col text-center mb-3 '>
-                            <h3 className='t-briller-vide second-title  '>{selectedSong?.genre}</h3>
+                            <h3 className='t-briller-vide main-title  '>{selectedSong?.genre}</h3>
                         </div>
 
                         {/* Slider : en bas pour mobile, en haut pour desktop */}
