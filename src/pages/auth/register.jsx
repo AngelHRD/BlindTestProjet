@@ -19,11 +19,19 @@ function Register() {
         }
 
         try {
-            const { data } = await ApiRequest.post(`/auth/register`, {
-                username: values.username,
-                email: values.email,
-                password: values.password,
-            });
+            const { data } = await ApiRequest.post(
+                `/auth/register`,
+                {
+                    username: values.username,
+                    email: values.email,
+                    password: values.password,
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                },
+            );
 
             // Tu peux stocker le token ici si tu veux
             localStorage.setItem('token', data.token);
