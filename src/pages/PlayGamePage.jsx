@@ -6,20 +6,19 @@ import SliderMp3 from '../components/PlayGamePage/SliderMp3';
 import ButtonPlayGame from '../components/PlayGamePage/ButtonPlayGame';
 import Loader from '../components/Loader';
 import QuitConfirmation from '../components/PlayGamePage/QuitConfirmation';
-import { motion, AnimatePresence } from 'framer-motion';
+import CountDown from '../components/PlayGamePage/CountDown';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [countdown, setCountdown] = useState(3);
     const [showQuitOverlay, setShowQuitOverlay] = useState(false);
-    const [isPaused, setIsPaused] = useState(false);
     const [currentRound, setCurrentRound] = useState(0);
+    const [countdown, setCountdown] = useState(3);
     const [score, setScore] = useState(0);
+    const [loading, setLoading] = useState(true);
+    const [isPaused, setIsPaused] = useState(false);
 
     const { name: genre } = useParams();
-    console.log('genre', genre);
 
     const navigate = useNavigate();
     const maxSongs = parseInt(localStorage.getItem('maxSongs') || 5);
@@ -81,13 +80,13 @@ function PlayGamePage() {
     }, [countdown]);
 
     const handleQuitClick = () => {
-        setShowQuitOverlay(true); // 🔹 Afficher l'overlay
-        setIsPaused(true); // 🔹 Mettre le jeu en pause
+        setShowQuitOverlay(true);
+        setIsPaused(true);
     };
 
     const handleCancelQuit = () => {
-        setShowQuitOverlay(false); // 🔹 Cacher l'overlay
-        setIsPaused(false); // 🔹 Reprendre le jeu
+        setShowQuitOverlay(false);
+        setIsPaused(false);
     };
 
     const handleConfirmQuit = () => {
@@ -124,36 +123,7 @@ function PlayGamePage() {
                 {/* Affichage du compte à rebours avant le jeu */}
                 {countdown !== 0 ? (
                     <div className=' flex flex-col flex-grow justify-center items-center'>
-                        {/* Pret ? */}
-                        {/* <div className=' h-1/5 flex flex-col items-center justify-center'>
-                            <h2 className='t-owners text-4xl md:text-7xl '>Pret ?</h2>
-                        </div> */}
-                        {/* fond avec contour  */}
-                        <div className='aspect-[1/1] lg:h-full w-full lg:w-auto lg:text-xl linear scale-[1.03] animate-rotate-border-countdown rounded-full bg-conic/[from_var(--border-angle-countdown)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
-                            <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
-                                {/* Texte centré  */}
-                                <div className='flex justify-center items-center h-full '>
-                                    <AnimatePresence mode='popLayout'>
-                                        <motion.h2
-                                            key={countdown} // Change l'animation à chaque changement de chiffre
-                                            className='font-score-countdown text-[40vw] lg:text-[11vw]'
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 1.2 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            {countdown}
-                                        </motion.h2>
-                                    </AnimatePresence>
-                                </div>
-                            </div>
-                        </div>
-                        <button
-                            onClick={() => setCountdown(0)}
-                            className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer mb-10'
-                        >
-                            Skip
-                        </button>
+                        <CountDown countdown={countdown} />
                     </div>
                 ) : (
                     <>
