@@ -7,6 +7,8 @@ import PlayGamePage from './pages/PlayGamePage';
 import ErrorPage from './pages/ErrorPage';
 import ScorePage from './pages/ScorePage';
 import ScrollToTop from './utils/ScrollToTop';
+import Register from './pages/auth/Register';
+import Login from './pages/auth/login';
 
 function App() {
     return (
@@ -16,10 +18,14 @@ function App() {
                 <Routes>
                     <Route element={<MainLayout />}>
                         <Route path='/' element={<Homepage />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
+
                         <Route path='/genres' element={<ChoiceGenrePage />} />
                         <Route path='/genres/:name' element={<GenrePage />} />
                         <Route path='/genres/:name/blind-test' element={<PlayGamePage />} />
                         <Route path='/genres/:name/blind-test/score' element={<ScorePage />} />
+
                         <Route path='*' element={<ErrorPage />} />
                     </Route>
                     <Route path='/error' element={<ErrorPage />} />
