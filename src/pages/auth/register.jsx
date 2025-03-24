@@ -33,9 +33,7 @@ function Register() {
                 },
             );
 
-            // Tu peux stocker le token ici si tu veux
             localStorage.setItem('token', data.token);
-
             navigate('/login');
         } catch (error) {
             console.error(error);
