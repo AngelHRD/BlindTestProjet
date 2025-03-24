@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
-function LinkBack({ to, text = 'Retour' }) {
+function LinkBack({ text = 'Retour' }) {
     return (
-        <Link
-            to={to}
-            className='md:flex flex items-center gap-1 lg:my-5 my-2.5  cursor-pointer w-fit hover:opacity-80'
+        <button
+            onClick={() => window.history.back()}
+            className='md:flex flex items-center gap-1 lg:my-5 my-2.5 cursor-pointer w-fit hover:opacity-80'
             aria-label={text}
         >
             <svg
@@ -19,13 +18,12 @@ function LinkBack({ to, text = 'Retour' }) {
             >
                 <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5 8.25 12l7.5-7.5' />
             </svg>
-            <p className='text-white text-lg md:text-xl '>{text}</p>
-        </Link>
+            <p className='text-white text-lg md:text-xl'>{text}</p>
+        </button>
     );
 }
 
 LinkBack.propTypes = {
-    to: PropTypes.string.isRequired,
     text: PropTypes.string,
 };
 
