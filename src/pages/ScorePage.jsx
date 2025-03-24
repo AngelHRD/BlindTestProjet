@@ -56,7 +56,7 @@ function ScorePage() {
                         </div>
                     </div>
                 </div>
-                <div className='w-full mb-10 lg:mb-0 flex justify-center'>
+                <div className='w-full mb-10 lg:mb-0 flex justify-center lg:mt-6'>
                     <ButtonPerso
                         to='/genres'
                         text='Plus de blind test !'

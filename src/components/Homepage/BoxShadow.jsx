@@ -15,7 +15,7 @@ function BoxShadow() {
                 </div>
 
                 {/* paragraphes*/}
-                <div className='flex flex-col gap-4 flex-1'>
+                <div className='flex flex-col gap-4 flex-1 lg:mb-6'>
                     <p className='para lg:text-[1.2rem] text-base'>
                         Bienvenue dans une expérience ultime pour tous les amateurs de musique et de challenges.
                     </p>

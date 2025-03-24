@@ -48,7 +48,7 @@ function BoxShadowGenre({ data }) {
                 </div>
             </div>
 
-            <div className='flex flex-col gap-4 mx-4 lg:mx-0'>
+            <div className='flex flex-col gap-4 mx-4 lg:mx-0 lg:mb-6'>
                 <p className='para hidden lg:block lg:text-[1.2rem] text-base'>
                     Imbattable en blind test {data?.title} ? C&apos;est ce qu&apos;on va voir !
                 </p>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { forwardRef } from 'react';
 
 const ButtonPerso = forwardRef(({ to, text, width, height, onClick, hidden = 'block', disabled }, ref) => {
-    const classes = ` ${width} ${height} ${hidden} lg:mt-6 lg:text-xl linear scale-[1.03] animate-rotate-border cursor-pointer rounded-lg bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-lg transition-all duration-500 ease-in-out hover:shadow-[chartreuse]/10 hover:scale-105 ${
+    const classes = ` ${width} ${height} ${hidden}  lg:text-xl linear scale-[1.03] animate-rotate-border cursor-pointer rounded-lg bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-lg transition-all duration-500 ease-in-out hover:shadow-[chartreuse]/10 hover:scale-105 ${
         disabled ? 'opacity-50 pointer-events-none' : ''
     }`;
 
