@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-function CountDown({ countdown }) {
+function Countdown({ countdown }) {
     return (
         <>
             {/* fond avec contour  */}
@@ -34,8 +34,8 @@ function CountDown({ countdown }) {
     );
 }
 
-CountDown.propTypes = {
+Countdown.propTypes = {
     countdown: PropTypes.number.isRequired,
 };
 
-export default CountDown;
+export default Countdown;

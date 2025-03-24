@@ -6,7 +6,7 @@ import SliderMp3 from '../components/PlayGamePage/SliderMp3';
 import ButtonPlayGame from '../components/PlayGamePage/ButtonPlayGame';
 import Loader from '../components/Loader';
 import QuitConfirmation from '../components/PlayGamePage/QuitConfirmation';
-import CountDown from '../components/PlayGamePage/CountDown';
+import CountDown from '../components/PlayGamePage/Countdown';
 
 function PlayGamePage() {
     const [songs, setSongs] = useState([]);
