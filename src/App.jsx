@@ -7,8 +7,8 @@ import PlayGamePage from './pages/PlayGamePage';
 import ErrorPage from './pages/ErrorPage';
 import ScorePage from './pages/ScorePage';
 import ScrollToTop from './utils/ScrollToTop';
-import Register from './pages/auth/Register';
-import Login from './pages/auth/Login';
+import Register from './pages/auth/register';
+import Login from './pages/auth/login';
 import AccountPage from './pages/auth/AccountPage';
 
 function App() {
