@@ -25,23 +25,26 @@ function Login() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await ApiRequest.post(
-                '/auth/login',
-                {
-                    email: data.email,
-                    password: data.password,
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                },
-            );
+            const loginResponse = await ApiRequest.post('/auth/login', {
+                email: data.email,
+                password: data.password,
+            });
 
-            localStorage.setItem('token', response.data.token);
+            console.log('Login response:', loginResponse.data);
+
+            // Stockage des informations utilisateur
+            const userData = {
+                username: loginResponse.data.user.username,
+                email: loginResponse.data.user.email,
+            };
+
+            localStorage.setItem('token', loginResponse.data.token);
+            localStorage.setItem('user', JSON.stringify(userData));
+            window.dispatchEvent(new Event('localStorageChanged'));
+
             navigate('/');
         } catch (error) {
-            console.error(error);
+            console.error('Erreur:', error);
             alert(error?.response?.data?.message || 'Erreur lors de la connexion');
         }
     };

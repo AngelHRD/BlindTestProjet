@@ -45,7 +45,17 @@ function Register() {
                 },
             );
 
+            // Sauvegarder les informations de l'utilisateur
+            localStorage.setItem(
+                'user',
+                JSON.stringify({
+                    username: data.username,
+                    email: data.email,
+                }),
+            );
             localStorage.setItem('token', response.data.token);
+            window.dispatchEvent(new Event('localStorageChanged'));
+
             navigate('/');
         } catch (error) {
             console.error(error);
