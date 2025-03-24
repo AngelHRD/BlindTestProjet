@@ -2,10 +2,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import ApiRequest from '../../services/api';
 
 function Login() {
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const schema = yup.object().shape({
         email: yup.string().email('Email invalide').required('Email requis'),
@@ -45,7 +47,7 @@ function Login() {
             navigate('/');
         } catch (error) {
             console.error('Erreur:', error);
-            alert(error?.response?.data?.message || 'Erreur lors de la connexion');
+            setErrorMessage('Email ou mot de passe incorrect');
         }
     };
 
@@ -95,6 +97,11 @@ function Login() {
                         {errors.password && (
                             <p id='password-error' className='text-red-500 text-sm' role='alert'>
                                 {errors.password.message}
+                            </p>
+                        )}
+                        {errorMessage && (
+                            <p className='text-red-500 text-sm' role='alert'>
+                                {errorMessage}
                             </p>
                         )}
                     </div>

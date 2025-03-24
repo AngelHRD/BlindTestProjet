@@ -8,7 +8,8 @@ import ErrorPage from './pages/ErrorPage';
 import ScorePage from './pages/ScorePage';
 import ScrollToTop from './utils/ScrollToTop';
 import Register from './pages/auth/Register';
-import Login from './pages/auth/login';
+import Login from './pages/auth/Login';
+import AccountPage from './pages/auth/AccountPage';
 
 function App() {
     return (
@@ -18,8 +19,10 @@ function App() {
                 <Routes>
                     <Route element={<MainLayout />}>
                         <Route path='/' element={<Homepage />} />
+
                         <Route path='/register' element={<Register />} />
                         <Route path='/login' element={<Login />} />
+                        <Route path='/compte' element={<AccountPage />} />
 
                         <Route path='/genres' element={<ChoiceGenrePage />} />
                         <Route path='/genres/:name' element={<GenrePage />} />

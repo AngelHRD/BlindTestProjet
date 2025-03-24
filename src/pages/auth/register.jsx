@@ -2,10 +2,12 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import ApiRequest from '../../services/api';
 
 function Register() {
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const schema = yup.object().shape({
         username: yup.string().required("Nom d'utilisateur requis"),
@@ -59,7 +61,7 @@ function Register() {
             navigate('/');
         } catch (error) {
             console.error(error);
-            alert(error?.response?.data?.message || "Erreur lors de l'inscription");
+            setErrorMessage(error?.response?.data?.message || "Erreur lors de l'inscription");
         }
     };
 
@@ -96,6 +98,7 @@ function Register() {
                             </p>
                         )}
                     </div>
+
                     <div>
                         <label htmlFor='email' className='sr-only'>
                             Email
@@ -117,6 +120,7 @@ function Register() {
                             </p>
                         )}
                     </div>
+
                     <div>
                         <label htmlFor='password' className='sr-only'>
                             Mot de passe
@@ -138,6 +142,7 @@ function Register() {
                             </p>
                         )}
                     </div>
+
                     <div>
                         <label htmlFor='confirmPassword' className='sr-only'>
                             Confirmer le mot de passe
@@ -158,7 +163,13 @@ function Register() {
                                 {errors.confirmPassword.message}
                             </p>
                         )}
+                        {errorMessage && (
+                            <p className='text-red-500 text-sm' role='alert'>
+                                {errorMessage}
+                            </p>
+                        )}
                     </div>
+
                     <button
                         type='submit'
                         className='w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 ease-in-out'

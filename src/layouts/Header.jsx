@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ButtonPerso from '../components/ButtonPerso';
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,9 +7,9 @@ function Header() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    // Modifier le useEffect pour écouter les changements du localStorage
+    const navigate = useNavigate();
+
     useEffect(() => {
-        // Vérifier le localStorage au chargement
         const checkUserInStorage = () => {
             const userFromStorage = localStorage.getItem('user');
             if (userFromStorage) {
@@ -63,7 +63,7 @@ function Header() {
                     {user ? (
                         <div className='relative' ref={dropdownRef}>
                             <div
-                                className='flex items-center cursor-pointer gap-2 rounded-full px-4 py-2 hover:bg-gray-700/30'
+                                className='flex items-center cursor-pointer gap-2 rounded-full px-4 py-2   hover:bg-neutral-800'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
                                 <svg
@@ -83,13 +83,21 @@ function Header() {
                                     {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
                                 </span>
                             </div>
-
                             {isDropdownOpen && (
-                                <div className='absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5'>
+                                <div className='absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-neutral-900 ring-1 ring-black ring-opacity-5'>
                                     <div className='py-1'>
                                         <button
+                                            className='block w-full text-center para px-4 py-2 text-white hover:bg-neutral-800 transition-colors duration-200'
+                                            onClick={() => {
+                                                navigate('/compte');
+                                                setIsDropdownOpen(false);
+                                            }}
+                                        >
+                                            Mon compte
+                                        </button>
+                                        <button
                                             onClick={handleLogout}
-                                            className='block w-full text-left para px-4 py-2  text-white hover:bg-gray-700'
+                                            className='block w-full text-center para px-4 py-2 text-white hover:bg-neutral-800 transition-colors duration-200'
                                         >
                                             Déconnexion
                                         </button>
