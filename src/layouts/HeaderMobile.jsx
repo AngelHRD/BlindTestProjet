@@ -33,7 +33,7 @@ function HeaderMobile() {
             </Link>
 
             {/* Compte */}
-            <Link to='/login' className='flex flex-col items-center'>
+            <Link to='/compte' className='flex flex-col items-center'>
                 <svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 80 80' width='25' height='25'>
                     <circle fill={getFill('/compte')} stroke='#7ff000' cx='40' cy='24.33' r='21.73' />
                     <path
