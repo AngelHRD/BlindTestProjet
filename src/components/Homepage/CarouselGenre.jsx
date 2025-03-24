@@ -20,6 +20,7 @@ function CarouselGenre({ genres }) {
                 modules={[Navigation, Grid, Pagination]}
                 pagination={{ clickable: true }} // Pagination activée par défaut
                 grid={{ rows: 3, fill: 'row' }} // 3 cartes empilées par slide quand on utilise grid (donc pour mobile)
+                loop={true} // Active le swipe infini
                 breakpoints={{
                     0: { navigation: { enabled: false } }, // Désactive navigation (les flèches) sur mobile
                     1024: { slidesPerView: 3.8, grid: { rows: 1 }, spaceBetween: 20, navigation: { enabled: true } }, // on voit 3.8 cards, c'est sur une ligne, espace de 20, flèches actives.
