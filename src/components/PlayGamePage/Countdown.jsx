@@ -24,12 +24,12 @@ function CountDown({ countdown }) {
                     </div>
                 </div>
             </div>
-            <button
+            {/* <button
                 onClick={() => setCountdown(0)}
                 className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer mb-10'
             >
                 Skip
-            </button>
+            </button> */}
         </>
     );
 }

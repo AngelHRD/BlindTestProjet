@@ -41,12 +41,12 @@ function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
                 audio.currentTime = startTime;
 
                 // Lancer la musique après 0.75 secondes
-                // setTimeout(() => {
-                //     audio.play().catch((error) => {
-                //         console.error('Erreur lors de la lecture :', error);
-                //     });
-                //     setIsPlaying(true);
-                // }, 750);
+                setTimeout(() => {
+                    audio.play().catch((error) => {
+                        console.error('Erreur lors de la lecture :', error);
+                    });
+                    setIsPlaying(true);
+                }, 750);
             };
 
             // Met à jour le progrès et le temps courant

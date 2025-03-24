@@ -122,7 +122,10 @@ function PlayGamePage() {
 
                 {/* Affichage du compte à rebours avant le jeu */}
                 {countdown !== 0 ? (
-                    <div className=' flex flex-col flex-grow justify-center items-center'>
+                    <div
+                        className=' flex flex-col flex-grow justify-center items-center h-full w-full'
+                        onClick={() => setCountdown(0)}
+                    >
                         <CountDown countdown={countdown} />
                     </div>
                 ) : (
