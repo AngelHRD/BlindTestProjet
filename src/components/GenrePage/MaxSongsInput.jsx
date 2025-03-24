@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function MaxSongsInput({ initialValue, onChange, buttonRef }) {
-    const [maxSongs, setMaxSongs] = useState(initialValue || 5);
-    const [lastValidValue, setLastValidValue] = useState(initialValue || 5);
+    const [maxSongs, setMaxSongs] = useState(initialValue || 10);
+    const [lastValidValue, setLastValidValue] = useState(initialValue || 10);
 
     useEffect(() => {
-        localStorage.setItem('maxSongs', maxSongs);
+        const storedValue = localStorage.getItem('maxSongs');
+        if (String(maxSongs) !== storedValue) {
+            localStorage.setItem('maxSongs', maxSongs);
+        }
     }, [maxSongs]);
 
     const handleMaxSongsChange = (value) => {
@@ -51,6 +54,8 @@ function MaxSongsInput({ initialValue, onChange, buttonRef }) {
                             key={value}
                             onClick={() => handleMaxSongsChange(value)}
                             onKeyDown={handleKeyDown}
+                            aria-pressed={maxSongs === value}
+                            aria-label={`Choisir ${value} musiques`}
                             className={`px-6 py-2 cursor-pointer rounded-lg text-center text-xl transition-colors duration-500 ease-in-out text-[chartreuse] ${
                                 maxSongs === value
                                     ? 'bg-neutral-800 shadow-[chartreuse]/60 shadow-xs '
