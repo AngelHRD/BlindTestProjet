@@ -46,7 +46,7 @@ function Register() {
             );
 
             localStorage.setItem('token', response.data.token);
-            navigate('/login');
+            navigate('/');
         } catch (error) {
             console.error(error);
             alert(error?.response?.data?.message || "Erreur lors de l'inscription");
@@ -67,7 +67,7 @@ function Register() {
                 >
                     <div>
                         <label htmlFor='username' className='sr-only'>
-                            Nom d'utilisateur
+                            Nom d&apos;utilisateur
                         </label>
                         <input
                             {...register('username')}
