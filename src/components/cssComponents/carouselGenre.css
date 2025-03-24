@@ -26,19 +26,19 @@
     background: transparent;
     z-index: 10;
     font-size: 2rem; /* Taille des flèches */
-    width: 4rem; /* Taille du bouton */
-    height: 92%; /* Taille du bouton */
+    width: 4rem !important; /* Taille du bouton */
+    height: 92% !important; /* Taille du bouton */
     margin: 0px;
-    top: var(--swiper-navigation-top-offset, 0%); /*permet de décaler la position verticale des boutons de navigation.*/
+    transform: translateY(-43%); /* Décale vers le haut de 50% de leur propre hauteur */
 }
 
 .swiper-button-next {
-    right: var(--swiper-navigation-sides-offset, 0px); /*colle le bouton à droite*/
+    right: var(--swiper-navigation-sides-offset, 0px) !important; /*colle le bouton à droite*/
     left: auto;
 }
 
 .swiper-button-prev {
-    left: var(--swiper-navigation-sides-offset, 0px); /*colle le bouton à gauche*/
+    left: var(--swiper-navigation-sides-offset, 0px) !important; /*colle le bouton à gauche*/
     right: auto;
 }
 
