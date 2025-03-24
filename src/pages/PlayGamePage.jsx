@@ -129,31 +129,36 @@ function PlayGamePage() {
                             <h2 className='t-owners text-4xl md:text-7xl '>Pret ?</h2>
                         </div> */}
                         {/* fond avec contour  */}
-                        <div className='aspect-[1/1] lg:h-full w-full lg:w-auto lg:text-xl linear scale-[1.03] animate-rotate-border-countdown rounded-full bg-conic/[from_var(--border-angle-countdown)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
-                            <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
-                                {/* Texte centré  */}
-                                <div className='flex justify-center items-center h-full '>
-                                    <AnimatePresence mode='popLayout'>
-                                        <motion.h2
-                                            key={countdown} // Change l'animation à chaque changement de chiffre
-                                            className='font-score-countdown text-[40vw] lg:text-[11vw]'
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 1.2 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            {countdown}
-                                        </motion.h2>
-                                    </AnimatePresence>
+                        <div
+                            className=' flex flex-col flex-grow justify-center items-center h-full w-full'
+                            onClick={() => setCountdown(0)}
+                        >
+                            <div className='aspect-[1/1] lg:h-4/5 w-full lg:w-auto lg:text-xl linear scale-[1.03] animate-rotate-border-countdown rounded-full bg-conic/[from_var(--border-angle-countdown)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-[0_0_100px_45px_rgba(127,240,0,0.2)] transition-all duration-500 ease-in-out'>
+                                <div className=' flex flex-col h-full w-full items-center justify-center rounded-full bg-[#141313] text-center text-xl text-[chartreuse] transition-colors duration-500 ease-in-out'>
+                                    {/* Texte centré  */}
+                                    <div className='flex justify-center items-center h-full '>
+                                        <AnimatePresence mode='popLayout'>
+                                            <motion.h2
+                                                key={countdown} // Change l'animation à chaque changement de chiffre
+                                                className='font-score-countdown text-[40vw] lg:text-[11vw]'
+                                                initial={{ opacity: 0, scale: 0.8 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 1.2 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                {countdown}
+                                            </motion.h2>
+                                        </AnimatePresence>
+                                    </div>
                                 </div>
                             </div>
+                            {/* <button
+                                onClick={() => setCountdown(0)}
+                                className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer mb-10'
+                            >
+                                Skip
+                            </button> */}
                         </div>
-                        <button
-                            onClick={() => setCountdown(0)}
-                            className='para lg:text-[1.1rem] text-base hover:underline flex justify-center items-end h-1/5 cursor-pointer mb-10'
-                        >
-                            Skip
-                        </button>
                     </div>
                 ) : (
                     <>
