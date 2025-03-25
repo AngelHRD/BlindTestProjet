@@ -12,27 +12,37 @@ import 'swiper/css/pagination';
 function CarouselGenre({ genres }) {
     return (
         <div className='bg-blur h-auto w-full lg:px-12 px-6 mt-10 flex flex-col py-5 gap-5'>
-            {/* Cards carousel */}
-            <Swiper
-                slidesPerView={1} // 1 slide visible à la fois
-                spaceBetween={20}
-                navigation={true} // Active les flèches de navigation par défaut
-                modules={[Navigation, Grid, Pagination]}
-                pagination={{ clickable: true }} // Pagination activée par défaut
-                grid={{ rows: 3, fill: 'row' }} // 3 cartes empilées par slide quand on utilise grid (donc pour mobile)
-                loop={true} // Active le swipe infini
-                breakpoints={{
-                    0: { navigation: { enabled: false } }, // Désactive navigation (les flèches) sur mobile
-                    1024: { slidesPerView: 3.8, grid: { rows: 1 }, spaceBetween: 20, navigation: { enabled: true } }, // on voit 3.8 cards, c'est sur une ligne, espace de 20, flèches actives.
-                }}
-                className='w-full rounded-4xl md:rounded-2xl'
-            >
-                {genres.map((genre) => (
-                    <SwiperSlide key={genre._id}>
-                        <CardGenre data={genre} />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+            {genres && genres.length > 0 ? (
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={20}
+                    navigation={true}
+                    modules={[Navigation, Grid, Pagination]}
+                    pagination={{ clickable: true }}
+                    grid={{ rows: 3, fill: 'row' }}
+                    loop={true}
+                    breakpoints={{
+                        0: { navigation: { enabled: false } },
+                        1024: {
+                            slidesPerView: 3.8,
+                            grid: { rows: 1 },
+                            spaceBetween: 20,
+                            navigation: { enabled: true },
+                        },
+                    }}
+                    className='w-full rounded-4xl md:rounded-2xl'
+                >
+                    {genres.map((genre) => (
+                        <SwiperSlide key={genre._id}>
+                            <CardGenre data={genre} />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            ) : (
+                <div className='w-full text-center py-10'>
+                    <p className='text-white text-xl'>Aucun genre disponible pour le moment</p>
+                </div>
+            )}
 
             <Link
                 to={`/genres`}
