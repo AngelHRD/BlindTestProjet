@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <footer className='w-full bg-blur-nav mt-10 mb-22 lg:my-12 lg:pt-10 flex flex-col items-center'>
-            <div className='flex flex-col items-center lg:flex-row mt-10 w-full lg:w-2/3 justify-center'>
+            <div className='flex flex-col items-center lg:flex-row mt-10 w-full lg:w-2/3 '>
                 <div className='w-full flex flex-col items-center justify-center  '>
                     <h4 className='titre-footer-owners text-center'>
                         Inf<span className='titre-footer-briller'>o</span>
@@ -18,25 +18,26 @@ function Footer() {
                     <hr className='border-0.5 text-[var(--chartreuse)] w-4/6 my-5 lg:hidden'></hr>
                 </div>
 
-                <div className='w-full flex flex-col items-center justify-center '>
+                <div className='w-full flex flex-col items-center  '>
                     <h4 className='titre-footer-owners text-center'>
                         Caté<span className='titre-footer-briller'>g</span>orie
                     </h4>
                     <Link to='/'>
-                        <p className='para-footer mb-1 hover:underline'>Politique de confidentialité</p>
+                        <p className='para-footer mb-1 hover:underline '>Politique de confidentialité</p>
                     </Link>
+                    <br className='hidden lg:block' />
                     <hr className='border-0.5 text-[var(--chartreuse)] w-4/6 my-5 lg:hidden'></hr>
                 </div>
 
                 <div className='w-full flex flex-col items-center justify-center '>
                     <h4 className='titre-footer-owners text-center'>
-                        Jsp<span className='titre-footer-briller'>a</span>s
+                        Ai<span className='titre-footer-briller'>d</span>e
                     </h4>
                     <Link to='/'>
-                        <p className='para-footer mb-1 hover:underline'>Lorem Ipsum</p>
+                        <p className='para-footer mb-1 hover:underline'>Règles du jeu</p>
                     </Link>
                     <Link to='/'>
-                        <p className='para-footer hover:underline'>Lorem Ipsum dolor</p>
+                        <p className='para-footer hover:underline'>Support</p>
                     </Link>
                 </div>
             </div>
