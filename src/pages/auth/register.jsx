@@ -3,13 +3,24 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonPerso from '../../components/ButtonPerso';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ApiRequest from '../../services/api';
+import { motion } from 'framer-motion';
 
 function Register() {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const hidden = setTimeout(() => {
+            setIsVisible(true);
+        }, 670);
+
+        return () => clearTimeout(hidden);
+    }, []);
 
     const schema = yup.object().shape({
         username: yup.string().required("Nom d'utilisateur requis"),
@@ -76,18 +87,22 @@ function Register() {
             {/* SVG */}
             <div className='mb-4 flex items-center justify-center'>
                 <svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 80 80' width='200' height='200'>
-                    <circle stroke='#7ff000' cx='40' cy='24.33' r='21.73' />
+                    <circle className='animate-draw-circle' fill='none' stroke='#7ff000' cx='40' cy='24.33' r='21.73' />
                     <path
+                        className={`${isVisible ? 'block' : 'hidden'} animate-draw-body `}
+                        fill='none'
                         stroke='#7ff000'
                         d='M40,46.16h0c11.99,0,21.73,9.73,21.73,21.73v9.76H18.27v-9.76c0-11.99,9.73-21.73,21.73-21.73Z'
                     />
                 </svg>
             </div>
             {/* FORMULAIRE */}
-            <div className='p-8 rounded-lg mb-24 w-full max-w-md'>
-                <h2 className='text-3xl text-center text-white mb-8' id='register-title'>
-                    Inscription
-                </h2>
+            <div className='px-8 rounded-lg w-full max-w-md'>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 5 }}>
+                    <h2 className='text-3xl text-center text-white mb-8' id='register-title'>
+                        Inscription
+                    </h2>
+                </motion.div>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className='space-y-6'
@@ -262,10 +277,17 @@ function Register() {
                             </p>
                         )}
                     </div>
-
-                    <ButtonPerso type='submit' text="S'inscrire" width='w-full' height='h-12' aria-label="S'inscrire" />
+                    <div className='mt-15'>
+                        <ButtonPerso
+                            type='submit'
+                            text="S'inscrire"
+                            width='w-full'
+                            height='h-12'
+                            aria-label="S'inscrire"
+                        />
+                    </div>
                 </form>
-                <p className='text-center para text-lg mt-6 text-white'>
+                <p className='text-center para text-sm mt-4 text-white'>
                     Déjà inscrit ?{' '}
                     <Link to='/login' className='text-[chartreuse] hover:underline ml-0.5'>
                         Connectez-vous ici

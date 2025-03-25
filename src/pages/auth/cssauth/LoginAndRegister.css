@@ -1,0 +1,28 @@
+@keyframes drawCircle {
+    0% {
+        stroke-dasharray: 0, 136.3; /* Pas de tirets visibles au début */
+        stroke-dashoffset: 240; /* Commence à partir du bas (75% de la circonférence) */
+    }
+    100% {
+        stroke-dasharray: 136.3, 0; /* Le tiret couvre toute la circonférence */
+        stroke-dashoffset: 240; /* Le tracé se termine à la fin du cercle */
+    }
+}
+
+.animate-draw-circle {
+    animation: drawCircle 1s ease-in-out forwards;
+}
+
+@keyframes drawBody {
+    0% {
+        stroke-dasharray: 0, 1000; /* Pas de tirets visibles au début */
+        stroke-dashoffset: -140; /* Commence à partir du bas (75% de la circonférence) */
+    }
+    100% {
+        stroke-dasharray: 1000, 0; /* Le tiret couvre toute la circonférence */
+    }
+}
+
+.animate-draw-body {
+    animation: drawBody 1.5s ease-in-out forwards;
+}
