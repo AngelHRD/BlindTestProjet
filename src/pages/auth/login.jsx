@@ -70,10 +70,18 @@ function Login() {
 
     return (
         <>
-            <div className='flex flex-col items-center justify-center lg:h-[calc(100vh-72px)]' role='main'>
+            <div
+                className='flex flex-col items-center justify-center h-screen lg:h-[calc(100vh-72px)] pb-10 lg:pb-0 blur-color-green-double'
+                role='main'
+            >
                 {/* SVG */}
                 <div className='mb-4 flex items-center justify-center'>
-                    <svg xmlns='http://www.w3.org/2000/svg' version='1.1' viewBox='0 0 80 80' width='200' height='200'>
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        version='1.1'
+                        viewBox='0 0 80 80'
+                        className='w-32 h-32 lg:w-48 lg:h-48'
+                    >
                         <circle
                             className='animate-draw-circle'
                             fill='none'
@@ -203,7 +211,7 @@ function Login() {
                     <p className='text-center para text-sm mt-4 text-white'>
                         Pas encore de compte ?{' '}
                         <Link to='/register' className='text-[chartreuse] hover:underline ml-0.5'>
-                            Inscrivez-vous ici
+                            Inscrivez-vous
                         </Link>
                     </p>
                 </div>
