@@ -3,7 +3,6 @@ import CarouselGenre from '../components/Homepage/CarouselGenre';
 import Footer from '../components/Homepage/Footer';
 import MarqueeText from '../components/Homepage/MarqueeText';
 import { useState, useEffect } from 'react';
-import Loader from '../components/Loader';
 import ApiRequest from '../services/api';
 
 function Homepage() {
@@ -64,6 +63,7 @@ function Homepage() {
             {/* Image de fond accueil */}
             <img
                 className='absolute z-0 lg:mt-[-72px]'
+                draggable='false'
                 src={
                     isMobile
                         ? './assets/img/accueil/fond-accueil-mobile-1.webp'
