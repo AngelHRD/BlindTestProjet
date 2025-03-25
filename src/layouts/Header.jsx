@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonPerso from '../components/ButtonPerso';
 import { useState, useEffect, useRef } from 'react';
+import Avatar from '../components/Avatar';
 
 function Header() {
     const [user, setUser] = useState(null);
@@ -66,7 +67,10 @@ function Header() {
                                 className='flex items-center cursor-pointer gap-2 rounded-full px-4 py-2   hover:bg-neutral-800'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                <svg
+                                <div className='aspect-square h-full rounded-full border border-[chartreuse]'>
+                                    <Avatar username={user.username} />
+                                </div>
+                                {/* <svg
                                     xmlns='http://www.w3.org/2000/svg'
                                     version='1.1'
                                     viewBox='0 0 80 80'
@@ -78,7 +82,7 @@ function Header() {
                                         stroke='#7ff000'
                                         d='M40,46.16h0c11.99,0,21.73,9.73,21.73,21.73v9.76H18.27v-9.76c0-11.99,9.73-21.73,21.73-21.73Z'
                                     />
-                                </svg>
+                                </svg> */}
                                 <span className='text-white font-semibold text-lg'>
                                     {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
                                 </span>
