@@ -67,8 +67,8 @@ function Header() {
                                 className='flex items-center cursor-pointer gap-2 rounded-full px-4 py-2   hover:bg-neutral-800'
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             >
-                                <div className='aspect-square h-full rounded-full border border-[chartreuse]'>
-                                    <Avatar username={user.username} />
+                                <div className='aspect-square w-auto p-2 pt-3 rounded-full border border-[chartreuse] mr-1'>
+                                    <Avatar margin='0' textSize='1.5vw' username={user.username} />
                                 </div>
                                 {/* <svg
                                     xmlns='http://www.w3.org/2000/svg'
