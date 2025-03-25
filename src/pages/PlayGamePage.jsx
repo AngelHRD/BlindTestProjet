@@ -67,6 +67,7 @@ function PlayGamePage() {
             fetchMusic();
         }
     };
+    console.log('song', handleNextSong);
 
     // Compte à rebours avant le début du jeu
 

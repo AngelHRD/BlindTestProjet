@@ -6,8 +6,11 @@ function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
+
     const audioRef = useRef(null);
     const isAudioInitialized = useRef(false);
+    const hasEndedRef = useRef(false);
+    console.log('current', currentRound);
 
     // Constantes de départ et la durée maximale de l'audio
     const startTime = 40;
@@ -23,6 +26,8 @@ function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
     // Initialise et gère l'audio quand selectedSong change
     useEffect(() => {
         if (selectedSong) {
+            hasEndedRef.current = false;
+
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current.src = '';
@@ -58,7 +63,8 @@ function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
                     setProgress((limitedCurrentTime / maxTimeSong) * 100);
 
                     // Arrêter l'audio si la durée maximale est atteinte
-                    if (limitedCurrentTime >= maxTimeSong) {
+                    if (limitedCurrentTime >= maxTimeSong && !hasEndedRef.current) {
+                        hasEndedRef.current = true;
                         audioRef.current.pause();
                         setIsPlaying(false);
                         onSongEnd();
@@ -68,10 +74,13 @@ function SliderMp3({ selectedSong, currentRound, maxSongs, onSongEnd }) {
 
             // Réinitialise l'état quand l'audio se termine
             const handleEnded = () => {
-                setIsPlaying(false);
-                setCurrentTime(0);
-                setProgress(0);
-                onSongEnd();
+                if (!hasEndedRef.current) {
+                    hasEndedRef.current = true;
+                    setIsPlaying(false);
+                    setCurrentTime(0);
+                    setProgress(0);
+                    onSongEnd();
+                }
             };
 
             // Ajoute des écouteurs d'événements pour l'audio
