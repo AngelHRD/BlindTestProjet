@@ -64,6 +64,7 @@ function Homepage() {
             <img
                 className='absolute z-0 lg:mt-[-72px]'
                 draggable='false'
+                loading='eager'
                 src={
                     isMobile
                         ? './assets/img/accueil/fond-accueil-mobile-1.webp'
