@@ -20,7 +20,6 @@ function CarouselGenre({ genres }) {
                     modules={[Navigation, Grid, Pagination]}
                     pagination={{ clickable: true }}
                     grid={{ rows: 3, fill: 'row' }}
-                    loop={true}
                     breakpoints={{
                         0: { navigation: { enabled: false } },
                         1024: {

@@ -1,5 +1,5 @@
 .swiper-pagination {
-    position: relative; /* Permet à la pagination d'être en dessous des cards */
+    position: relative !important; /* Permet à la pagination d'être en dessous des cards */
     margin-top: 20px; /* Espace entre les cartes et les dots */
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@
 
 /* Style pour les dots inactifs*/
 .swiper-pagination-bullet {
-    background-color: #888;
+    background-color: #bebebe !important;
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
@@ -17,7 +17,7 @@
 
 /* Couleur du dot actif */
 .swiper-pagination-bullet-active {
-    background-color: #7ff000;
+    background-color: #7ff000 !important;
 }
 
 /* Styles pour les flèches de navigation */
