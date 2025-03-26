@@ -138,7 +138,7 @@ function PlayGamePage() {
                         </div>
 
                         {/* Slider : en bas pour mobile, en haut pour desktop */}
-                        <div className='absolute bottom-40 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center order-3 md:relative md:top-0 md:order-2 md:py-7 '>
+                        <div className='absolute bottom-30 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center order-3 md:relative md:top-0 md:order-2 md:py-7 '>
                             <SliderMp3
                                 key={selectedSong._id}
                                 selectedSong={selectedSong}

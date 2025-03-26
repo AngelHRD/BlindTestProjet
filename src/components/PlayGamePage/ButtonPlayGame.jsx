@@ -45,7 +45,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                         key={song._id}
                         aria-label={`Choisir la musique : ${song.artist} - ${song.title}`}
                         className={`
-                            w-full h-16 min-w-[300px] 
+                            w-full h-auto min-w-[300px] 
                             lg:w-88 lg:h-28 lg:min-w-[400px] lg:text-xl linear max-w-sm scale-[1.03] animate-rotate-border cursor-pointer rounded-lg bg-conic/[from_var(--border-angle)] from-gray-800 from-70% via-[chartreuse] via-90% to-gray-800 to-100% p-px shadow-lg transition-all duration-500 ease-in-out hover:shadow-[chartreuse]/10
                             ${gameOver && !isCorrectAnswer ? 'opacity-70' : ''}
                             ${gameOver && isCorrectAnswer ? 'opacity-100' : ''}
@@ -55,7 +55,7 @@ function ButtonPlayGame({ songs, selectedSong, onGoodAnswer }) {
                     >
                         <div
                             className={`
-                                flex h-full w-full items-center justify-center rounded-lg bg-[var(--noir)] p-10 text-center text-xl transition-colors duration-500 ease-in-out hover:bg-neutral-900
+                                flex lg:h-full h-16 w-full items-center justify-center rounded-lg bg-[var(--noir)] lg:p-10 px-8 py-10 text-center text-xl transition-colors duration-500 ease-in-out hover:bg-neutral-900
                                 ${gameOver && isCorrectAnswer ? 'text-[chartreuse]' : 'text-white '}
                                 ${gameOver && !isCorrectAnswer ? 'line-through text-white ' : ''}
                             `}
