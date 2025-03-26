@@ -17,25 +17,32 @@ function AccountPage() {
 
     return (
         <>
-            <div className='container mx-auto lg:h-[calc(100vh-72px)] flex flex-col'>
+            <div className='container mx-auto h-screen lg:h-[calc(100vh-72px)] flex flex-col px-4 pt-5'>
                 <LinkBack to='/' text='Quitter' />
-                <div className='flex flex-col items-center h-full'>
-                    <div className='flex  w-3/5 h-4/5 justify-center items-center'>
-                        <div className='flex bg-blur w-full h-4/6 justify-center items-center px-5'>
-                            <div className='w-1/2 h-2/3 flex justify-center'>
+                <div className='flex flex-col items-center h-full '>
+                    <div className='flex lg:w-3/5 w-full lg:h-4/5 h-4/6 justify-center items-center mt-10 lg:mt-0'>
+                        <div className='flex flex-col lg:flex-row bg-blur w-full h-full lg:h-4/6 justify-center items-center px-5 py-8 lg:py-0'>
+                            <div className='w-full lg:w-1/2 h-2/5 lg:h-2/3 flex justify-center'>
                                 <div className='aspect-square h-full rounded-full border border-[chartreuse]'>
-                                    <Avatar margin='mt-2' textSize='10vw' username={userInfo?.username} />
+                                    <Avatar
+                                        margin='mt-2'
+                                        textSize='10vw'
+                                        textSizeMobile='40vw'
+                                        username={userInfo?.username}
+                                    />
                                 </div>
                             </div>
 
-                            <div className=' w-1/2 h-2/3'>
-                                <p className='font-roboto text-5xl text-[chartreuse] mb-8'>{userInfo?.username}</p>
-                                <div className='mb-6'>
+                            <div className='w-full lg:w-1/2 h-3/5 lg:h-2/3 px-8 lg:px-0 pt-10 lg:pt-0'>
+                                <p className='font-roboto text-5xl text-[chartreuse] mb-8 flex justify-center lg:justify-start '>
+                                    {userInfo?.username}
+                                </p>
+                                <div className='mb-6 '>
                                     <p className='para opacity-70 mb-2'>Email</p>
                                     <p className='para text-xl'>{userInfo?.email}</p>
                                 </div>
-                                <div className='flex justify-between pr-50'>
-                                    <div>
+                                <div className='flex justify-between lg:pr-50 '>
+                                    <div className=''>
                                         <p className='para opacity-70 mb-2'>Mot de passe</p>
                                         <p className='para text-xl'>*******</p>
                                     </div>
@@ -68,7 +75,7 @@ function AccountPage() {
                             </div>
                         </div>
                     </div>
-                    <div className='flex h-1/5 items-end pb-5 '>
+                    <div className='flex h-1/5 items-start lg:items-end lg:pb-5'>
                         <button
                             className='w-64 h-16 text-center text-[chartreuse] cursor-pointer hover:underline'
                             onClick={() => {
